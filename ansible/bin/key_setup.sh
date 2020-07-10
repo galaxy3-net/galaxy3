@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/usr/bin/env bash
 
 export THEUSER="thedr"
 export THEHOME="/thedr"
