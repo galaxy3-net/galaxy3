@@ -27,6 +27,9 @@ export GALAXY_DIR=${HOME}/galaxy3
 cd ${GALAXY_DIR} || fail "Galaxy directory does not exist!"
 
 shaft ".keys"
+shaft "repos"
+shaft "Downloads"
+shaft "Documents"
 ls
 
 git clone https://github.com/cyberbootcamp/bind.git
