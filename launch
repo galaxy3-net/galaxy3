@@ -1,0 +1,18 @@
+$!/usr/bin/env bash
+
+function fail() {
+
+	echo ${1}
+	exit 1
+}
+export GALAXY_DIR=${HOME}/galaxy4
+
+cd ${GALAXY_DIR} || fail "Galaxy directory does not exist!"
+
+cat <<__EOD__
+
+  Do the shafts exist?
+
+__EOD__
+
+ls
