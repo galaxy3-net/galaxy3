@@ -32,4 +32,4 @@ shaft "Downloads"
 shaft "Documents"
 ls
 
-git clone https://github.com/cyberbootcamp/bind.git
+ls -dl bind || it clone https://github.com/cyberbootcamp/bind.git
