@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-alias launch="bash -c ./launch"
+#alias launch="bash -c bin/launch"
+
+export PATH=${PATH}:${HOME}/galaxy3/bin
