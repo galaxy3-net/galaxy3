@@ -45,18 +45,19 @@ Vagrant.configure("2") do |config|
   config.vm.network "private_network", ip: "10.55.55.3"
   #config.vm.network "private_network", ip: "10.55.55.105"
 
+  # https://www.vagrantup.com/docs/synced-folders/basic_usage.html
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
-  config.vm.synced_folder	"../../bind",	"/bind"
-  config.vm.synced_folder	"../../",	"/vagrant"
-  config.vm.synced_folder "../../.keys", "/thedr/.ssh"
+  config.vm.synced_folder	"../../bind",	"/bind", owner: "2001", group: "2001"
+  config.vm.synced_folder	"../../",	"/vagrant", owner: "2001", group: "2001"
+  config.vm.synced_folder "../../.keys", "/thedr/.ssh", owner: "2001", group: "2001", create: true
   config.vm.synced_folder "../../ansible", "/ansible", owner: "2001", group: "2001"
-  config.vm.synced_folder "../../ansible/etc/ansible/", "/etc/ansible/"
-  config.vm.synced_folder "../../repos", "/repos"
-  config.vm.synced_folder "../../Downloads", "/Downloads"
+  config.vm.synced_folder "../../ansible/etc/ansible/", "/etc/ansible/", owner: "2001", group: "2001"
+  config.vm.synced_folder "../../repos", "/repos", owner: "2001", group: "2001"
+  config.vm.synced_folder "../../Downloads", "/Downloads", owner: "2001", group: "2001"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -69,6 +70,7 @@ Vagrant.configure("2") do |config|
       # Customize the amount of memory on the VM:
       vb.name = "Endor"
       vb.memory = "1024"
+      vb.binary = true
       #vb.customize ['modifyvm', :id, '--nictype0', 'virtio']
       vb.customize ['modifyvm', :id, '--nictype1', 'virtio']
       #vb.customize ['modifyvm', :id, '--nictype2', 'virtio']
