@@ -5,14 +5,24 @@ function fail() {
 	echo "Error: ${1}"
 	exit 1
 }
-export GALAXY_DIR=${HOME}/galaxy4
 
-cd ${GALAXY_DIR} || fail "Galaxy directory does not exist!"
+function shaft() {
 
-cat <<__EOD__
+  SHAFT=${GALAXY_DIR}/${1}
 
-  Do the shafts exist?
+  cat <<__EOD__
+
+  Does the shaft ${SHAFT} exist?
 
 __EOD__
 
+  ls -l ${SHAFT}/ || mkdir -p ${SHAFT}
+  ls -l ${SHAFT}/ || fail "Could not create shaft ${SHAFT}"
+
+}
+export GALAXY_DIR=${HOME}/galaxy3
+
+cd ${GALAXY_DIR} || fail "Galaxy directory does not exist!"
+
+shaft ".keys"
 ls
