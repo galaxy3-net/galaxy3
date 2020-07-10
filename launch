@@ -20,7 +20,7 @@ __EOD__
   ls -dl ${SHAFT}/ || fail "Could not create shaft ${SHAFT}"
   chmod -R 0777 ${SHAFT}/
   chown -R 2001:2001 ${SHAFT}/
-
+  ls -dl ${SHAFT}/ || fail "Could not create shaft ${SHAFT}"
 }
 export GALAXY_DIR=${HOME}/galaxy3
 
