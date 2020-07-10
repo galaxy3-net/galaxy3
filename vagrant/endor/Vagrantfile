@@ -84,7 +84,7 @@ Vagrant.configure("2") do |config|
   # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
   # documentation for more information about their specific syntax and use.
    config.vm.provision "shell", inline: <<-SHELL
-     s.binary = true
+     s.binary = false
      apt-get update
      apt-get install -yq apache2 make docker docker.io net-tools ansible dos2unix
      useradd -d /thedr -c thedr -m -s /bin/bash -u 2001 -U thedr
