@@ -17,7 +17,7 @@ function shaft() {
 __EOD__
 
   ls -l ${SHAFT}/ || mkdir -p ${SHAFT}
-  ls -l ${SHAFT}/ || fail "Could not create shaft ${SHAFT}"
+  ls -dl ${SHAFT}/ || fail "Could not create shaft ${SHAFT}"
 
 }
 export GALAXY_DIR=${HOME}/galaxy3
