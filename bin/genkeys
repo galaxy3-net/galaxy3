@@ -24,6 +24,6 @@ cat <<__EOD__
 	Register the following public key with your GitHub user account.  This key
 	will be used to pull the blueprints for building out your Galaxy.
 
-	$(cat ${HOME}/.ssh/id_blueprints)
+	$(cat ${HOME}/.ssh/id_blueprints.pub)
 
 __EOD__
