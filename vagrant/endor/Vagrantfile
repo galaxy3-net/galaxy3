@@ -107,8 +107,8 @@ Vagrant.configure("2") do |config|
      file /vagrant/id_blueprints | grep CRLF || cp /vagrant/id_blueprints /thedr/.ssh/id_blueprints
      file /vagrant/blueprints.config | grep CRLF && dos2unix -n /vagrant/blueprints.config /thedr/.ssh/config.d/blueprints
      file /vagrant/blueprints.config | grep CRLF || cp /vagrant/blueprints.config /thedr/.ssh/config.d/blueprints
-     chown -R thedr:thedr /thedr
-     chmod -R 0600 /thedr/.ssh
+     chown -R thedr:thedr /thedr/
+     chmod -R 0600 /thedr/.ssh/
 
      rm /etc/resolv.conf
      file /vagrant/resolv.conf | grep CRLF && dos2unix -n /vagrant/resolv.conf /etc/resolv.conf
