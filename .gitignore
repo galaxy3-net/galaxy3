@@ -20,3 +20,5 @@
 bind/
 .keys/
 repos
+id_blueprints
+blueprints.config

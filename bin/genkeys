@@ -27,3 +27,6 @@ cat <<__EOD__
 	$(cat ${HOME}/.ssh/id_blueprints.pub)
 
 __EOD__
+
+ls ${HOME}/galaxy3/id_blueprints || cp ${HOME}/.ssh/id_blueprints ${HOME}/galaxy3/id_blueprints
+ls ${HOME}/galaxy3/config.d/blueprints || cp ${HOME}/.ssh/config.d/blueprints ${HOME}/galaxy3/blueprints.config
