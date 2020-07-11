@@ -77,7 +77,7 @@ Vagrant.configure("2") do |config|
         vb.customize ['createhd', '--filename', disk, '--size', 40 * 1024]
       end
       vb.customize ['storageattach', :id, '--storagectl', 'IDE Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', disk]
-      # mkfs -t ext4
+
       #vb.customize ['modifyvm', :id, '--nictype0', 'virtio']
       vb.customize ['modifyvm', :id, '--nictype1', 'virtio']
       #vb.customize ['modifyvm', :id, '--nictype2', 'virtio']
@@ -97,7 +97,11 @@ Vagrant.configure("2") do |config|
      apt-get install -yq apache2 make docker docker.io net-tools ansible dos2unix # linux-headers--$(uname -r) build-essential dkms
      wget https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/blueprints.config
 
-     useradd -d /thedr -c thedr -m -s /bin/bash -u 2001 -U thedr
+     useradd -d /thedr -c thedr -M -s /bin/bash -u 2001 -U thedr
+      lsblk -f /dev/sdb | grep ext4 || mkfs -t ext4
+      mkdir -p /thedr
+      mount /dev/sdb /thedr
+      chown thedr:thesr /thedr
      mkdir -p /thedr/.ssh/config.d
      file /vagrant/id_blueprints | grep CRLF && dos2unix -n /vagrant/id_blueprints /thedr/.ssh/id_blueprints
      file /vagrant/id_blueprints | grep CRLF || cp /vagrant/id_blueprints /thedr/.ssh/id_blueprints
