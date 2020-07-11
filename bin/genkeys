@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+function create_blueprints() {
+  cat > ${HOME}/.ssh/config.d/blueprints <<__blueprints__
+Host blueprints
+    HostName github.com
+    User     git
+    IdentityFile ~/.ssh/id_blueprints
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+__blueprints__
+}
+
+mkdir -p ${HOME}/.ssh/config.d
+
+chmod 0600 ${HOME}/.ssh/
+
+ls ${HOME}/.ssh/id_blueprints || ssh-keygen -N "" -f ${HOME}/.ssh/id_blueprints
+
+ls ${HOME}/.ssh/config.d/blueprints || create_blueprints
+
+cat <<__EOD__
+
+	Register the following public key with your GitHub user account.  This key
+	will be used to pull the blueprints for building out your Galaxy.
+
+	$(cat ${HOME}/.ssh/id_blueprints)
+
+__EOD__
