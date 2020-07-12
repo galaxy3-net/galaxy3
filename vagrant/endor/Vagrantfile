@@ -116,7 +116,7 @@ Vagrant.configure("2") do |config|
      file /vagrant/resolv.conf | grep CRLF || cp /vagrant/resolv.conf /etc/resolv.conf
      . /ansible/bin/key_setup.sh
      echo 'Include /thedr/.ssh/config.d/*' > /thedr/.ssh/config
-     wget -o /thedr/.ssh/config.d/blueprints https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/blueprints.config
+     wget -nc --output-document /thedr/.ssh/config.d/blueprints https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/blueprints.config
      chown -R thedr:thedr /thedr/
      chmod -R 0700 /thedr/.ssh/
      cp /ansible/roles/dns-master/files/named.service /etc/systemd/system/.
