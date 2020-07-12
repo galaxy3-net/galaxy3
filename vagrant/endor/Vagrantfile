@@ -110,7 +110,7 @@ Vagrant.configure("2") do |config|
      ls /repos/bind || ( su - thedr -c bash -c "cd /repos && git clone blueprints:cyberbootcamp/bind.git")
      (su - thedr -c bash -c "cd /repos/bind && git pull")
      cp /repos/bind/named.service/etc/systemd/system/named.service /etc/systemd/system/named.service
-     cp /repos/bind/named.service/etc/usr/sbin/named.service /usr/sbin/named.service && chmod 0700 /usr/sbin/named.service
+     cp /repos/bind/named.service/etc/usr/sbin/named.service /usr/sbin/named && chmod 0700 /usr/sbin/named
      #systemctl enable named
      #systemctl start named
 
