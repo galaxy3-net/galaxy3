@@ -123,6 +123,9 @@ Vagrant.configure("2") do |config|
      su - vagrant bash -c "cd /bind/Docker && git pull"
      systemctl enable named
      systemctl start named
+
+     su - thedr -c bash -c 'cd /repos ; git clone blueprints:galaxy3-net/blueprints.git'
+
      #ifconfig eth1:0 10.55.55.2 netmask 255.255.255.0 up
 SHELL
 end
