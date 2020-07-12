@@ -106,16 +106,16 @@ Vagrant.configure("2") do |config|
      chown -R thedr:thedr /thedr/
      chmod -R 0700 /thedr/.ssh/
 
-
-     #rm /etc/resolv.conf
-     #file /vagrant/resolv.conf | grep CRLF && dos2unix -n /vagrant/resolv.conf /etc/resolv.conf
-     #file /vagrant/resolv.conf | grep CRLF || cp /vagrant/resolv.conf /etc/resolv.conf
-
-
-     #cp /ansible/roles/dns-master/files/named.service /etc/systemd/system/.
-     #su - vagrant bash -c "cd /bind/Docker && git pull"
+     ls /etc/systemd/system/named.service || cp /repos/blueprints/ansible/roles/dns-master/files/named.service /etc/systemd/system/.
+     ls /repos/bind || ( su - thedr -c bash -c "cd /repos git clone blueprints:cyberbootcamp/bind.git")
+     (su - thedr -c bash -c "cd /repos/bind ; git pull")
      #systemctl enable named
      #systemctl start named
+
+     ls /etc/resolv.conf.original || mv /etc/resolv.conf /etc/resolv.conf.original
+     file /vagrant/resolv.conf | grep CRLF && dos2unix -n /vagrant/resolv.conf /etc/resolv.conf
+     file /vagrant/resolv.conf | grep CRLF || cp /vagrant/resolv.conf /etc/resolv.conf
+
 
      ls /repos/blueprints || su - thedr -c bash -c 'cd /repos ; git clone blueprints:galaxy3-net/blueprints.git'
 
