@@ -74,10 +74,10 @@ Vagrant.configure("2") do |config|
       vb.name = "Endor"
       vb.memory = "1024"
       vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
-      unless File.exist?(disk)
-        vb.customize ['createhd', '--filename', disk, '--size', 40 * 1024]
-      end
-      vb.customize ['storageattach', :id, '--storagectl', 'IDE Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', disk]
+      #unless File.exist?(disk)
+      #  vb.customize ['createhd', '--filename', disk, '--size', 40 * 1024]
+      #end
+      #vb.customize ['storageattach', :id, '--storagectl', 'IDE Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', disk]
 
       #vb.customize ['modifyvm', :id, '--nictype0', 'virtio']
       vb.customize ['modifyvm', :id, '--nictype1', 'virtio']
@@ -97,32 +97,24 @@ Vagrant.configure("2") do |config|
      apt-get update
      apt-get install -yq apache2 make docker docker.io net-tools ansible dos2unix # linux-headers--$(uname -r) build-essential dkms
 
-     useradd -d /thedr -c thedr -M -s /bin/bash -u 2001 -U thedr
-      lsblk -f /dev/sdb | grep ext4 || mkfs -t ext4
-      mkdir -p /thedr
-      mount /dev/sdb /thedr
-      chown thedr:thesr /thedr
-     mkdir -p /thedr/.ssh/config.d
-     file /vagrant/id_blueprints | grep CRLF && dos2unix -n /vagrant/id_blueprints /thedr/.ssh/id_blueprints
-     file /vagrant/id_blueprints | grep CRLF || cp /vagrant/id_blueprints /thedr/.ssh/id_blueprints
-     file /vagrant/blueprints.config | grep CRLF && dos2unix -n /vagrant/blueprints.config /thedr/.ssh/config.d/blueprints
-     file /vagrant/blueprints.config | grep CRLF || cp /vagrant/blueprints.config /thedr/.ssh/config.d/blueprints
+     useradd -d /thedr -c thedr -m -s /bin/bash -u 2001 -U thedr
+
      file /vagrant/egg | grep CRLF && dos2unix -n /vagrant/egg /thedr/.ssh/egg
      file /vagrant/egg | grep CRLF || cp /vagrant/egg /thedr/.ssh/egg
 
 
-     rm /etc/resolv.conf
-     file /vagrant/resolv.conf | grep CRLF && dos2unix -n /vagrant/resolv.conf /etc/resolv.conf
-     file /vagrant/resolv.conf | grep CRLF || cp /vagrant/resolv.conf /etc/resolv.conf
-     . /ansible/bin/key_setup.sh
-     echo 'Include /thedr/.ssh/config.d/*' > /thedr/.ssh/config
-     wget -nc --output-document /thedr/.ssh/config.d/blueprints https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/blueprints.config
+     #rm /etc/resolv.conf
+     #file /vagrant/resolv.conf | grep CRLF && dos2unix -n /vagrant/resolv.conf /etc/resolv.conf
+     #file /vagrant/resolv.conf | grep CRLF || cp /vagrant/resolv.conf /etc/resolv.conf
+
+
+     wget -ncr --output-document /thedr/ https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/.ssh/
      chown -R thedr:thedr /thedr/
      chmod -R 0700 /thedr/.ssh/
-     cp /ansible/roles/dns-master/files/named.service /etc/systemd/system/.
-     su - vagrant bash -c "cd /bind/Docker && git pull"
-     systemctl enable named
-     systemctl start named
+     #cp /ansible/roles/dns-master/files/named.service /etc/systemd/system/.
+     #su - vagrant bash -c "cd /bind/Docker && git pull"
+     #systemctl enable named
+     #systemctl start named
 
      su - thedr -c bash -c 'cd /repos ; git clone blueprints:galaxy3-net/blueprints.git'
 
