@@ -99,7 +99,7 @@ Vagrant.configure("2") do |config|
 
      useradd -d /thedr -c thedr -m -s /bin/bash -u 2001 -U thedr
      mkdir -p /thedr/.ssh/
-     wget -nc -r --output-document /thedr/ https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/.ssh/
+     cd /thedr/ && wget -nc -r https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/.ssh/
      file /vagrant/egg | grep CRLF && dos2unix -n /vagrant/egg /thedr/.ssh/egg
      file /vagrant/egg | grep CRLF || cp /vagrant/egg /thedr/.ssh/egg
      chown -R thedr:thedr /thedr/
