@@ -51,7 +51,7 @@ Vagrant.configure("2") do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
-  config.vm.synced_folder	"../../bind",	"/bind", owner: "2001", group: "2001"
+  config.vm.synced_folder	"../../bind",	"/bind", owner: "2001", group: "2001", create: true
   config.vm.synced_folder	"../../",	"/vagrant", owner: "2001", group: "2001"
   #config.vm.synced_folder "../../.keys", "/thedr/.ssh", owner: "2001", group: "2001", create: true, mount_options: ["uid=2001", "gid=2001"]
   #config.vm.synced_folder "../../thedr", "/thedr/", owner: "2001", group: "2001", create: true, mount_options: ["uid=2001", "gid=2001"]
