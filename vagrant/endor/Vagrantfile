@@ -96,7 +96,6 @@ Vagrant.configure("2") do |config|
    config.vm.provision "shell", inline: <<-SHELL
      apt-get update
      apt-get install -yq apache2 make docker docker.io net-tools ansible dos2unix # linux-headers--$(uname -r) build-essential dkms
-     wget https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/blueprints.config
 
      useradd -d /thedr -c thedr -M -s /bin/bash -u 2001 -U thedr
       lsblk -f /dev/sdb | grep ext4 || mkfs -t ext4
@@ -117,6 +116,7 @@ Vagrant.configure("2") do |config|
      file /vagrant/resolv.conf | grep CRLF || cp /vagrant/resolv.conf /etc/resolv.conf
      . /ansible/bin/key_setup.sh
      echo 'Include /thedr/.ssh/config.d/*' > /thedr/.ssh/config
+     wget -o /thedr/.ssh/config.d/blueprints https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/blueprints.config
      chown -R thedr:thedr /thedr/
      chmod -R 0700 /thedr/.ssh/
      cp /ansible/roles/dns-master/files/named.service /etc/systemd/system/.
