@@ -114,8 +114,8 @@ Vagrant.configure("2") do |config|
      (su - thedr -c bash -c "cd /repos/bind && git pull")
      cp /repos/bind/named.service/etc/systemd/system/named.service /etc/systemd/system/named.service
      cp /repos/bind/named.service/usr/sbin/named /usr/sbin/named && chmod 0700 /usr/sbin/named
-     #systemctl enable named
-     #systemctl start named
+     systemctl enable named
+     systemctl start named
 
      ls -dl /repos/spicerack || su - thedr -c bash -c "cd /repos && git clone blueprints:galaxy3-net/spicerack.git && git checkout thedr"
 
