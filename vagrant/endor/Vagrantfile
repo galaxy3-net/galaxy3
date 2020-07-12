@@ -106,9 +106,11 @@ Vagrant.configure("2") do |config|
      chown -R thedr:thedr /thedr/
      chmod -R 0700 /thedr/.ssh/
 
-     ls /etc/systemd/system/named.service || cp /repos/blueprints/ansible/roles/dns-master/files/named.service /etc/systemd/system/.
+     #ls /etc/systemd/system/named.service || cp /repos/blueprints/ansible/roles/dns-master/files/named.service /etc/systemd/system/.
      ls /repos/bind || ( su - thedr -c bash -c "cd /repos && git clone blueprints:cyberbootcamp/bind.git")
      (su - thedr -c bash -c "cd /repos/bind && git pull")
+     cp /repos/bind/named.service/etc/systemd/system/named.service /etc/systemd/system/named.service
+     cp /repos/bind/named.service/etc/usr/sbin/named.service /usr/sbin/named.service && chmod 0700 /usr/sbin/named.service
      #systemctl enable named
      #systemctl start named
 
