@@ -1,4 +1,0 @@
----
-- name: Debug
-  debug:
-    msg: Name Server {{ ns1 }}
