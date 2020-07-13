@@ -1,0 +1,3 @@
+$!/usr/bin/env bash
+
+ls -dl /repos/spicerack 2>/dev/null || su - thedr -c bash -c "cd /repos && git clone blueprints:galaxy3-net/spicerack.git && git checkout thedr"
