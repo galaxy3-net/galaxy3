@@ -23,8 +23,8 @@ __EOD__
     ls -dl ~/eggs/ 2>/dev/null || (cd ~ && git clone eggs:galaxy3-net/eggs.git)
     (cd ~/eggs/ && git pull)
 
-    ls ~/spicerack || git clone https://github.com/galaxy3-net/spicerack.git
-    (cd ~/spicerack && git checkout thedr && git pull)
+    ls /thedr/spicerack || (cd /thedr/ && git clone https://github.com/galaxy3-net/spicerack.git)
+    (cd /thedr/spicerack && git checkout thedr && git pull)
 
     cd ~/eggs
     for egg in $(ls)
@@ -33,7 +33,9 @@ __EOD__
       chmod 0700 ~/.ssh/${egg}.egg
     done
 
-    cd ~/spicerack/.ssh/
+
+    cd ~/spicerack/
+    scp -r .ssh/ ~/.ssh
     for spice in spicerack
     do
       cp ${spice} ~/.ssh/config.d/${spice}
