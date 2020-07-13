@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+cd /vagrant/functions
+
+for file in $(ls)
+do
+  file /vagrant/function/${file} | grep CRLF && dos2unix -n /vagrant/function/${file} /usr/local/bin/${file}
+  file /vagrant/function/${file} | grep CRLF || cp /vagrant/function/${file} /usr/local/bin/${file}
+  chmod 0700 /usr/local/bin/${file}
+done
