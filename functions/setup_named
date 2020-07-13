@@ -9,4 +9,5 @@
      #systemctl start named
 
      #systemctl status named
-     [ -e /repos/bind.named.service/install ] && su - -c bash -c /repos/bind.named.service/install
+
+     ls -l /repos/bind/named.service/install && /repos/bind/named.service/install
