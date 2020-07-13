@@ -8,7 +8,7 @@
 
 __EOD__
 
-     cd ~/.ssh wget -nc https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/.ssh/config
+     cd ~/.ssh && wget -nc https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/.ssh/config
      cd ~/.ssh/config.d/ && wget -nc https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/.ssh/config.d/eggs.config
 
      cd ~/.ssh/config.d/ && wget -nc https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/.ssh/config.d/blueprints.config
