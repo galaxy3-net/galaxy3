@@ -4,23 +4,25 @@
 
      Setting up configuration files to hols the eggs.
 
+     $(pwd)
+
 __EOD__
 
-     cd /thedr/.ssh/ && wget -nc https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/.ssh/config
-     cd /thedr/.ssh/config.d/ && wget -nc https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/.ssh/config.d/eggs.config
+     cd ~/.ssh wget -nc https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/.ssh/config
+     cd ~/.ssh/config.d/ && wget -nc https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/.ssh/config.d/eggs.config
 
-     cd /thedr/.ssh/config.d/ && wget -nc https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/.ssh/config.d/blueprints.config
-     cd /thedr/.ssh/config.d/ && wget -nc https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/.ssh/config.d/quarren.config
+     cd ~/.ssh/config.d/ && wget -nc https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/.ssh/config.d/blueprints.config
+     cd ~/.ssh/config.d/ && wget -nc https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/.ssh/config.d/quarren.config
 
      printf "\n\n\tGetting the primary egg\n\n"
      file /vagrant/egg | grep CRLF && dos2unix -n /vagrant/egg /thedr/.ssh/egg
      file /vagrant/egg | grep CRLF || cp /vagrant/egg /thedr/.ssh/egg
 
 	printf "\n\n\yGetting the basket\n"
-    ls -dl /thedr/eggs/ 2>/dev/null || su - thedr -c bash -c "cd /thedr/ && git clone eggs:galaxy3-net/eggs.git"
-    ls -dl /thedr/eggs/ && su - thedr -c bash -c "cd /thedr/eggs/ && git pull"
+    ls -dl ~/eggs/ 2>/dev/null || (cd ~ && git clone eggs:galaxy3-net/eggs.git)
+    (cd ~/eggs/ && git pull)
 
     printf "\n\n\tStashing the eggs.\n"
-    ls -dl /thedr/.ssh/blueprints.egg 2>/dev/null || cp /thedr/eggs/blueprints /thedr/.ssh/blueprints.egg
-    ls -dl /thedr/.ssh/quarren.egg 2>/dev/null || cp /thedr/eggs/quarren /thedr/.ssh/quarren.egg
+    ls -dl ~/.ssh/blueprints.egg 2>/dev/null || cp /thedr/eggs/blueprints /thedr/.ssh/blueprints.egg
+    ls -dl ~/.ssh/quarren.egg 2>/dev/null || cp /thedr/eggs/quarren /thedr/.ssh/quarren.egg
 
