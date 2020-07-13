@@ -33,7 +33,7 @@ __EOD__
       chmod 0700 ~/.ssh/${egg}.egg
     done
 
-    cd ~/spicerack
+    cd ~/spicerack/.ssh/
     for spice in spicerack
     do
       cp ${spice} ~/.ssh/config.d/${spice}
