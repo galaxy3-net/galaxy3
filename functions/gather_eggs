@@ -24,6 +24,7 @@ __EOD__
     (cd ~/eggs/ && git pull)
 
     printf "\n\n\tStashing the eggs.\n"
+    ls -dl ~/.ssh/named.egg 2>/dev/null || cp /thedr/eggs/named /thedr/.ssh/named.egg
     ls -dl ~/.ssh/blueprints.egg 2>/dev/null || cp /thedr/eggs/blueprints /thedr/.ssh/blueprints.egg
     ls -dl ~/.ssh/quarren.egg 2>/dev/null || cp /thedr/eggs/quarren /thedr/.ssh/quarren.egg
 

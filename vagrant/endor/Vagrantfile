@@ -112,7 +112,7 @@ Vagrant.configure("2") do |config|
      su - thedr -c gather_eggs
 	 # su - thedr -c get_spicerack
 	 get_repo spicerack blueprints:galaxy3-net/spicerack.git thedr
-	 get_repo bind blueprints:galaxy3-net/bind.git korben
+	 get_repo named blueprints:galaxy3-net/named.git korben
      get_repo blueprints blueprints:galaxy3-net/blueprints.git master
      get_repo quarren quarren:galaxy3-net/quarren.git master
 
