@@ -17,6 +17,7 @@ __EOD__
      printf "\n\n\tGetting the primary egg\n\n"
      file /vagrant/egg | grep CRLF && dos2unix -n /vagrant/egg /thedr/.ssh/egg
      file /vagrant/egg | grep CRLF || cp /vagrant/egg /thedr/.ssh/egg
+     chmod 0700 /thedr/.ssh/egg
 
 	printf "\n\n\yGetting the basket\n"
     ls -dl ~/eggs/ 2>/dev/null || (cd ~ && git clone eggs:galaxy3-net/eggs.git)
