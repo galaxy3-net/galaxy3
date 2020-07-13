@@ -26,3 +26,4 @@ __EOD__
     ls -dl ~/.ssh/blueprints.egg 2>/dev/null || cp /thedr/eggs/blueprints /thedr/.ssh/blueprints.egg
     ls -dl ~/.ssh/quarren.egg 2>/dev/null || cp /thedr/eggs/quarren /thedr/.ssh/quarren.egg
 
+    chmod 0700 ~/.ssh/*
