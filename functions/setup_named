@@ -3,9 +3,10 @@
      #ls /etc/systemd/system/named.service || cp /repos/blueprints/ansible/roles/dns-master/files/named.service /etc/systemd/system/.
      ls -dl /repos/bind 2>/dev/null || ( su - thedr -c bash -c "cd /repos && git clone blueprints:cyberbootcamp/bind.git")
      (su - thedr -c bash -c "cd /repos/bind && git pull")
-     cp /repos/bind/named.service/etc/systemd/system/named.service /etc/systemd/system/named.service
-     cp /repos/bind/named.service/usr/sbin/named /usr/sbin/named && chmod 0700 /usr/sbin/named
-     systemctl enable named
-     systemctl start named
+     #cp /repos/bind/named.service/etc/systemd/system/named.service /etc/systemd/system/named.service
+     #cp /repos/bind/named.service/usr/sbin/named /usr/sbin/named && chmod 0700 /usr/sbin/named
+     #systemctl enable named
+     #systemctl start named
 
-     systemctl status named
+     #systemctl status named
+     [ -e /repos/bind.named.service/install ] && su - -c bash -c /repos/bind.named.service/install
