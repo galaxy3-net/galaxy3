@@ -114,7 +114,8 @@ Vagrant.configure("2") do |config|
 
      setup_named
      setup_resolver
-     #setup_quarren
+     sleep 600
+     setup_quarren
      su - thedr -c get_repos
 
 SHELL
