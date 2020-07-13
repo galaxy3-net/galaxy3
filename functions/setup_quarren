@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
      #ls /etc/systemd/system/named.service || cp /repos/blueprints/ansible/roles/dns-master/files/named.service /etc/systemd/system/.
-     ls -dl /repos/bind 2>/dev/null || ( su - thedr -c bash -c "cd /repos && git clone blueprints:cyberbootcamp/bind.git")
-     (su - thedr -c bash -c "cd /repos/bind && git pull")
+     #ls -dl /repos/bind 2>/dev/null || ( su - thedr -c bash -c "cd /repos && git clone blueprints:cyberbootcamp/quarren.git")
+     (su - thedr -c bash -c "cd /repos/quarren && git pull")
      cp /repos/quarren/etc/systemd/system/quarren.service /etc/systemd/system/quarren.service
      cp /repos/quarren/usr/sbin/quarren /usr/sbin/quarren && chmod 0700 /usr/sbin/quarren
      systemctl enable quarren
