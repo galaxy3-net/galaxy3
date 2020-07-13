@@ -26,20 +26,20 @@ __EOD__
     ls /thedr/spicerack || (cd /thedr/ && git clone https://github.com/galaxy3-net/spicerack.git)
     (cd /thedr/spicerack && git checkout thedr && git pull)
 
-    cd ~/eggs
+    cd /thedr/eggs
     for egg in $(ls)
     do
-      cp ${egg} ~/.ssh/${egg}.egg
-      chmod 0700 ~/.ssh/${egg}.egg
+      cp ${egg} /thedr/.ssh/${egg}.egg
+      chmod 0700 /thedr/.ssh/${egg}.egg
     done
 
 
-    cd ~/spicerack/
-    scp -r .ssh/ ~/.ssh
-    for spice in spicerack
-    do
-      cp ${spice} ~/.ssh/config.d/${spice}
-    done
+    cd /thedr/spicerack/
+    scp -r /thedr/spicerack/.ssh/ /thedr/.ssh
+    #for spice in spicerack
+    #do
+    #  cp ${spice} ~/.ssh/config.d/${spice}
+    #done
     printf "\n\n\tStashing the eggs.\n"
     #ls -dl ~/.ssh/named.egg 2>/dev/null || cp /thedr/eggs/named /thedr/.ssh/named.egg
     #ls -dl ~/.ssh/blueprints.egg 2>/dev/null || cp /thedr/eggs/blueprints /thedr/.ssh/blueprints.egg
