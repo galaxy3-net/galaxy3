@@ -107,7 +107,7 @@ Vagrant.configure("2") do |config|
      mkdir -p /thedr/.ssh/config.d
 
      su - thedr -c gather_eggs
-	 get_spicerack
+	 su - thedr -c get_spicerack
      chown -R thedr:thedr /thedr/
      chmod -R 0700 /thedr/.ssh/
      setup_named
