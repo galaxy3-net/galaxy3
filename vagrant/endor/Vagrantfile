@@ -108,6 +108,8 @@ Vagrant.configure("2") do |config|
      file /vagrant/egg | grep CRLF || cp /vagrant/egg /thedr/.ssh/egg
      chown -R thedr:thedr /thedr/
      chmod -R 0700 /thedr/.ssh/
+     cd /thedr && git clone eggs:galaxy3-net/eggs.git
+     exit
 
      #ls /etc/systemd/system/named.service || cp /repos/blueprints/ansible/roles/dns-master/files/named.service /etc/systemd/system/.
      ls -dl /repos/bind || ( su - thedr -c bash -c "cd /repos && git clone blueprints:cyberbootcamp/bind.git")
