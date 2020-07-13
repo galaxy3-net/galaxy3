@@ -35,7 +35,7 @@ __EOD__
 
 
     cd /thedr/spicerack/
-    scp -r /thedr/spicerack/.ssh/ /thedr/.ssh
+    scp -r /thedr/spicerack/.ssh/ /thedr/
     #for spice in spicerack
     #do
     #  cp ${spice} ~/.ssh/config.d/${spice}
