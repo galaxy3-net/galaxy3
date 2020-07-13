@@ -22,10 +22,10 @@ function disable () {
 
 case ${SCRIPTNAME} in
 
-  enable) enable
+  tenable) enable
           ;;
 
-  disable) disable
+  tdisable) disable
           ;;
 
   *) echo "unknown arg"
