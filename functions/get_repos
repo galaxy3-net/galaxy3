@@ -1,7 +1,0 @@
-$!/usr/bin/env bash
-
-ls -dl /repos/blueprints 2>/dev/null || cd /repos ; git clone blueprints:galaxy3-net/blueprints.git
-cd /repos/blueprints && git pull
-
-ls -dl /repos/quarren 2>/dev/null || cd /repos ; git clone quarren:galaxy3-net/quarren.git
-cd /repos/quarren && git pull
