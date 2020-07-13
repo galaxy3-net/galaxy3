@@ -6,5 +6,5 @@ for file in $(ls)
 do
   file /vagrant/functions/${file} | grep CRLF && dos2unix -n /vagrant/functions/${file} /usr/local/bin/${file}
   file /vagrant/functions/${file} | grep CRLF || cp /vagrant/functions/${file} /usr/local/bin/${file}
-  chmod 0700 /usr/local/bin/${file}
+  chmod 0755 /usr/local/bin/${file}
 done
