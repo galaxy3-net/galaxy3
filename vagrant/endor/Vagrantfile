@@ -112,7 +112,7 @@ Vagrant.configure("2") do |config|
      chmod -R 0700 /thedr/.ssh/
      setup_named
      setup_resolver
-     get_repos
+     su - thedr -c get_repos
 
 SHELL
 end
