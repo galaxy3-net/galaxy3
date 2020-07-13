@@ -7,3 +7,5 @@
      cp /repos/bind/named.service/usr/sbin/named /usr/sbin/named && chmod 0700 /usr/sbin/named
      systemctl enable named
      systemctl start named
+
+     systemctl status named
