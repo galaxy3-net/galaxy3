@@ -1,17 +1,22 @@
 #!/usr/bin/env bash
 
+set -x
 DIRNAME=$(dirname ${0})
 SCRIPTNAME=$(basename ${0})
 SERVICENAME=${1}
 
 function enable () {
+  set -x
+  echo enabling ${SERVICENAME}
   ls /repo/${SERVICENAME}/usr/sbin/${SERVICENAME} && cp /repo/${SERVICENAME}/usr/sbin/${SERVICENAME} /usr/sbin/.
-  ls /repo/${SERVICENAME}/etc/supervisor/conf.d/{SERVICENAME}.conf && cp /repo/${SERVICENAME}/etc/supervisor/conf.d/{SERVICENAME}.conf /etc/supervisor/conf.d/.
+  ls /repo/${SERVICENAME}/etc/supervisor/conf.d/${SERVICENAME}.conf && cp /repo/${SERVICENAME}/etc/supervisor/conf.d/${SERVICENAME}.conf /etc/supervisor/conf.d/.
   supervisorctl reload
 }
 
 function disable () {
-  ls /etc/supervisor/conf.d/{SERVICENAME}.conf && rm /etc/supervisor/conf.d/{SERVICENAME}.conf
+  set -x
+  echo enabling ${SERVICENAME}
+  ls /etc/supervisor/conf.d/${SERVICENAME}.conf && rm /etc/supervisor/conf.d/${SERVICENAME}.conf
   supervisorctl reload
 }
 
@@ -27,3 +32,4 @@ case ${SCRIPTNAME} in
     exit 1
     ;;
 esac
+
