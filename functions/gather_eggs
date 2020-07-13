@@ -11,8 +11,8 @@ __EOD__
      cd ~/.ssh && wget -nc https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/.ssh/config
      cd ~/.ssh/config.d/ && wget -nc https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/.ssh/config.d/eggs.config
 
-     cd ~/.ssh/config.d/ && wget -nc https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/.ssh/config.d/blueprints.config
-     cd ~/.ssh/config.d/ && wget -nc https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/.ssh/config.d/quarren.config
+     #cd ~/.ssh/config.d/ && wget -nc https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/.ssh/config.d/blueprints.config
+     #cd ~/.ssh/config.d/ && wget -nc https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/.ssh/config.d/quarren.config
 
      printf "\n\n\tGetting the primary egg\n\n"
      file /vagrant/egg | grep CRLF && dos2unix -n /vagrant/egg /thedr/.ssh/egg
@@ -23,9 +23,24 @@ __EOD__
     ls -dl ~/eggs/ 2>/dev/null || (cd ~ && git clone eggs:galaxy3-net/eggs.git)
     (cd ~/eggs/ && git pull)
 
-    printf "\n\n\tStashing the eggs.\n"
-    ls -dl ~/.ssh/named.egg 2>/dev/null || cp /thedr/eggs/named /thedr/.ssh/named.egg
-    ls -dl ~/.ssh/blueprints.egg 2>/dev/null || cp /thedr/eggs/blueprints /thedr/.ssh/blueprints.egg
-    ls -dl ~/.ssh/quarren.egg 2>/dev/null || cp /thedr/eggs/quarren /thedr/.ssh/quarren.egg
+    ls ~/spicerack || git clone https://github.com/galaxy3-net/spicerack.git
+    (cd ~/spicerack && git checkout thedr && git pull)
 
-    chmod 0700 ~/.ssh/*
+    cd ~/eggs
+    for egg in $(ls)
+    do
+      cp ${egg} ~/.ssh/${egg}.egg
+      chmod 0700 ~/.ssh/${egg}.egg
+    done
+
+    cd ~/spicerack
+    for spice in spicerack
+    do
+      cp ${spice} ~/.ssh/config.d/${spice}
+    done
+    printf "\n\n\tStashing the eggs.\n"
+    #ls -dl ~/.ssh/named.egg 2>/dev/null || cp /thedr/eggs/named /thedr/.ssh/named.egg
+    #ls -dl ~/.ssh/blueprints.egg 2>/dev/null || cp /thedr/eggs/blueprints /thedr/.ssh/blueprints.egg
+    #ls -dl ~/.ssh/quarren.egg 2>/dev/null || cp /thedr/eggs/quarren /thedr/.ssh/quarren.egg
+
+    #chmod 0700 ~/.ssh/*
