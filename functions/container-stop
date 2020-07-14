@@ -4,7 +4,7 @@ CONTAINER_NAME=${1}
 
 #  Script that stops a running container.
 
-function rm
+function rm () {
 	while :
 	do
 	  docker ps | grep ${CONTAINER_NAME} && docker stop ${CONTAINER_NAME}
