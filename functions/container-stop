@@ -13,5 +13,4 @@ function rm () {
 	done
 }
 
-container-stop ${CONTAINER_NAME}
 rm
