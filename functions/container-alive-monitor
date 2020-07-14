@@ -11,3 +11,5 @@ function monitor () {
 	  docker ps | grep ${CONTAINER_NAME} || exit 1
 	done
 }
+
+monitor
