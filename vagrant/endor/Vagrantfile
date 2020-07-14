@@ -116,8 +116,8 @@ Vagrant.configure("2") do |config|
      get_repo blueprints blueprints:galaxy3-net/blueprints.git master
      get_repo quarren quarren:galaxy3-net/quarren.git master
 
-     enable named
-     enable quarren
+     tenable named
+     tenable quarren
      #setup_named
      #setup_resolver
      #docker ps -a
