@@ -2,14 +2,16 @@
 
 CONTAINER_NAME=${1}
 
-#  Script that checks on a container alive state.
+#  Script that stops a running container.
 
-function monitor () {
+function rm
 	while :
 	do
+	  docker ps | grep ${CONTAINER_NAME} && docker stop ${CONTAINER_NAME}
+	  docker ps | grep ${CONTAINER_NAME} || exit
 	  sleep 30
-	  docker ps | grep ${CONTAINER_NAME} || exit 1
 	done
 }
 
-monitor
+container-stop ${CONTAINER_NAME}
+rm
