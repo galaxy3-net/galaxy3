@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+CONTAINER_NAME=${1}
+
+#  Script that checks on a container alive state.
+
+function monitor () {
+	while :
+	do
+	  sleep 30
+	  docker ps | grep ${CONTAINER_NAME} || exit 1
+	done
+}
+
+monitor
