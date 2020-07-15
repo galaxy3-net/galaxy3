@@ -27,7 +27,7 @@ Vagrant.configure("2") do |config|
      #apt-get install -yq apache2 make containerd docker docker.io net-tools ansible dos2unix supervisor xrdp # xorg-video-abi-23
      #apt-get install -yq xrdp xorgxrdp-hwe-18.04 xfce4 xfce4-session
      #apt-get autoremove -yq
-     apt-get install -yq xfce4 xfce4-session
+     apt-get install -yq xfce4 xfce4-session xrdp
      iptables -F
      iptables -X
      iptables -P INPUT ACCEPT
@@ -40,6 +40,6 @@ Vagrant.configure("2") do |config|
      echo 'xfce4-session' > /home/vagrant/.xsession
      echo 'xfce4-session' > /home/sysadmin/.xsession
 
-     systemctl restart xrdp
+     #systemctl restart xrdp
 SHELL
 end
