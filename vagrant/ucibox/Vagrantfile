@@ -33,7 +33,7 @@ Vagrant.configure("2") do |config|
      iptables -P INPUT ACCEPT
      iptables -P OUTPUT ACCEPT
      iptables -P FORWARD ACCEPT
-     adduser xrdp ssl-cert
+     # adduser xrdp ssl-cert
      echo "unset DBUS_SESSION_BUS_ADDRESS" >> /etc/profile
      echo "unset XDG_RUNTIME_DIR" >> /etc/profile
      #. $HOME/.profile
