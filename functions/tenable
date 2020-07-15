@@ -10,6 +10,7 @@ function enable () {
   echo enabling ${SERVICENAME}
   ls /repos/${SERVICENAME}/usr/sbin/${SERVICENAME} && cp /repos/${SERVICENAME}/usr/sbin/${SERVICENAME} /usr/sbin/.
   ls /repos/${SERVICENAME}/etc/supervisor/conf.d/${SERVICENAME}.conf && cp /repos/${SERVICENAME}/etc/supervisor/conf.d/${SERVICENAME}.conf /etc/supervisor/conf.d/.
+  ls /usr/sbin/${SERVICENAME} && chmod u+x /usr/sbin/${SERVICENAME}
   supervisorctl reload
 }
 
