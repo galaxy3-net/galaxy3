@@ -19,7 +19,11 @@ Vagrant.configure("2") do |config|
   end
    config.vm.provision "shell", inline: <<-SHELL
      apt-get update
-     apt-get install -yq apache2 make containerd docker docker.io net-tools ansible dos2unix supervisor xrdp
+     apt-get autoremove -yq
+     apt-get upgrade -yq
+     apt-get autoremove -yq
+     apt-get install -yq apache2 make containerd docker docker.io net-tools ansible dos2unix supervisor xrdp xorg-video-abi-23 xorgxrdp
+     apt-get autoremove -yq
      iptables -F
      iptables -X
      iptables -P INPUT ACCEPT
