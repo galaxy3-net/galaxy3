@@ -27,18 +27,19 @@ Vagrant.configure("2") do |config|
      #apt-get install -yq apache2 make containerd docker docker.io net-tools ansible dos2unix supervisor xrdp # xorg-video-abi-23
      #apt-get install -yq xrdp xorgxrdp-hwe-18.04 xfce4 xfce4-session
      #apt-get autoremove -yq
-     apt-get install -yq xfce4 xfce4-session xrdp
+     #apt-get install -yq xfce4 xfce4-session xrdp
      iptables -F
      iptables -X
      iptables -P INPUT ACCEPT
      iptables -P OUTPUT ACCEPT
      iptables -P FORWARD ACCEPT
-     # adduser xrdp ssl-cert
-     echo "unset DBUS_SESSION_BUS_ADDRESS" >> /etc/profile
-     echo "unset XDG_RUNTIME_DIR" >> /etc/profile
+     #adduser xrdp ssl-cert
+     #echo "unset DBUS_SESSION_BUS_ADDRESS" >> /etc/profile
+     #echo "unset XDG_RUNTIME_DIR" >> /etc/profile
      #. $HOME/.profile
-     echo 'xfce4-session' > /home/vagrant/.xsession
-     echo 'xfce4-session' > /home/sysadmin/.xsession
+     #echo 'xfce4-session' > /home/vagrant/.xsession
+     #echo 'xfce4-session' > /home/sysadmin/.xsession
+     #echo 'allowed_users=anybody' > /etc/X11/Xwrapper.config
 
      #systemctl restart xrdp
 SHELL
