@@ -3,3 +3,9 @@
 #alias launch="bash -c bin/launch"
 
 export PATH=${PATH}:${HOME}/galaxy3/bin
+
+cd ${HOME}/galaxy3/bin
+for file in $(ls)
+do
+  chmod u+x ${file}
+done
