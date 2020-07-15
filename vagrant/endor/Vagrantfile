@@ -119,7 +119,7 @@ Vagrant.configure("2") do |config|
      tenable named
      tenable quarren
      #setup_named
-     #setup_resolver
+     setup_resolver
      #docker ps -a
      #setup_quarren
 
