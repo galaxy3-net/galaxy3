@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-echo endor ${*}
+echo ucibox ${*}
 
-cd vagrant/endor
+cd vagrant/ucibox
 
 vagrant ${*}
