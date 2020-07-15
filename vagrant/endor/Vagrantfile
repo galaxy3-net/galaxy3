@@ -115,6 +115,7 @@ Vagrant.configure("2") do |config|
 	 get_repo named named:galaxy3-net/named.git master
      get_repo blueprints blueprints:galaxy3-net/blueprints.git master
      get_repo quarren quarren:galaxy3-net/quarren.git master
+     get_repo nakadia nakadia:galaxy3-net/nakadia.git master
 
      tenable named
      tenable quarren
