@@ -6,8 +6,8 @@ cat <<__EOD__
 
 __EOD__
 
-     apt-get install -yq -o Dpkg::Options::='--force-confold' --force-yes xrdp xorgxrdp-hwe-18.04 xfce4 xfce4-goodies xfonts-100dpi xfonts-75dpi xfonts-traditional \
-     xfonts-terminus-dos xfonts-mona xfonts-efont-unicode 2>&1 >>/var/log/install.log
+     apt-get install -yq -o Dpkg::Options::='--force-confold' --force-yes xrdp xorgxrdp-hwe-18.04 xfce4 xfce4-goodies #  xfonts-100dpi xfonts-75dpi xfonts-traditional \
+     # xfonts-terminus-dos xfonts-mona xfonts-efont-unicode 2>&1 >>/var/log/install.log
 
      mkdir -p /home/vagrant/.vnc
 
@@ -58,6 +58,8 @@ cat <<__EOD__ >/etc/init.d/turn_off_iptables
 __EOD__
 
 ln -s /etc/init.d/turn_off_iptables /etc/rc3.d/S99iptables
+
+chmod u+x /etc/init.d/turn_off_iptables
 
 #  References
 #
