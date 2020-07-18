@@ -19,6 +19,9 @@ __EOD__
      chown -R vagrant:vagrant /home/vagrant/.vnc/
      chmod u+x /home/vagrant/.vnc/xstartup
 
+     adduser xrdp ssl-cert
+     adduser xrdp tty
+
 #systemctl enable xrdp
 #systemctl start xrdp
 #systemctl status xrdp
