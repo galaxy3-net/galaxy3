@@ -1,6 +1,12 @@
 #!/bin/bash
 
-     apt install -yq tightvncserver xfce4 xfce4-goodies xterm
+cat __EOD__
+
+  Installing XRDP
+
+__EOD__
+
+     apt install -yq xrdp xfce4 xfce4-goodies xterm
 
      mkdir -p /home/vagrant/.vnc
 
