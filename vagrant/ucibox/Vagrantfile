@@ -24,15 +24,6 @@ Vagrant.configure("2") do |config|
   end
    config.vm.provision "shell", inline: <<-SHELL
      apt update
-     apt install -yq tightvncserver xfce4 xfce4-goodies
-
-     mkdir -p /home/vagrant/.vnc
-     echo "#!/bin/bash" > /home/vagrant/.vnc/xstartup
-     echo "xrdb /home/vagrant/.Xresources" >> /home/vagrant/.vnc/xstartup
-     echo "startxfce4 &" >> /home/vagrant/.vnc/xstartup
-     chown -R vagrant:vagrant /home/vagrant/.vnc/
-     chmod u+x /home/vagrant/.vnc/xstartup
-     #su - vagrant -c vncserver
 
      #apt install -yq xfce4 xfce4-goodies xorg dbus-x11 x11-xserver-utils
      #apt install -yq xrdp
@@ -61,5 +52,6 @@ Vagrant.configure("2") do |config|
      #echo 'allowed_users=anybody' > /etc/X11/Xwrapper.config
 
      #systemctl restart xrdp
+     setup_vnc
 SHELL
 end
