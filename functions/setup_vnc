@@ -1,11 +1,11 @@
 #!/bin/bash
 
-cat __EOD__
+cat <<__EOD__
 
   Installing VNC
 
 __EOD__
-     apt install -yq tightvncserver xfce4 xfce4-goodies xterm
+     apt-get install -yq tightvncserver xfce4 xfce4-goodies xterm
 
      mkdir -p /home/vagrant/.vnc
 

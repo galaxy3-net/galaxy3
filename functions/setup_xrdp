@@ -1,12 +1,12 @@
 #!/bin/bash
 
-cat __EOD__
+cat <<__EOD__
 
   Installing XRDP
 
 __EOD__
 
-     apt install -yq xrdp xfce4 xfce4-goodies xterm
+     apt-get install -yq xrdp xorgxrdp-hwe-18.04 xfce4 xfce4-goodies xterm
 
      mkdir -p /home/vagrant/.vnc
 
