@@ -6,7 +6,7 @@ cat <<__EOD__
 
 __EOD__
 
-     apt-get install -yq xrdp xorgxrdp-hwe-18.04 xfce4 xfce4-goodies xterm xfonts-100dpi xfonts-75dpi xfonts-traditional \
+     apt-get install -yq -o Dpkg::Options::='--force-confold' --force-yes xrdp xorgxrdp-hwe-18.04 xfce4 xfce4-goodies xterm xfonts-100dpi xfonts-75dpi xfonts-traditional \
      xfonts-terminus-dos xfonts-mona xfonts-efont-unicode 2>&1 >>/var/log/install.log
 
      mkdir -p /home/vagrant/.vnc
