@@ -1,2 +1,23 @@
 #!/bin/bash
 
+     apt install -yq tightvncserver xfce4 xfce4-goodies xterm
+
+     mkdir -p /home/vagrant/.vnc
+
+     cat <<__EOD__ > /home/vagrant/.vnc/xstartup
+#!/bin/bash
+xrdb /home/vagrant/.Xresources
+startxfce4 &
+__EOD__
+
+     chown -R vagrant:vagrant /home/vagrant/.vnc/
+     chmod u+x /home/vagrant/.vnc/xstartup
+
+#systemctl enable xrdp
+#systemctl start xrdp
+#systemctl status xrdp
+
+#  References
+#
+#  https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-vnc-on-ubuntu-16-04
+
