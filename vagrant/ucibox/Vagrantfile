@@ -25,6 +25,9 @@ Vagrant.configure("2") do |config|
   end
    config.vm.provision "shell", inline: <<-SHELL
      apt update
+     apt-get update
+     apt-get autoremove -y
+     apt-get install -yq net-tools ansible dos2unix supervisor
      find /vagrant
 
      file /vagrant/functions/ready | grep CRLF && dos2unix -n /vagrant/functions/ready /usr/local/bin/ready
