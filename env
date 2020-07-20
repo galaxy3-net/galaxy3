@@ -4,7 +4,10 @@ clear
 
 cat <<__EOD__
 
-  This script "env" is used to temporarily setup the Galaxy3 variables needed for managing hosts and services in the Galaxy3 environment.  These settings are temporary as they will be lost when this (shell/bash/GitBash) is closed.
+  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+  This script "env" is used to temporarily setup the Galaxy3 variables needed
+  for managing hosts and services in the Galaxy3 environment.  These settings
+  are temporary as they will be lost when this (shell/bash/GitBash) is closed.
 
   You must run this everytime a new shell/bash/Gitbash is opened.
 
@@ -16,7 +19,9 @@ cat <<__EOD__
   . ~/galaxy3/env
   source ~/galaxy3/env
 
-  The following maintenance ommands are ready for maintaing the Galaxy3 environment.
+  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+  The following maintenance ommands are ready for maintaing the Galaxy3
+  environment.
 
 __EOD__
 
@@ -27,5 +32,5 @@ export PATH=${PATH}:${HOME}/galaxy3/bin
 (cd ${HOME}/galaxy3/bin
 for file in $(ls)
 do
-  printf "\t${file}\n"
+  printf "\t> ${file}\n"
 done)
