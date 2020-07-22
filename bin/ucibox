@@ -2,6 +2,6 @@
 
 echo ucibox ${*}
 
-cd vagrant/ucibox
+cd ${HOME}/galaxy3vagrant/ucibox
 
 vagrant ${*}
