@@ -2,6 +2,6 @@
 
 echo endor ${*}
 
-cd vagrant/endor
+cd ${HOME}/galaxy3/vagrant/endor
 
 vagrant ${*}
