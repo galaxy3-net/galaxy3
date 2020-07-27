@@ -19,6 +19,8 @@ function up () {
       ;;
 
     "not_created") vagrant ${*}
+      ;;
+
     *) echo "state is $(state)"
       exit 1
       ;;
