@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -x
+#set -x
 
 
 function state () {
@@ -11,7 +11,7 @@ function up () {
   echo "Starting up ${boxname} $(state)"
   if [ "$(state)" == "running" ]
   then
-    echo "${boxname} is already running"
+    printf "\n\t${boxname} is already running\n\n"
     exit
   fi
   vagrant ${*}
@@ -25,7 +25,7 @@ cd ${HOME}/galaxy3/vagrant/${boxname}
 vagrant status --machine-readable | egrep 'default,state'
 case "${1}" in
 
-  "up")  up
+  "up")  up ${*}
          ;;
 
    *)  echo "usage" ; exit 1
