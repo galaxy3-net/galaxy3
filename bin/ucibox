@@ -81,6 +81,9 @@ function dir_exists () {
 
   While Vagrant's machine state is "not_created", the ${boxname}
   directory already exists
+
+__EOD__
+
 }
 
 function Virtualbox_VMs () {
