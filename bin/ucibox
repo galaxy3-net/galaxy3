@@ -37,6 +37,18 @@ function halt () {
   return
 }
 
+function suspend () {
+  case "$(state)" in
+
+    "running")  vagrant ${*}
+      ;;
+
+    *) echo "${boxname} is not running"
+       ;;
+  esac
+  return
+}
+
 export boxname=$(basename ${0})
 echo " - - ${boxname} ${*} - -"
 
@@ -47,7 +59,7 @@ case "${1}" in
   "up")  up ${*} --provision
     ;;
 
-  "halt")  halt ${*}
+  "halt" | "suspend")  halt ${*}
     ;;
 
   "status") vagrant status
