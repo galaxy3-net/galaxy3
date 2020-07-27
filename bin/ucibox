@@ -17,7 +17,7 @@ function up () {
   vagrant ${*}
 }
 
-export boxname=$(basename ${0}
+export boxname=$(basename ${0})
 echo " - - ${boxname} ${*} - -"
 
 cd ${HOME}/galaxy3/vagrant/${boxname}
