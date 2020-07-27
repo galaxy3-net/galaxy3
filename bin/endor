@@ -5,6 +5,7 @@ echo endor ${*}
 cd ${HOME}/galaxy3/vagrant/endor
 
 function state () {
+  echo "Checking the state"
   return $(vagrant status --machine-readable | egrep 'default,state' | awk -F, '{print $4}')
 }
 
