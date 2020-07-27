@@ -21,11 +21,11 @@ function up () {
 }
 
 case ${1} in
-do
+
   up)  up
        ;;
 
    *)  usage ; exit 1
        ;;
-done
+esac
 
