@@ -120,7 +120,7 @@ echo " - - ${boxname} ${*} - -"
 
 cd ${HOME}/galaxy3/vagrant/${boxname}
 Virtualbox_VMs
-exit
+
 case "${1}" in
 
   "destroy") destroy ${*}
