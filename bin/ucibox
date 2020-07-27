@@ -8,13 +8,31 @@ function state () {
 }
 
 function up () {
-  echo "Starting up ${boxname} $(state)"
-  if [ "$(state)" == "running" ]
-  then
-    printf "\n\t${boxname} is already running\n\n"
-    exit
-  fi
-  vagrant ${*}
+
+  case "$(state)" in
+
+    "running")
+      printf "\n\t${boxname} is already running\n\n"
+
+      # vagrant ${*}
+
+    *) echo "stats is $(state)"
+      exit 1
+      ;;
+  esac
+  return
+}
+
+function halt () {
+  case "$(state)" in
+
+    "running")  vagrant ${*}
+      ;;
+
+    *) echo "${boxname} is not running"
+       ;;
+  esac
+  return
 }
 
 export boxname=$(basename ${0})
@@ -25,8 +43,14 @@ cd ${HOME}/galaxy3/vagrant/${boxname}
 vagrant status --machine-readable | egrep 'default,state'
 case "${1}" in
 
-  "up")  up ${*}
-         ;;
+  "up")  up ${*} --provision
+    ;;
+
+  "halt")  halt ${*}
+    ;;
+
+  "status") vagrant status
+    ;;
 
    *)  echo "usage" ; exit 1
        ;;
