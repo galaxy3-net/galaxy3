@@ -4,4 +4,25 @@ echo endor ${*}
 
 cd ${HOME}/galaxy3/vagrant/endor
 
-vagrant ${*}
+function state () {
+  return $(vagrant status --machine-readable | egrep 'default,state' | awk -F, '{print $4}')
+}
+
+function up () {
+  if [ "$(state)" == "up" ]
+  then
+    echo ""${0} is already running"
+    exit
+  fi
+  vagrant ${*}
+}
+
+case ${1} in
+do
+  up)  up
+       ;;
+
+   *)  usage ; exit 1
+       ;;
+done
+
