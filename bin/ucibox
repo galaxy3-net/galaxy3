@@ -4,7 +4,7 @@ set -x
 
 function state () {
   # echo "Checking the state" >&2
-  echo $(vagrant status --machine-readable | egrep 'default,state' | awk -F, '{print $4}')
+  echo $(vagrant status --machine-readable | egrep 'default,state' | grep -v "human" | awk -F, '{print $4}')
 }
 
 function up () {
