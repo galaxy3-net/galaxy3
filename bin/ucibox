@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 #set -x
 
+[ "${VBOX_DIR:-notset}" == "notset" ] && export VBOX_DIR=""${HOME}/Virtualbox VMs/""
+cat <<__EOD__
+
+  Default Virtialbox VM Directory: ${
+
 
 function state () {
   # echo "Checking the state" >&2
@@ -87,12 +92,12 @@ __EOD__
 }
 
 function Virtualbox_VMs () {
-  ls "${HOME}/Virtualbox VMs/" && return
+  ls "${VBOX_DIR}" && return
 
   cat <<__EOD__
 
   Either Virtualbox is not installed or the default machine directory
-  has been changed.
+  ${VBOX_DIR} has been changed.
 
 __EOD__
 
