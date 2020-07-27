@@ -1,7 +1,31 @@
 #!/usr/bin/env bash
 
-echo ucibox ${*}
+export boxname=$(basename ${0}
+echo ${boxname} ${*}
 
-cd ${HOME}/galaxy3/vagrant/ucibox
+cd ${HOME}/galaxy3/vagrant/${boxname}
 
-vagrant ${*}
+function state () {
+  echo "Checking the state"
+  return $(vagrant status --machine-readable | egrep 'default,state' | awk -F, '{print $4}')
+}
+
+function up () {
+  echo "Starting up ${boxname}"
+  if [ "$(state)" == "up" ]
+  then
+    echo "${boxname} is already running"
+    exit
+  fi
+  vagrant ${*}
+}
+
+case ${1} in
+do
+  up)  up
+       ;;
+
+   *)  usage ; exit 1
+       ;;
+done
+

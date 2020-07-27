@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
-echo endor ${*}
+export boxname=$(basename ${0}
+echo ${boxname} ${*}
 
-cd ${HOME}/galaxy3/vagrant/endor
+cd ${HOME}/galaxy3/vagrant/${boxname}
 
 function state () {
   echo "Checking the state"
@@ -10,9 +11,10 @@ function state () {
 }
 
 function up () {
+  echo "Starting up ${boxname}"
   if [ "$(state)" == "up" ]
   then
-    echo ""${0} is already running"
+    echo "${boxname} is already running"
     exit
   fi
   vagrant ${*}
