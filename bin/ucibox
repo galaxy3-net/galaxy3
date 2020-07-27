@@ -22,7 +22,7 @@ function up () {
 
 case ${1} in
 
-  up)  up
+  "up")  up
        ;;
 
    *)  usage ; exit 1
