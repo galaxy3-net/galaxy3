@@ -84,7 +84,7 @@ function destroy () {
 }
 
 function dir_exists () {
-  ld -d ${VBOX_DIR}/${boxname} && return
+  ls -d ${VBOX_DIR}/${boxname} && return
   cat <<__EOD__
 
   While Vagrant's machine state is "not_created", the ${VBOX_DIR}/${boxname}
