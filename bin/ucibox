@@ -25,7 +25,7 @@ function up () {
     "poweroff" | "saved") vagrant ${*}
       ;;
 
-    "not_created") vagrant ${*}
+    "not_created") dir_exists || vagrant ${*}
       ;;
 
     *) echo "state is $(state)"
@@ -83,18 +83,27 @@ function destroy () {
   return
 }
 
-#function dir_exists () {
-#  cat <<__EOD__
+function dir_exists () {
+  ld -d ${VBOX_DIR}/${boxname} && return
+  cat <<__EOD__
 
-#  While Vagrant's machine state is "not_created", the ${boxname}
-#  directory already exists
+  While Vagrant's machine state is "not_created", the ${VBOX_DIR}/${boxname}
+  directory already exists
 
-#__EOD__
+  1) Confirm that the box ${boxname} is not already running in Virtualbox.
+     a) If it is running, it will need to be removed along with the directory and files from
+        Virtualbox before continuing.
+  2) If there is no ${boxname} already running in Virtualbox.
+     a) Rename ${VBOX_DIR}/${boxname}
+     or
+     b) Remove ${VBOX_DIR}/${boxname}
 
-#}
+__EOD__
+  exit 1
+}
 
 function Virtualbox_VMs () {
-  ls "${VBOX_DIR}" && return
+  ls -d "${VBOX_DIR}" && return
 
   cat <<__EOD__
 
