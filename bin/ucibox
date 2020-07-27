@@ -9,7 +9,7 @@ function state () {
 
 function up () {
   echo "Starting up ${boxname} $(state)"
-  if [ "$(state)" == "up" ]
+  if [ "$(state)" == "running" ]
   then
     echo "${boxname} is already running"
     exit
