@@ -4,7 +4,9 @@
 [ "${VBOX_DIR:-notset}" == "notset" ] && export VBOX_DIR="${HOME}/Virtualbox VMs/"
 cat <<__EOD__
 
-  Default Virtialbox VM Directory: ${
+  Default Virtialbox VM Directory: ${VBOX_DIR}
+
+__EOD__
 
 
 function state () {
