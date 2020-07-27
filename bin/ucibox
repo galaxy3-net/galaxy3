@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 set -x
-export boxname=$(basename ${0}
-echo ${boxname} ${*}
 
-cd ${HOME}/galaxy3/vagrant/${boxname}
 
 function state () {
   echo "Checking the state"
@@ -19,6 +16,11 @@ function up () {
   fi
   vagrant ${*}
 }
+
+export boxname=$(basename ${0}
+echo " - - ${boxname} ${*} - -"
+
+cd ${HOME}/galaxy3/vagrant/${boxname}
 
 case "${1}" in
 
