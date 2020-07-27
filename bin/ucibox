@@ -15,12 +15,24 @@ function up () {
       printf "\n\t${boxname} is already running\n\n"
       ;;
 
-    "poweroff") vagrant ${*}
+    "poweroff" | "saved") vagrant ${*}
       ;;
 
-    *) echo "stats is $(state)"
+    *) echo "state is $(state)"
       exit 1
       ;;
+  esac
+  return
+}
+
+function resume () {
+  case "$(state)" in
+
+    "saved")  vagrant ${*}
+      ;;
+
+    *) echo "state is $(state)"
+       ;;
   esac
   return
 }
@@ -31,7 +43,7 @@ function halt () {
     "running")  vagrant ${*}
       ;;
 
-    *) echo "${boxname} is not running"
+    *) echo "state is $(state)"
        ;;
   esac
   return
@@ -43,7 +55,7 @@ function suspend () {
     "running")  vagrant ${*}
       ;;
 
-    *) echo "${boxname} is not running"
+    *) echo "state is $(state)"
        ;;
   esac
   return
@@ -56,7 +68,7 @@ cd ${HOME}/galaxy3/vagrant/${boxname}
 
 case "${1}" in
 
-  "up")  up ${*} --provision
+  "up" | "resume")  up ${*}
     ;;
 
   "halt" | "suspend")  halt ${*}
