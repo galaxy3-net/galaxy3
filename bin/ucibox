@@ -24,7 +24,7 @@ cd ${HOME}/galaxy3/vagrant/${boxname}
 
 case "${1}" in
 
-  "up")  echo "up"
+  "up")  up
          ;;
 
    *)  echo "usage" ; exit 1
