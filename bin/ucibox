@@ -22,6 +22,7 @@ echo " - - ${boxname} ${*} - -"
 
 cd ${HOME}/galaxy3/vagrant/${boxname}
 
+vagrant status --machine-readable | egrep 'default,state'
 case "${1}" in
 
   "up")  up
