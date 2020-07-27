@@ -61,12 +61,28 @@ function suspend () {
   return
 }
 
+function destroy () {
+  case "$(state)" in
+
+    "running")  vagrant ${*}
+      ;;
+
+    *) echo "state is $(state)"
+       ;;
+  esac
+  return
+}
+
+
 export boxname=$(basename ${0})
 echo " - - ${boxname} ${*} - -"
 
 cd ${HOME}/galaxy3/vagrant/${boxname}
 
 case "${1}" in
+
+  "destroy") destroy ${*}
+    ;;
 
   "up" | "resume")  up ${*}
     ;;
