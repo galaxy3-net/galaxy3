@@ -15,9 +15,10 @@ function up () {
       printf "\n\t${boxname} is already running\n\n"
       ;;
 
-    "poweroff" | "saved" | "not_created") vagrant ${*}
+    "poweroff" | "saved") vagrant ${*}
       ;;
 
+    "not_created") vagrant ${*}
     *) echo "state is $(state)"
       exit 1
       ;;
@@ -73,12 +74,32 @@ function destroy () {
   return
 }
 
+function dir_exists () {
+  cat <<__EOD__
+
+  While Vagrant's machine state is "not_created", the ${boxname}
+  directory already exists
+}
+
+function Virtualbox_VMs () {
+  ls "${HOME}/Virtualbox VMs/" && return
+
+  cat <<__EOD__
+
+  Either Virtualbox is not installed or the default machine directory
+  has been changed.
+
+__EOD__
+
+  exit 1
+}
 
 export boxname=$(basename ${0})
 echo " - - ${boxname} ${*} - -"
 
 cd ${HOME}/galaxy3/vagrant/${boxname}
-
+Virtualbox_VMs
+exit
 case "${1}" in
 
   "destroy") destroy ${*}
