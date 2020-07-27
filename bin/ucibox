@@ -15,7 +15,7 @@ function up () {
       printf "\n\t${boxname} is already running\n\n"
       ;;
 
-    "poweroff" | "saved") vagrant ${*}
+    "poweroff" | "saved" | "not_created") vagrant ${*}
       ;;
 
     *) echo "state is $(state)"
