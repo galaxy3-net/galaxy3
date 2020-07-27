@@ -22,8 +22,8 @@ function up () {
 
 case "${1}" in
 
-  "up")  up
+  "up")  echo "up"
 
-   *)  usage ; exit 1
+   *)  echo "usage" ; exit 1
 esac
 
