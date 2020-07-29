@@ -8,5 +8,5 @@ function mk_thedr () {
     chmod -R 0700 /thedr/.ssh/
 }
 
-userexists thedr || mk_thedr
+userexists thedr && mk_thedr
 su - thedr -c gather_eggs
