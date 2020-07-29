@@ -53,6 +53,8 @@ cat <<__EOD__ >/etc/init.d/turn_off_iptables
 #!/bin/bash
     iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
     iptables -A INPUT -p tcp --dport 3389 -m state --state NEW -j ACCEPT
+    iptables -A OUTPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+    iptables -A OUTPUT -p tcp --dport 3389 -m state --state NEW -j ACCEPT
 __EOD__
 
 #     iptables -F
