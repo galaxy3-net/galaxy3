@@ -115,6 +115,18 @@ __EOD__
   exit 1
 }
 
+function ssh_rdp () {
+  case "$(state)" in
+
+    "running")  vagrant ${*}
+      ;;
+
+    *) echo "cannot ${1} into ${boxname} - state is $(state)"
+       ;;
+  esac
+  return
+}
+
 export boxname=$(basename ${0})
 echo " - - ${boxname} ${*} - -"
 
@@ -133,6 +145,9 @@ case "${1}" in
     ;;
 
   "status") vagrant status
+    ;;
+
+  "ssh" | "rdp") ssh_rdp
     ;;
 
    *)  echo "usage" ; exit 1
