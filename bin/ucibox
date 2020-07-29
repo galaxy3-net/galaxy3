@@ -149,7 +149,7 @@ case "${1}" in
   "status") vagrant status
     ;;
 
-  "ssh" | "rdp") ssh_rdp
+  "ssh" | "rdp") ssh_rdp ${*}
     ;;
 
    *)  echo "usage" ; exit 1
