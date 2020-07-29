@@ -23,8 +23,10 @@ function disable () {
 
 case ${SCRIPTNAME} in
 
-  tenable) enable
-          ;;
+  tenable)
+    get_repo ${SERVICENAME:-undefined} ${SERVICENAME:-undefined}:galaxy3-net/${SERVICENAME:-undefined}.git master
+    enable
+    ;;
 
   tdisable) disable
           ;;

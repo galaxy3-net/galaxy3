@@ -1,16 +1,12 @@
 #!/bin/bash
 
-     useradd -d /thedr -c thedr -m -s /bin/bash -u 2001 -U thedr
-     mkdir -p /thedr/.ssh/config.d
+function mk_thedr () {
+    useradd -d /thedr -c thedr -m -s /bin/bash -u 2001 -U thedr
+    mkdir -p /thedr/.ssh/config.d)
 
-     chown -R thedr:thedr /thedr/
-     chmod -R 0700 /thedr/.ssh/
+    chown -R thedr:thedr /thedr/
+    chmod -R 0700 /thedr/.ssh/
+}
 
-     su - thedr -c gather_eggs
-	 # su - thedr -c get_spicerack
-
-	 get_repo spicerack blueprints:galaxy3-net/spicerack.git master
-	 get_repo named named:galaxy3-net/named.git master
-     get_repo blueprints blueprints:galaxy3-net/blueprints.git master
-     get_repo quarren quarren:galaxy3-net/quarren.git master
-     get_repo nakadia nakadia:galaxy3-net/nakadia.git master
+userexists thedr || mk_thedr
+su - thedr -c gather_eggs
