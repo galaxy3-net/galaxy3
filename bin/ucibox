@@ -118,7 +118,9 @@ __EOD__
 function ssh_rdp () {
   case "$(state)" in
 
-    "running")  vagrant ${*}
+    "running")
+        echo vagrant ${*}
+        vagrant ${*}
       ;;
 
     *) echo "cannot ${1} into ${boxname} - state is $(state)"
