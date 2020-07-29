@@ -74,7 +74,14 @@ function suspend () {
 function destroy () {
   case "$(state)" in
 
-    "running")  vagrant ${*}
+    "running")
+        cat <<__EOD__
+  WARNING: This will destroy this machine and any data/files saved on it.
+  Type DESTROY to confirm.
+__EOD__
+        read input
+        [ "${input}" == "DESTROY" ] && vagrant ${*}
+        [ "${input}" != "DESTROY" ] && echo 'cancelled destroy'
       ;;
 
     *) echo "state is $(state)"
