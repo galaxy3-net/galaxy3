@@ -7,7 +7,7 @@ chmod 0700 ${G3HOME}/spicerack/.ssh
 cp ${G3HOME}/spicerack/egg ${G3HOME}/spicerack/.ssh/.
 chmod 0700 ${G3HOME}/spicerack/.ssh/egg
 
-cd ${G3HOME}/spicerack && git clone eggs:${G3GITHUB}/eggs.git
+cd ${G3HOME}/spicerack && git clone eggs:galaxy3-net/eggs.git
 
 # ls ${G3HOME}/spicerack  ||
 
