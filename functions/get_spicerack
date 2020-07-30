@@ -11,3 +11,9 @@ ls -dl ${G3HOME}/spicerack 2>/dev/null || cd ${G3HOME} \
 ls -dl ${G3HOME}/spicerack 2>/dev/null \
   && cd ${G3HOME}/spicerack \
   && git checkout ${BRANCH:=thedr}
+
+mkdir -p ~/.ssh
+ls -dl ~/.ssh/config || echo 'Include ~/galaxy3/spicerack/.ssh/config.d/*' >> ~/.ssh/config
+
+egrep 'Include ~/galaxy3/spicerack/.ssh/config.d/*' ~/.ssh/config \
+  || echo 'Include ~/galaxy3/spicerack/.ssh/config.d/*' >> ~/.ssh/config
