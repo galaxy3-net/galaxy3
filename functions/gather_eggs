@@ -1,13 +1,23 @@
 #!/usr/bin/env bash
 set -x
 
+function clone () {
+  cd ${G3HOME}/spicerack && git clone eggs:galaxy3-net/eggs.git
+}
+
+function pull () {
+  cd ${G3HOME}/spicerack/eggs && git pull
+}
+
 get_spicerack
 mkdir -p ${G3HOME}/spicerack/.ssh/
 chmod 0700 ${G3HOME}/spicerack/.ssh
-cp ${G3HOME}/spicerack/egg ${G3HOME}/spicerack/.ssh/.
+cp ${G3HOME}/egg ${G3HOME}/spicerack/.ssh/.
 chmod 0700 ${G3HOME}/spicerack/.ssh/egg
 
-cd ${G3HOME}/spicerack && git clone eggs:galaxy3-net/eggs.git
+ls ${G3HOME}/spicerack/eggs || clone
+pull
+#cd ${G3HOME}/spicerack && git clone eggs:galaxy3-net/eggs.git
 
 # ls ${G3HOME}/spicerack  ||
 
