@@ -3,7 +3,16 @@
 get_machine naboo
 export MACHINE=${1:-undefined}
 
-#REPO=${1}
+function pull_spicerack () {
+  REPO_PATH=https://github.com/galaxy3-net/spicerack.git
+  DEST=~/galaxy3/spicerack
+  ls -dl ${DEST} 2>/dev/null || bash -c "cd $(dirname ${DEST}) && git clone ${REPO_PATH} && git checkout thedr"
+  cd ${DEST} && git pull
+}
+
+pull_spicerack
+
+
 [ "${2:-undefined}" == "undefined" ] BRANCH=${3}
 REPO_PATH=${MACHINE:-undefined}:galaxy3-net/${MACHINE:-undefined}.git
 
