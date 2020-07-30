@@ -17,5 +17,5 @@ get_spicerack
 
 REPO_PATH=${MACHINE}:galaxy3-net/${MACHINE}.git
 
-ls -dl ${G3HOME}/vagrant/${REPO} 2>/dev/null || cd ${G3HOME}/vagrant/ ; git clone ${REPO_PATH}
-cd ${G3HOME}/vagrant/${REPO} && git pull && git checkout ${BRANCH}
+ls -dl ${G3HOME}/vagrant/${MACHINE} 2>/dev/null || cd ${G3HOME}/vagrant/ ; git clone ${REPO_PATH}
+cd ${G3HOME}/vagrant/${MACHINE} && git pull && git checkout ${BRANCH}
