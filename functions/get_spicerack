@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 set -x
 export BRANCH=${1}
-export RAWPATH=https://raw.githubusercontent.com/galaxy3-net/spicerack/${BRANCH:=thedr}/
+export RAWPATH=https://raw.githubusercontent.com/galaxy3-net/spicerack/${1:=thedr}/
 export GITPATH=https://github.com/galaxy3-net/spicerack.git
 
 ls -dl ~/galaxy3/spicerack 2>/dev/null || cd ~/galaxy3 && \
   git clone ${GITPATH} \
-  && git checkout ${BRANCH}
+  && git checkout ${1:=thedr}
 
 # curl -o spicerack https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/.ssh/config.d/spicerack.config
