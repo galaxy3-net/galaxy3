@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -x
-export BRANCH=${1:-thedr}
+export BRANCH=${1:=thedr}
 export RAWPATH=https://raw.githubusercontent.com/galaxy3-net/spicerack/${BRANCH}/
 export GITPATH=https://github.com/galaxy3-net/spicerack.git
 
