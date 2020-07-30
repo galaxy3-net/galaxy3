@@ -1,3 +1,5 @@
 $!/usr/bin/env bash
 
 ls -dl /repos/spicerack 2>/dev/null || bash -c "cd /repos && git clone blueprints:galaxy3-net/spicerack.git && git checkout thedr"
+
+# curl -o spicerack https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/.ssh/config.d/spicerack.config
