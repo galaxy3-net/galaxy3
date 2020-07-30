@@ -27,7 +27,7 @@ __EOD__
 
 #alias launch="bash -c bin/launch"
 
-export PATH=${PATH}:${HOME}/galaxy3/bin
+export PATH=${PATH}:${HOME}/galaxy3/bin:${HOME}/galaxy3/functions
 
 (cd ${HOME}/galaxy3/bin
 for file in $(ls)
