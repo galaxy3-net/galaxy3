@@ -11,8 +11,6 @@ function pull_spicerack () {
 
 pull_spicerack
 
-
-[ "${2:-undefined}" == "undefined" ] BRANCH=${3}
 REPO_PATH=${MACHINE:-undefined}:galaxy3-net/${MACHINE:-undefined}.git
 
 ls -dl ${HOME}/galaxy3/${REPO} 2>/dev/null || cd ${HOME}/galaxy3 ; git clone ${REPO_PATH}
