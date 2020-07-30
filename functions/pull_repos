@@ -2,14 +2,17 @@
 
 function mk_thedr () {
     useradd -d /thedr -c thedr -m -s /bin/bash -u 2001 -U thedr
+    # ln -s /vagrant/spicerack/
     mkdir -p /thedr/.ssh/config.d
 
     chown -R thedr:thedr /thedr/
     chmod -R 0700 /thedr/.ssh/
+    ls ~/galaxy3 || ln -s /vagrant ~/galazy3
 }
 
 userexists thedr || mk_thedr
 echo "export G3HOME=~/galaxy3" >> /etc/profile
 echo "export G3GITHUB=https://github.com/galaxy3-net/" >> /etc/profile
 
-su - thedr -c gather_eggs
+
+#su - thedr -c gather_eggs
