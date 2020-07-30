@@ -27,9 +27,12 @@ __EOD__
 
 #alias launch="bash -c bin/launch"
 
-export PATH=${PATH}:${HOME}/galaxy3/bin:${HOME}/galaxy3/functions
+[ -z ${G3HOME} ]  &&  export G3HOME=~/galaxy3
+[ -z ${G3GITHUB} ]  &&  export G3GITHUB=https://github.com/galaxy3-net/
 
-(cd ${HOME}/galaxy3/bin
+export PATH=${PATH}:${G3HOME}/bin:${G3HOME}/functions
+
+(cd ${G3HOME}/bin
 for file in $(ls)
 do
   printf "\t> ${file}\n"

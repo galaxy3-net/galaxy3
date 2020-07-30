@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 set -x
 
-ls ~/galaxy3/spicerack  || get_spicerack
-ls ~/galaxy3/spicerack  &&  cd ~/galaxy3/spicerack  &&  git checkout ${BRANCH}  &&  git pull
+ls ${G3HOME}/spicerack  || get_spicerack
+ls ${G3HOME}/spicerack  &&  cd ${G3HOME}/spicerack  &&  git checkout ${BRANCH}  &&  git pull
 
 
-# ls ~/galaxy3/spicerack  ||
+# ls ${G3HOME}/spicerack  ||
 
 exit
      cat <<__EOD__

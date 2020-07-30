@@ -2,13 +2,13 @@
 set -x
 [ -n ${1} ] && export BRANCH=${1}
 export RAWPATH=https://raw.githubusercontent.com/galaxy3-net/spicerack/${BRANCH:=thedr}/
-export GITPATH=https://github.com/galaxy3-net/spicerack.git
+export GITPATH=${G2GITHUB}spicerack.git
 
-ls -dl ~/galaxy3/spicerack 2>/dev/null || cd ~/galaxy3 \
+ls -dl ${G3HOME}/spicerack 2>/dev/null || cd ~/galaxy3 \
   && git clone ${GITPATH} \
 
-ls -dl ~/galaxy3/spicerack 2>/dev/null \
-  && cd ~/galaxy3/spicerack \
+ls -dl ${G3HOME}/spicerack 2>/dev/null \
+  && cd ${G3HOME}/spicerack \
   && git checkout ${BRANCH:=thedr}
 
 # curl -o spicerack https://raw.githubusercontent.com/galaxy3-net/spicerack/thedr/.ssh/config.d/spicerack.config
