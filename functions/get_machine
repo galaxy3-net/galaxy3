@@ -13,7 +13,7 @@ function pull_spicerack () {
 }
 
 #pull_spicerack
-get_spcerack
+get_spicerack
 
 REPO_PATH=${MACHINE}:galaxy3-net/${MACHINE}.git
 
