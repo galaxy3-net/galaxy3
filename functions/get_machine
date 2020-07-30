@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-get_machine naboo
 export MACHINE=${1:-undefined}
 
 function pull_spicerack () {
