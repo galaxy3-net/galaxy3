@@ -9,9 +9,10 @@ function pull_spicerack () {
   cd ${DEST} && git checkout thedr && git pull
 }
 
-pull_spicerack
+#pull_spicerack
+get_spcerack
 
 REPO_PATH=${MACHINE:-undefined}:galaxy3-net/${MACHINE:-undefined}.git
 
-ls -dl ${HOME}/galaxy3/${REPO} 2>/dev/null || cd ${HOME}/galaxy3 ; git clone ${REPO_PATH}
-cd ${HOME}/galaxy3/${REPO} && git pull && git checkout ${2:=${MACHINE}}
+ls -dl ${HOME}/galaxy3/vagrant/${REPO} 2>/dev/null || cd ${HOME}/galaxy3/vagrant/ ; git clone ${REPO_PATH}
+cd ${HOME}/galaxy3/vagrant/${REPO} && git pull && git checkout ${2:=${MACHINE}}
