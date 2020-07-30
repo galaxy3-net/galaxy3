@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -x
-export BRANCH=${1:=thedr}
-export RAWPATH=https://raw.githubusercontent.com/galaxy3-net/spicerack/${BRANCH}/
+export BRANCH=${1}
+export RAWPATH=https://raw.githubusercontent.com/galaxy3-net/spicerack/${BRANCH:=thedr}/
 export GITPATH=https://github.com/galaxy3-net/spicerack.git
 
 ls -dl ~/galaxy3/spicerack 2>/dev/null || cd ~/galaxy3 && \
