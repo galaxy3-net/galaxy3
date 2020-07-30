@@ -2,7 +2,7 @@
 set -x
 [ -n ${1} ] && export BRANCH=${1}
 export RAWPATH=https://raw.githubusercontent.com/galaxy3-net/spicerack/${BRANCH:=thedr}/
-export GITPATH=${G2GITHUB}spicerack.git
+export GITPATH=${G3GITHUB}spicerack.git
 
 ls -dl ${G3HOME}/spicerack 2>/dev/null || cd ~/galaxy3 \
   && git clone ${GITPATH} \
