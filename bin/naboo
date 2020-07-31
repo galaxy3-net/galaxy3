@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 #set -x
 
+. ${G3HOME}/bin/common
+
 [ "${VBOX_DIR:-notset}" == "notset" ] && export VBOX_DIR="${HOME}/Virtualbox VMs/"
 cat <<__EOD__
 
