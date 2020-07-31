@@ -12,7 +12,8 @@ function pull () {
 get_spicerack
 mkdir -p ${G3HOME}/spicerack/.ssh/
 chmod 0700 ${G3HOME}/spicerack/.ssh
-cp ${G3HOME}/egg ${G3HOME}/spicerack/.ssh/.
+ls -dl ${G3HOME}/egg && cp ${G3HOME}/egg ${G3HOME}/spicerack/.ssh/.
+ls -dl /vagrant/egg && cp ${G3HOME}/egg ${G3HOME}/spicerack/.ssh/.
 chmod 0700 ${G3HOME}/spicerack/.ssh/egg
 
 ls ${G3HOME}/spicerack/eggs || clone
