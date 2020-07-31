@@ -2,13 +2,12 @@
 set -x
 function clone () {
   echo "Clone the Spicerack"
-  ls -dl ${G3HOME}/spicerack \
-    || cd ${G3HOME} \
+    cd ${G3HOME} \
     && git clone ${GITPATH}
 }
 
 function pull_the_spicerack () {
-  clone
+  ls -dl ${G3HOME}/spicerack  ||  clone
   echo "Pull the Spicerack"
   ls -dl ${G3HOME}/spicerack 2>/dev/null \
     && cd ${G3HOME}/spicerack \
