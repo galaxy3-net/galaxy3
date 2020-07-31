@@ -14,6 +14,7 @@ function fetch_eggs () {
 
   echo "Pulling the latest commit"
   cd ${G3HOME}/spicerack/eggs && git pull
+  tar -C ${G3HOME}/spicerack/eggs xf ${G3HOME}/spicerack/eggs.tgz
 }
 
 function fetch_the_golden_egg () {
