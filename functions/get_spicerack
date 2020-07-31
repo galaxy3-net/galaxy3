@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-
+set -x
 function clone () {
   echo "Clone the Spicerack"
-  ls -dl ${G3HOME}/spicerack 2>/dev/null \
+  ls -dl ${G3HOME}/spicerack \
     || cd ${G3HOME} \
     && git clone ${GITPATH}
 }
