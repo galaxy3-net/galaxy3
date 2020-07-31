@@ -1,19 +1,39 @@
 #!/usr/bin/env bash
 
+function clone () {
+  echo "Clone the Spicerack"
+  ls -dl ${G3HOME}/spicerack 2>/dev/null \
+    || cd ${G3HOME} \
+    && git clone ${GITPATH}
+}
+
+function pull_the_spicerack () {
+  clone
+  echo "Pull the Spicerack"
+  ls -dl ${G3HOME}/spicerack 2>/dev/null \
+    && cd ${G3HOME}/spicerack \
+    && git pull \
+    && git checkout ${BRANCH}
+}
+
+function update_sshconfig () {
+  mkdir -p ~/.ssh
+  egrep 'Include ~/galaxy3/spicerack/.ssh/config.d/*' ~/.ssh/config \
+    || echo 'Include ~/galaxy3/spicerack/.ssh/config.d/*' >> ~/.ssh/config
+
+  cat ~/.ssh/config
+}
 
 [ -n ${1} ] && export BRANCH=${1}
-
 export GITPATH=${G3GITHUB}spicerack.git
 
-ls -dl ${G3HOME}/spicerack 2>/dev/null || cd ${G3HOME} \
-  && git clone ${GITPATH} \
+cat <<__EOD__
 
-ls -dl ${G3HOME}/spicerack 2>/dev/null \
-  && cd ${G3HOME}/spicerack \
-  && git checkout ${BRANCH:=thedr}
+  BRANCH:  ${BRANCH:=thedr}
+  GITPATH: ${GITPATH}
+  G3HOME:  ${G3HOME|
 
-mkdir -p ~/.ssh
-ls -dl ~/.ssh/config || echo 'Include ~/galaxy3/spicerack/.ssh/config.d/*' >> ~/.ssh/config
+__EOD__
 
-egrep 'Include ~/galaxy3/spicerack/.ssh/config.d/*' ~/.ssh/config \
-  || echo 'Include ~/galaxy3/spicerack/.ssh/config.d/*' >> ~/.ssh/config
+pull_the_spicerack
+update_sshconfig
