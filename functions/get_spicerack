@@ -24,11 +24,12 @@ function update_sshconfig () {
 }
 
 [ -n ${1} ] && export BRANCH=${1}
+[ -z "${BRANCH}" ] && export BRANCH=thedr
 export GITPATH=${G3GITHUB}spicerack.git
 
 cat <<__EOD__
 
-  BRANCH:  ${BRANCH:=thedr}
+  BRANCH:  ${BRANCH}
   GITPATH: ${GITPATH}
   G3HOME:  ${G3HOME|
 
