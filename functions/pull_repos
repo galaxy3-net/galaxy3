@@ -17,4 +17,4 @@ echo "export G3HOME=~/galaxy3" >> /etc/profile
 echo "export G3GITHUB=https://github.com/galaxy3-net/" >> /etc/profile
 
 
-#su - thedr -c gather_eggs
+su - thedr -c gather_eggs
