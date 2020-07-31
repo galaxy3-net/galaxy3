@@ -12,8 +12,20 @@ function pull_spicerack () {
   cd ${DEST} && git checkout thedr && git pull
 }
 
-#pull_spicerack
+echo "*"
+echo "*"
+echo "*"
+echo "*"
+echo "= = = = = = = = = = = = =  Starting Machine ${MACHINE}  = = = = = = = = = = = = = = = ="
+echo "*"
+echo "*"
+echo "*"
+echo "*"
 gather_eggs
+echo "*"
+echo "*"
+echo "*"
+echo "*"
 
 REPO_PATH=${MACHINE}:galaxy3-net/${MACHINE}.git
 
