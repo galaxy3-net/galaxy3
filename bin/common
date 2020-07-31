@@ -1,0 +1,3 @@
+#!/usr/sbin/env bash
+
+export GIT_SSH_COMMAND="ssh -F ~/galaxy3/spicerack/.ssh/config"
