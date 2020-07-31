@@ -12,6 +12,8 @@ function pull () {
 get_spicerack
 mkdir -p ${G3HOME}/spicerack/.ssh/
 chmod 0700 ${G3HOME}/spicerack/.ssh
+
+echo 'Copy the Golden Egg'
 ls -dl ${G3HOME}/egg && cp ${G3HOME}/egg ${G3HOME}/spicerack/.ssh/.
 ls -dl /vagrant/egg && cp ${G3HOME}/egg ${G3HOME}/spicerack/.ssh/.
 chmod 0700 ${G3HOME}/spicerack/.ssh/egg
