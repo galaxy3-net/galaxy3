@@ -7,10 +7,10 @@ function clone () {
 }
 
 function fetch_eggs () {
+  fetch_the_golden_egg
+
   echo "Fetching the Eggs"
   ls ${G3HOME}/spicerack/eggs || clone
-
-  fetch_the_golden_egg
 
   echo "Pulling the latest commit"
   cd ${G3HOME}/spicerack/eggs && git pull
