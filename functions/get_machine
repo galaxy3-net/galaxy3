@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -x
+
 [ -n ${1} ]  && export MACHINE=${1}
 [ -n ${2} ]  && export BRANCH=${2}
 [ -z "${MACHINE}" ]  && export MACHINE=undefined

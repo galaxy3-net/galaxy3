@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+git config --global user.name "Galaxy 3"
+git config --global user.email "admin@galaxy3.net"
