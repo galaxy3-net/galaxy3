@@ -12,7 +12,7 @@ function fetch_eggs () {
   ls ${G3HOME}/spicerack/eggs || clone
 
   echo "Pulling the latest commit"
-  cd ${G3HOME}/spicerack/eggs && git pull
+  cd ${G3HOME}/spicerack/eggs && git pull --allow-unrelated-histories
   tar -xvf ${G3HOME}/spicerack/eggs/eggs.tgz -C ${G3HOME}/spicerack/.ssh
 }
 
