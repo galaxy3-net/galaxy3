@@ -2,7 +2,7 @@
 
 . ${G3HOME}/bin/g3common
 
-[ "${VBOX_DIR:-notset}" == "notset" ] && export VBOX_DIR="${HOME}/Virtualbox VMs/"
+[ "${VBOX_DIR:-notset}" == "notset" ] && export VBOX_DIR="${HOME}/VirtualBox VMs/"
 cat <<__EOD__
 
   Default Virtialbox VM Directory: ${VBOX_DIR}
