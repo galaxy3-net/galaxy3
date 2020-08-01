@@ -154,9 +154,10 @@ function ssh_rdp () {
   return
 }
 
-get_machine ${boxname}
+
 export boxname=$(basename ${0})
 echo " - - ${boxname} ${*} - -"
+get_machine ${boxname}
 
 cd ${HOME}/galaxy3/vagrant/${boxname}
 Virtualbox_VMs
