@@ -92,7 +92,7 @@ function suspend () {
 function destroy () {
   case "$(state)" in
 
-    "running")
+    "running" | "poweroff" | "saved")
         cat <<__EOD__
   WARNING: This will destroy this machine and any data/files saved on it.
   Type DESTROY to confirm.
