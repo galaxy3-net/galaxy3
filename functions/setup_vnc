@@ -1,0 +1,48 @@
+#!/bin/bash
+
+cat <<__EOD__
+
+  Installing VNC
+
+__EOD__
+     apt-get install -yq tightvncserver xfce4 xfce4-goodies xterm
+
+     mkdir -p /home/vagrant/.vnc
+
+     cat <<__EOD__ > /home/vagrant/.vnc/xstartup
+#!/bin/bash
+xrdb /home/vagrant/.Xresources
+startxfce4 &
+__EOD__
+
+     chown -R vagrant:vagrant /home/vagrant/.vnc/
+     chmod u+x /home/vagrant/.vnc/xstartup
+
+     # Create service file
+     cat <<__EOD__ > /etc/systemd/system/vncserver@.service
+[Unit]
+Description=Start TightVNC server at startup
+After=syslog.target network.target
+
+[Service]
+Type=forking
+User=vagrant
+PAMName=login
+PIDFile=/home/sammy/.vnc/%H:%i.pid
+ExecStartPre=-/usr/bin/vncserver -kill :%i > /dev/null 2>&1
+ExecStart=/usr/bin/vncserver -depth 24 -geometry 1280x800 :%i
+ExecStop=/usr/bin/vncserver -kill :%i
+
+[Install]
+WantedBy=multi-user.target
+__EOD__
+
+#systemctl daemon-reload
+#systemctl enable vncserver@1.service
+#systemctl start vncserver@1
+#systemctl status vncserver@1
+
+#  References
+#
+#  https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-vnc-on-ubuntu-16-04
+
