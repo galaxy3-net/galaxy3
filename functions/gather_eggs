@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+function clone () {
+  echo "Cloning the spicerack"
+  cd ${G3HOME}/spicerack && git clone eggs:galaxy3-net/eggs.git
+}
+
+function fetch_eggs () {
+  fetch_the_golden_egg
+
+  echo "Fetching the Eggs"
+  ls ${G3HOME}/spicerack/eggs || clone
+
+  echo "Pulling the latest commit"
+  cd ${G3HOME}/spicerack/eggs && git pull --allow-unrelated-histories && git merge origin origin/master
+  tar -xvf ${G3HOME}/spicerack/eggs/eggs.tgz -C ${G3HOME}/spicerack/.ssh
+}
+
+function fetch_the_golden_egg () {
+
+  #  Leave if we already have the golden egg.
+  echo "Validating the Golden Egg"
+  ls ${G3HOME}/spicerack/.ssh/egg && return
+
+  # Fetch the golden egg.
+  echo 'Fetch the Golden Egg'
+  mkdir -p ${G3HOME}/spicerack/.ssh/
+  chmod 0700 ${G3HOME}/spicerack/.ssh
+
+  ls -dl ${G3HOME}/egg && cp ${G3HOME}/egg ${G3HOME}/spicerack/.ssh/.
+  ls -dl /vagrant/egg && cp /vagrant/egg ${G3HOME}/spicerack/.ssh/.
+  chmod 0700 ${G3HOME}/spicerack/.ssh/egg
+  ls -dl ${G3HOME}/spicerack/.ssh/egg
+}
+
+get_spicerack
+fetch_eggs

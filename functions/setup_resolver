@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+     ls -dl /etc/resolv.conf.original 2>/dev/null || mv /etc/resolv.conf /etc/resolv.conf.original
+     file /vagrant/resolv.conf | grep CRLF && dos2unix -n /vagrant/resolv.conf /etc/resolv.conf
+     file /vagrant/resolv.conf | grep CRLF || cp /vagrant/resolv.conf /etc/resolv.conf

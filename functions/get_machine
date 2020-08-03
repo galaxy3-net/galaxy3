@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+[ -n ${1} ]  && export MACHINE=${1}
+[ -n ${2} ]  && export BRANCH=${2}
+[ -z "${MACHINE}" ]  && export MACHINE=undefined
+[ -z "${BRANCH}" ]  && export BRANCH=${MACHINE}
+
+function pull_spicerack () {
+  REPO_PATH=https://github.com/galaxy3-net/spicerack.git
+  DEST=~/galaxy3/spicerack
+  ls -dl ${DEST} 2>/dev/null || bash -c "cd $(dirname ${DEST}) && git clone ${REPO_PATH} && git checkout thedr"
+  cd ${DEST} && git checkout thedr && git pull
+}
+
+echo "*"
+echo "*"
+echo "*"
+echo "*"
+echo "= = = = = = = = = = = = =  Starting Machine ${MACHINE}  = = = = = = = = = = = = = = = ="
+echo "*"
+echo "*"
+echo "*"
+echo "*"
+gather_eggs
+echo "*"
+echo "*"
+echo "*"
+echo "*"
+
+REPO_PATH=${MACHINE}:galaxy3-net/${MACHINE}.git
+
+ls -dl ${G3HOME}/vagrant/${MACHINE} 2>/dev/null || cd ${G3HOME}/vagrant/ ; git clone ${REPO_PATH}
+cd ${G3HOME}/vagrant/${MACHINE} && git pull && git checkout ${BRANCH}

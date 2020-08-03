@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+set -x
+DIRNAME=$(dirname ${0})
+SCRIPTNAME=$(basename ${0})
+SERVICENAME=${1}
+
+function enable () {
+  set -x
+  echo enabling ${SERVICENAME}
+  ls /repos/${SERVICENAME}/usr/sbin/${SERVICENAME} && cp /repos/${SERVICENAME}/usr/sbin/${SERVICENAME} /usr/sbin/.
+  ls /repos/${SERVICENAME}/etc/supervisor/conf.d/${SERVICENAME}.conf && cp /repos/${SERVICENAME}/etc/supervisor/conf.d/${SERVICENAME}.conf /etc/supervisor/conf.d/.
+  ls /usr/sbin/${SERVICENAME} && chmod u+x /usr/sbin/${SERVICENAME}
+  supervisorctl reload
+}
+
+function disable () {
+  set -x
+  echo enabling ${SERVICENAME}
+  ls /etc/supervisor/conf.d/${SERVICENAME}.conf && rm /etc/supervisor/conf.d/${SERVICENAME}.conf
+  supervisorctl reload
+}
+
+case ${SCRIPTNAME} in
+
+  tenable)
+    get_repo ${SERVICENAME:-undefined} ${SERVICENAME:-undefined}:galaxy3-net/${SERVICENAME:-undefined}.git master
+    enable
+    ;;
+
+  tdisable) disable
+          ;;
+
+  *) echo "unknown arg"
+    exit 1
+    ;;
+esac
+

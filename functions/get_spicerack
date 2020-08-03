@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+function clone () {
+  echo "Clone the Spicerack"
+    cd ${G3HOME} \
+    && git clone ${GITPATH}
+}
+
+function pull_the_spicerack () {
+  ls -dl ${G3HOME}/spicerack  ||  clone
+  echo "Pull the Spicerack"
+  ls -dl ${G3HOME}/spicerack 2>/dev/null \
+    && cd ${G3HOME}/spicerack \
+    && git pull \
+    && git checkout ${BRANCH}
+}
+
+function update_sshconfig () {
+  mkdir -p ~/.ssh
+  egrep 'Include ~/galaxy3/spicerack/.ssh/config.d/*' ~/.ssh/config \
+    || echo 'Include ~/galaxy3/spicerack/.ssh/config.d/*' >> ~/.ssh/config
+
+  cat ~/.ssh/config
+}
+
+[ -n ${1} ] && export BRANCH=${1}
+[ -z "${BRANCH}" ] && export BRANCH=thedr
+export GITPATH="${G3GITHUB}spicerack.git"
+
+#cat <<__EOD__
+#
+#  BRANCH:  ${BRANCH}
+#  GITPATH: ${GITPATH}
+#  G3HOME:  ${G3HOME|
+#
+#__EOD__
+
+pull_the_spicerack
+update_sshconfig

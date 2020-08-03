@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+function fail() {
+
+	echo "Error: ${1}"
+	exit 1
+}
+
+function shaft() {
+
+  SHAFT=${GALAXY_DIR}/${1}
+
+  cat <<__EOD__
+
+  Does the shaft ${SHAFT} exist?
+
+__EOD__
+
+  ls -l ${SHAFT}/ || mkdir -p ${SHAFT}
+  ls -dl ${SHAFT}/ || fail "Could not create shaft ${SHAFT}"
+  chmod -R 0777 ${SHAFT}/
+  chown -R 2001:2001 ${SHAFT}/
+  ls -dl ${SHAFT}/ || fail "Could not create shaft ${SHAFT}"
+}
+export GALAXY_DIR=${HOME}/galaxy3
+
+cd ${GALAXY_DIR} || fail "Galaxy directory does not exist!"
+
+shaft ".keys"
+shaft "repos"
+shaft "Downloads"
+shaft "Documents"
+ls
+
+ls -dl bind || it clone https://github.com/cyberbootcamp/bind.git

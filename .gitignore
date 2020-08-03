@@ -13,3 +13,21 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+*.idea
+*.iml
+.vagrant/
+.DS_Store
+bind/
+.keys/
+repos
+id_blueprints
+blueprints.config
+egg
+Downloads/
+log/
+spicerack/
+endor/
+kamino/
+naboo/
+ucibox/
+tattooine/
