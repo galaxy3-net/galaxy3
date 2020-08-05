@@ -167,7 +167,7 @@ case "${1}" in
   "destroy") destroy ${*}
     ;;
 
-  "up" | "reload")  reload ${*}
+  reload")  reload ${*}
     ;;
 
   "up" | "resume")  up ${*}
@@ -180,6 +180,9 @@ case "${1}" in
     ;;
 
   "ssh" | "rdp") ssh_rdp ${*}
+    ;;
+
+  "box") vagrant ${*}
     ;;
 
    *)  echo "usage" ; exit 1
