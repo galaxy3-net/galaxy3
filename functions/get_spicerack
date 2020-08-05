@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+echo "${0}"
+
 function clone () {
   echo "Clone the Spicerack"
     cd ${G3HOME} \

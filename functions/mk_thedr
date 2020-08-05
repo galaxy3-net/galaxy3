@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+echo "${0}"
+
+cat <<__EOD__
+
+  Creating user thedr
+
+
+__EOD__
+
 
     useradd -d /thedr -c thedr -m -s /bin/bash -u 2001 -U thedr
     # ln -s /vagrant/spicerack/
