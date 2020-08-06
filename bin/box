@@ -182,7 +182,7 @@ case "${1}" in
   "ssh" | "rdp") ssh_rdp ${*}
     ;;
 
-  "boc") vagrant ${*}
+  "box") vagrant ${*}
     ;;
 
    *)  echo "usage" ; exit 1
