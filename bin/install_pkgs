@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+echo "Package Installs"
+     apt-get update
+     apt-get install -yq apache2 make docker docker.io net-tools ansible dos2unix supervisor htop ${1}
+     apt-get clean
+     apt-get auto-clean
