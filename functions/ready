@@ -5,7 +5,7 @@ cd /vagrant/functions
 
 for file in $(ls)
 do
-  tr -d '\r' <${file} >/vagrant/functions/${file} /usr/local/bin/${file}
+  tr -d '\r' <${file} >/usr/local/bin/${file}
   chmod 0755 /usr/local/bin/${file}
   ls -adl /usr/local/bin/${file}
 done
