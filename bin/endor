@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-${G3HOME}/bin/endor ${*}
+(${G3HOME}/bin/endor ${*})
