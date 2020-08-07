@@ -18,6 +18,7 @@ __EOD__
       # xfonts-terminus-dos xfonts-mona xfonts-efont-unicode 2>&1 >>/var/log/install.log
       ;;
 
+  esac
      mkdir -p /home/vagrant/.vnc
 
      cat <<__EOD__ > /home/vagrant/.vnc/xstartup
