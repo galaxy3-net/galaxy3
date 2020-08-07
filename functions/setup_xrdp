@@ -6,8 +6,17 @@ cat <<__EOD__
 
 __EOD__
 
-     apt-get install -yq -o Dpkg::Options::='--force-confold' --force-yes xrdp xorgxrdp-hwe-18.04 xfce4 xfce4-goodies #  xfonts-100dpi xfonts-75dpi xfonts-traditional \
-     # xfonts-terminus-dos xfonts-mona xfonts-efont-unicode 2>&1 >>/var/log/install.log
+  case $(hostname) in
+  do
+    "kamino") apt-get install -yq xrdp
+      systemctl enable xrdp
+      systemctl start xrdp
+      ;;
+
+    "naboo")
+      apt-get install -yq -o Dpkg::Options::='--force-confold' --force-yes xrdp xorgxrdp-hwe-18.04 xfce4 xfce4-goodies #  xfonts-100dpi xfonts-75dpi xfonts-traditional \
+      # xfonts-terminus-dos xfonts-mona xfonts-efont-unicode 2>&1 >>/var/log/install.log
+      ;;
 
      mkdir -p /home/vagrant/.vnc
 
@@ -51,7 +60,7 @@ __EOD__
 # ls /etc/init.d/turn_off_iptables ||
 cat <<__EOD__ >/etc/init.d/turn_off_iptables
 #!/bin/bash
-which iptables && iptables -I INPUT -p tcp --dport 3389 -j ACCEPT
+iptables -I INPUT -p tcp --dport 3389 -j ACCEPT
 service iptables save
 iptables restart
 __EOD__
