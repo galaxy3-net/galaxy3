@@ -51,9 +51,10 @@ __EOD__
 # ls /etc/init.d/turn_off_iptables ||
 cat <<__EOD__ >/etc/init.d/turn_off_iptables
 #!/bin/bash
-iptables -I INPUT -p tcp --dport 3389 -j ACCEPT
-service iptables save
-service iptables restart
+which iptables && iptables -I INPUT -p tcp --dport 3389 -j ACCEPT
+(service --status-all | egrep iptables) && service iptables save
+(service --status-all | egrep iptables) && service iptables restart
+which ufw && ufw allow 53
 __EOD__
 
 #    iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
