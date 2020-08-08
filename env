@@ -29,6 +29,7 @@ __EOD__
 
 [ -z ${G3HOME} ]  &&  export G3HOME=~/galaxy3
 [ -z ${G3GITHUB} ]  &&  export G3GITHUB=https://github.com/galaxy3-net/
+[ -z ${G3BRANCH} ]  &&  export G3BRANCH=$(cd $G3HOME ; git branch --show-current)
 
 export PATH=${PATH}:${G3HOME}/bin:${G3HOME}/functions
 
