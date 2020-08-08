@@ -1,0 +1,8 @@
+---
+g3:
+  default:
+    ip:     10.0.2.15
+    route:  10.0.2.2
+  thedr:
+    groupid:  2001
+    userid:   2001
