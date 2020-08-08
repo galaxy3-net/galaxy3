@@ -19,7 +19,7 @@ function reload () {
 
   case "$(state)" in
 
-    "poweroff" | "saved" | "running") vagrant ${*}
+    "poweroff" | "saved" | "running" | "aborted") vagrant ${*}
       ;;
 
     "not_created") dir_exists || vagrant ${*}
@@ -40,7 +40,7 @@ function up () {
       printf "\n\t${boxname} is already running\n\n"
       ;;
 
-    "poweroff" | "saved") vagrant ${*}
+    "poweroff" | "saved" | "aborted") vagrant ${*}
       ;;
 
     "not_created") dir_exists || vagrant ${*}
