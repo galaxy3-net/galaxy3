@@ -26,7 +26,8 @@ function disable () {
 case ${SCRIPTNAME} in
 
   g3enable)
-    su - thedr -c bash -c "get_svc ${SERVICENAME:-undefined} ${SERVICENAME:-undefined}:galaxy3-net/${SERVICENAME:-undefined}.git master"
+    #su - thedr -c bash -c "get_svc ${SERVICENAME:-undefined} ${SERVICENAME:-undefined}:galaxy3-net/${SERVICENAME:-undefined}.git master"
+    get_svc ${SERVICENAME:-undefined} ${SERVICENAME:-undefined}:galaxy3-net/${SERVICENAME:-undefined}.git master
     enable
     ;;
 
