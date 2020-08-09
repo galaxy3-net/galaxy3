@@ -24,12 +24,12 @@ function disable () {
 
 case ${SCRIPTNAME} in
 
-  tenable)
+  g3enable)
     get_repo ${SERVICENAME:-undefined} ${SERVICENAME:-undefined}:galaxy3-net/${SERVICENAME:-undefined}.git master
     enable
     ;;
 
-  tdisable) disable
+  g3disable) disable
           ;;
 
   *) echo "unknown arg"
