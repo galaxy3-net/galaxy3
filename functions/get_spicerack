@@ -18,7 +18,7 @@ function pull_the_spicerack () {
     && git checkout ${BRANCH}
   sed "s/__G3HOME__/${G3HOME}/" ${G3HOME}/spicerack/.ssh/config.template ${G3HOME}/spicerack/.ssh/config
 }
-
+#
 function update_sshconfig () {
   mkdir -p ~/.ssh
   egrep 'Include ~/galaxy3/spicerack/.ssh/config.d/*' ~/.ssh/config \
