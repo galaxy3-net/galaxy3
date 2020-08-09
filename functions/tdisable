@@ -1,30 +1,3 @@
 #!/usr/bin/env bash
 
-DIRNAME=$(dirname ${0})
-SCRIPTNAME=$(basename ${0})
-SERVICENAME=${1}
-
-function enable () {
-  ls /repo/${SERVICENAME}/usr/sbin/${SERVICENAME} && cp /repo/${SERVICENAME}/usr/sbin/${SERVICENAME} /usr/sbin/.
-  ls /repo/${SERVICENAME}/etc/supervisor/conf.d/${SERVICENAME}.conf && cp /repo/${SERVICENAME}/etc/supervisor/conf.d/${SERVICENAME}.conf /etc/supervisor/conf.d/.
-  supervisorctl reload
-}
-
-function disable () {
-  ls /etc/supervisor/conf.d/${SERVICENAME}.conf && rm /etc/supervisor/conf.d/${SERVICENAME}.conf
-  supervisorctl reload
-  ls /repos/${SERVICENAME}/usr/sbin/${SERVICENAME}.disable.post && bash -c "/repos/${SERVICENAME}/usr/sbin/${SERVICENAME}.disable.post"
-}
-
-case ${SCRIPTNAME} in
-
-  tenable) enable
-          ;;
-
-  tdisable) disable
-          ;;
-
-  *) echo "unknown arg"
-    exit 1
-    ;;
-esac
+. ${G3HOME:-undefined}/bin/g3disable
