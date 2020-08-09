@@ -4,7 +4,8 @@
 
 userexists thedr || mk_thedr
 get_spicerack
-echo "export G3HOME=~/galaxy3" >> /etc/profile
+#echo "export G3HOME=~/galaxy3" >> /etc/profile
+echo "export G3HOME=/vagrant" >> /etc/profile
 echo "export G3GITHUB=https://github.com/galaxy3-net/" >> /etc/profile
 
 
