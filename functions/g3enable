@@ -3,7 +3,6 @@
 [ -x /vagrant/bin/g3common ] && . /vagrant/bin/g3common
 set -x
 DIRNAME=$(dirname ${0})
-SVCROOT=${G3HOME}/svc/
 SCRIPTNAME=$(basename ${0})
 SERVICENAME=${1}
 
