@@ -18,6 +18,9 @@ function fetch_eggs () {
   commit"
   cd ${G3HOME}/spicerack/eggs && git pull --allow-unrelated-histories && git merge origin origin/master
   tar -xvf ${G3HOME}/spicerack/eggs/eggs.tgz -C ${G3HOME}/spicerack/.ssh
+}
+
+function convert_files () {
   cd ${G3HOME}/spicerack/.ssh/config.d/
   for file in $(ls *.config)
   do
@@ -44,4 +47,5 @@ function fetch_the_golden_egg () {
 }
 
 get_spicerack
+convert_files
 fetch_eggs
