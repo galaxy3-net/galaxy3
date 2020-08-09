@@ -40,4 +40,4 @@ export GITPATH="${G3GITHUB}spicerack.git"
 #__EOD__
 
 pull_the_spicerack
-update_sshconfig
+#update_sshconfig
