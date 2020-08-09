@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-[ -x /vagrant/bin/g3common ] && . /vagrant/bin/g3common
 set -x
+[ -x /vagrant/bin/g3common ] && . /vagrant/bin/g3common
+
 DIRNAME=$(dirname ${0})
 SCRIPTNAME=$(basename ${0})
 SERVICENAME=${1}
