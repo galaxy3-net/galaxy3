@@ -7,6 +7,6 @@ case $(hostname) in
 
   naboo)
     export G3HOME=/vagrant
-    export ${G3HOME}/svc
+    export SVCROOT=${G3HOME}/svc
     ;;
 esac
