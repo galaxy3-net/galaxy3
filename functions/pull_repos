@@ -1,12 +1,14 @@
 #!/bin/bash
 
-
-
 userexists thedr || mk_thedr
 get_spicerack
 #echo "export G3HOME=~/galaxy3" >> /etc/profile
-echo "export G3HOME=~/galaxy3" >> /etc/profile
-echo "export G3GITHUB=https://github.com/galaxy3-net/" >> /etc/profile
+#echo "export G3HOME=~/galaxy3" >> /etc/profile
+#echo "export G3GITHUB=https://github.com/galaxy3-net/" >> /etc/profile
 
+cat <<__EOD__ > /etc/profile
+###  G3 Section  ###
+. /usr/local/bin/g3common
+__EOD__
 
 su - thedr -c gather_eggs
