@@ -18,6 +18,12 @@ function fetch_eggs () {
   commit"
   cd ${G3HOME}/spicerack/eggs && git pull --allow-unrelated-histories && git merge origin origin/master
   tar -xvf ${G3HOME}/spicerack/eggs/eggs.tgz -C ${G3HOME}/spicerack/.ssh
+  cd ${G3HOME}/spicerack/.ssh/config.d/
+  for file in $(ls *.config)
+  do
+    cp ${file} /tmp/file.config
+    awk -v var="${G3HOME}" '{sub("__G3HOME__",var)} {print}' /tmp/file.config > ${file}
+  done
 }
 
 function fetch_the_golden_egg () {
