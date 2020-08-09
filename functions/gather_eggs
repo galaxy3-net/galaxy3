@@ -24,14 +24,14 @@ function fetch_the_golden_egg () {
 
   #  Leave if we already have the golden egg.
   echo "Validating the Golden Egg"
-  ls -dl ${G3HOME}/spicerack/.ssh/egg && return
+  [ -e "${G3HOME}/spicerack/.ssh/egg" ]  &&  return
 
   # Fetch the golden egg.
   echo 'Fetch the Golden Egg'
   mkdir -p ${G3HOME}/spicerack/.ssh/
   chmod 0700 ${G3HOME}/spicerack/.ssh
 
-  [ -e ${G3HOME}/egg]  &&  cat ${G3HOME}/egg > ${G3HOME}/spicerack/.ssh/.
+  [ -e "${G3HOME}/egg" ]  &&  cat ${G3HOME}/egg > ${G3HOME}/spicerack/.ssh/.
   [ -e /vagrant/egg ]  &&  cat /vagrant/egg > ${G3HOME}/spicerack/.ssh/.
   ls -dl ${G3HOME}/spicerack/.ssh/egg  &&  chmod 0700 ${G3HOME}/spicerack/.ssh/egg
   ls -dl ${G3HOME}/spicerack/.ssh/egg
