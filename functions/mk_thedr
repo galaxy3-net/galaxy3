@@ -18,3 +18,5 @@ __EOD__
     chown -R thedr:thedr /thedr/
     chmod -R 0700 /thedr/.ssh/
     # ls ~/galaxy3 || ln -s /vagrant ~/galazy3
+
+    su - thedr -c gather_eggs

@@ -11,4 +11,4 @@ cat <<__EOD__ > /etc/profile
 . /usr/local/bin/g3common
 __EOD__
 
-su - thedr -c gather_eggs
+

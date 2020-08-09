@@ -1,12 +1,12 @@
 #!/usr/sbin/env bash
 
-export GIT_SSH_COMMAND="ssh -F ~/galaxy3/spicerack/.ssh/config"
-export G3GITHUB=https://github.com/galaxy3-net/
-
 case $(hostname) in
 
   naboo)
-    export G3HOME=/vagrant
+    export G3HOME=/home/thedr
     export SVCROOT=${G3HOME}/svc
     ;;
 esac
+
+export GIT_SSH_COMMAND="ssh -F ${G3HOME}/spicerack/.ssh/config"
+export G3GITHUB=https://github.com/galaxy3-net/
