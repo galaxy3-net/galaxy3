@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+[ -x /vagrant/bin/g3common ] && . /vagrant/bin/g3common
 set -x
 DIRNAME=$(dirname ${0})
 SVCROOT=${G3HOME}/svc/
