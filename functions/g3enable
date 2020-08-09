@@ -26,7 +26,7 @@ function disable () {
 case ${SCRIPTNAME} in
 
   g3enable)
-    get_repo ${SERVICENAME:-undefined} ${SERVICENAME:-undefined}:galaxy3-net/${SERVICENAME:-undefined}.git master
+    get_svc ${SERVICENAME:-undefined} ${SERVICENAME:-undefined}:galaxy3-net/${SERVICENAME:-undefined}.git master
     enable
     ;;
 
