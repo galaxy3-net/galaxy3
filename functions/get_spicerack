@@ -16,6 +16,7 @@ function pull_the_spicerack () {
     && cd ${G3HOME}/spicerack \
     && git pull \
     && git checkout ${BRANCH}
+  sed "s/__G3HOME__/${G3HOME}/" ${G3HOME}/spicerack/.ssh/config.template ${G3HOME}/spicerack/.ssh/config
 }
 
 function update_sshconfig () {
