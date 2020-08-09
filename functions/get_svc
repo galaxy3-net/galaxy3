@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -x
+
 REPO=${1}
 REPO_PATH=${2}
 BRANCH=${3}
