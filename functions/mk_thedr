@@ -19,7 +19,7 @@ __EOD__
     chmod -R 0700 /thedr/.ssh/
     # ls ~/galaxy3 || ln -s /vagrant ~/galazy3
 
-    cat <<__EOD__ > /etc/profile
+    cat <<__EOD__ >> /etc/profile
 ###  G3 Section  ###
 . /usr/local/bin/g3common
 __EOD__
