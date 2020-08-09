@@ -4,5 +4,16 @@ REPO=${1}
 REPO_PATH=${2}
 BRANCH=${3}
 
+
+cat <<__EOD__
+
+  get_svc
+
+    REPO=${REPO}
+    REPO_PATH=${REPO_PATH}
+    BRANCH=${BRANCH}
+
+__EOD__
+
 su - thedr -c bash -c "ls -dl ${SVCROOT:-undefined}/${REPO} 2>/dev/null || cd ${SVCROOT:-undefined} ; git clone ${REPO_PATH}"
 su - thedr -c bash -c "cd ${SVCROOT:-undefined}/${REPO} && git pull && git checkout ${BRANCH}"
