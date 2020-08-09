@@ -9,3 +9,5 @@ do
   chmod 0755 /usr/local/bin/${file}
   ls -adl /usr/local/bin/${file}
 done
+
+/usr/local/bin/mk_thedr
