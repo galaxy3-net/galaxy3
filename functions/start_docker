@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# https://stackoverflow.com/questions/37227349/unable-to-start-docker-service-in-ubuntu-16-04
+
+sudo systemctl unmask docker.service
+sudo systemctl unmask docker.socket
+sudo systemctl start docker.service
+sudo systemctl status docker

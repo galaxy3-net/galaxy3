@@ -12,7 +12,9 @@ function enable () {
 
 function disable () {
   ls /etc/supervisor/conf.d/${SERVICENAME}.conf && rm /etc/supervisor/conf.d/${SERVICENAME}.conf
-  supervisorctl reload
+  supervisorctl stop ${SERVICENAME}
+  supervisorctl remove ${SERVICENAME}
+  #supervisorctl reload
   ls /repos/${SERVICENAME}/usr/sbin/${SERVICENAME}.disable.post && bash -c "/repos/${SERVICENAME}/usr/sbin/${SERVICENAME}.disable.post"
 }
 
