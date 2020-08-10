@@ -17,5 +17,5 @@ cat <<__EOD__
 
 __EOD__
 
- "ls -dl ${SVCROOT:-undefined}/${REPO} 2>/dev/null || cd ${SVCROOT:-undefined} ; git clone ${REPO_PATH}"
+su - thedr -c bash -c "ls -dl ${SVCROOT:-undefined}/${REPO} 2>/dev/null || cd ${SVCROOT:-undefined} ; git clone ${REPO_PATH}"
 su - thedr -c bash -c "cd ${SVCROOT:-undefined}/${REPO} && git pull && git checkout ${BRANCH}"
