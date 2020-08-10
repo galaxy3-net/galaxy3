@@ -84,7 +84,7 @@ __EOD__
 case $(hostname) in
 
 
-  "naboo") setup_iptables
+  "naboo1") setup_iptables
     ;;
 
   *) which ufw && ufw allow 53
