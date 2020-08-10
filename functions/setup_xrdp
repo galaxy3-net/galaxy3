@@ -11,8 +11,8 @@ function setup_iptables () {
   cat <<__EOD__ >/etc/init.d/turn_off_iptables
 #!/bin/bash
 iptables -I INPUT -p tcp --dport 3389 -j ACCEPT
-service iptables save
-iptables restart
+#service iptables save
+#iptables restart
 __EOD__
 
   #    iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
@@ -32,6 +32,7 @@ __EOD__
   return
 }
 
+function install_pkgs () {
   case $(hostname) in
 
     "naboo")
@@ -45,6 +46,15 @@ __EOD__
       ;;
 
   esac
+
+  adduser xrdp ssl-cert
+  adduser xrdp tty
+
+
+  return
+}
+
+function extras () {
      mkdir -p /home/vagrant/.vnc
 
      cat <<__EOD__ > /home/vagrant/.vnc/xstartup
@@ -58,9 +68,10 @@ __EOD__
      chown -R vagrant:vagrant /home/vagrant/.vnc/
      chmod u+x /home/vagrant/.vnc/xstartup
 
-     adduser xrdp ssl-cert
-     adduser xrdp tty
+    return
+}
 
+function update_xwrapper () {
 cat <<__EOD__ > /etc/X11/Xwrapper.config
 # Xwrapper.config (Debian X Window System server wrapper configuration file)
 #
@@ -80,11 +91,15 @@ allowed_users=anybody
 needs_root_rights=no
 __EOD__
 
+  return
+}
 
 case $(hostname) in
 
 
-  "naboo1") setup_iptables
+  "naboo1")
+    install_pkgs
+    setup_iptables
     ;;
 
   *) which ufw && ufw allow 53
