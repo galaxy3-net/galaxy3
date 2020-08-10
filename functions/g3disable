@@ -15,7 +15,8 @@ function disable () {
   supervisorctl stop ${SERVICENAME}
   supervisorctl remove ${SERVICENAME}
   #supervisorctl reload
-  ls /repos/${SERVICENAME}/usr/sbin/${SERVICENAME}.disable.post && bash -c "/repos/${SERVICENAME}/usr/sbin/${SERVICENAME}.disable.post"
+  ls ${SVCROOT:-undefined}/${SERVICENAME}/usr/sbin/${SERVICENAME}.disable.post \
+    && bash -c "${SVCROOT:-undefined}/${SERVICENAME}/usr/sbin/${SERVICENAME}.disable.post"
 }
 
 case ${SCRIPTNAME} in
