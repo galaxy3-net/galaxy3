@@ -13,7 +13,7 @@ __EOD__
     useradd -d /thedr -c thedr -m -s /bin/bash -u 2001 -U thedr
     # ln -s /vagrant/spicerack/
     #mkdir -p /thedr/.ssh/config.d
-    mkdir -p /thedr/{.ssh,galaxy3}
+    mkdir -p /thedr/{.ssh,galaxy3,svc}
 
     chown -R thedr:thedr /thedr/
     chmod -R 0700 /thedr/.ssh/
