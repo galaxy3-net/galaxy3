@@ -20,10 +20,10 @@ function disable () {
 
 case ${SCRIPTNAME} in
 
-  tenable) enable
+  g3enable) enable
           ;;
 
-  tdisable) disable
+  g3disable) disable
           ;;
 
   *) echo "unknown arg"

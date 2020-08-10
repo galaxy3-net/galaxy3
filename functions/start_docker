@@ -4,5 +4,6 @@
 
 sudo systemctl unmask docker.service
 sudo systemctl unmask docker.socket
+sudo systemctl enable docker.service
 sudo systemctl start docker.service
 sudo systemctl status docker
