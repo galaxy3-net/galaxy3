@@ -2,7 +2,7 @@
 
 case $(hostname) in
 
-  naboo|endor|moodle)
+  naboo|endor|moodle|ucibox|kamino)
     export G3HOME=/thedr
     export SVCROOT=${G3HOME}/svc
     ;;
