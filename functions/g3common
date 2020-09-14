@@ -1,8 +1,9 @@
 #!/usr/sbin/env bash
 
+echo "Hostname $(hostname)"
 case $(hostname) in
 
-  naboo|endor|moodle|ucibox|kamino)
+  naboo|endor|moodle|ucibox|kamino|kalibox)
     export G3HOME=/thedr
     export SVCROOT=${G3HOME}/svc
     ;;

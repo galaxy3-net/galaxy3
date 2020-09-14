@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-. ${G3HOME}/bin/box ${*}
+${G3HOME}/bin/naboo ${*}
+
+# . ${G3HOME}/bin/box ${*}
