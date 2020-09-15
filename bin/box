@@ -176,6 +176,9 @@ case "${1}" in
   "halt" | "suspend")  halt ${*}
     ;;
 
+  "port") vagrant port
+    ;;
+
   "status") vagrant status
     ;;
 
