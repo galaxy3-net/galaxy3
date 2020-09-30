@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+${G3HOME}/bin/vulpter ${*}
+
+# . ${G3HOME}/bin/box ${*}
