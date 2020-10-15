@@ -167,7 +167,7 @@ case ${boxname} in
       ;;
 
   *)
-      get_machine ${boxname}
+      echo get_machine ${boxname}
       ;;
 esac
 
