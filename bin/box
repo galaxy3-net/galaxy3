@@ -161,6 +161,7 @@ echo " - - ${boxname} ${*} - -"
 case ${boxname} in
 
   'thebox')
+      echo "git clone  https://github.com/galaxy3-net/thebox.git ${HOME}/galaxy3/vagrant/${boxname}"
       ls ${HOME}/galaxy3/vagrant/${boxname} || \
       git clone  https://github.com/galaxy3-net/thebox.git ${HOME}/galaxy3/vagrant/${boxname}
       ;;
