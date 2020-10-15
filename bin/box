@@ -157,7 +157,18 @@ function ssh_rdp () {
 
 export boxname=$(basename ${0})
 echo " - - ${boxname} ${*} - -"
-get_machine ${boxname}
+
+case ${boxname} in
+
+  'thebox')
+      ls ${HOME}/galaxy3/vagrant/${boxname} || \
+      git clone  https://github.com/galaxy3-net/thebox.git ${HOME}/galaxy3/vagrant/${boxname}
+      ;;
+
+  *)
+      get_machine ${boxname}
+      ;;
+esac
 
 cd ${HOME}/galaxy3/vagrant/${boxname}
 Virtualbox_VMs
