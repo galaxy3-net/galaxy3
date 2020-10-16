@@ -166,7 +166,7 @@ case ${boxname} in
       echo "git clone  ${GIT_HUB}/${boxname}.git ${G3HOME}/vagrant/${boxname}"
       ls ${G3HOME}/vagrant/${boxname} || \
       git clone  ${GIT_HUB}/${boxname}.git ${G3HOME}/vagrant/${boxname}
-      (cd ${G3HOME}/vagrant/${boxname} && git checkout ${boxname})
+      (cd ${G3HOME}/vagrant/${boxname} && git checkout ${boxname} ; git pull)
       ;;
 
   *)
