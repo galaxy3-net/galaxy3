@@ -161,6 +161,7 @@ echo " - - ${boxname} ${*} - -"
 case ${boxname} in
 
   'thebox' | \
+  'vulpter' | \
   'naboo')
       echo "git clone  ${GIT_HUB}/${boxname}.git ${G3HOME}/vagrant/${boxname}"
       ls ${G3HOME}/vagrant/${boxname} || \
