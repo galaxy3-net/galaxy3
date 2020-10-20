@@ -162,6 +162,7 @@ case ${boxname} in
 
   'thebox' | \
   'vulpter' | \
+  'corellia' | \
   'naboo')
       echo "git clone  ${GIT_HUB}/${boxname}.git ${G3HOME}/vagrant/${boxname}"
       ls ${G3HOME}/vagrant/${boxname} || \
