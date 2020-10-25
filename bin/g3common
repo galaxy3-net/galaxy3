@@ -6,4 +6,11 @@ export GIT_HUB="https://github.com/galaxy3-net"
 
 export SVCROOT=${G3HOME}/svc/
 
-env | egrep GIT_SSH_COMMAND
+# env | egrep GIT_SSH_COMMAND
+
+cat <<EOD
+
+  G3HOME  -  ${G3HOME}
+  GIT_HUB -  ${GIT_HUB}
+
+EOD
