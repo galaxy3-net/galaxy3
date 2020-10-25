@@ -1,5 +1,6 @@
 #!/usr/sbin/env bash
 
+[ -z ${G3HOME} ] && export G3HOME=~/galaxy3
 export GIT_HUB="https://github.com/galaxy3-net"
 export GIT_SSH_COMMAND="ssh -F ~/galaxy3/spicerack/.ssh/config"
 
