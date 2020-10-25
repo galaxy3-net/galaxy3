@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-${G3HOME}/bin/corellia ${*}
+$(dirname ${0})/corellia ${*}
 
 # . ${G3HOME}/bin/box ${*}
