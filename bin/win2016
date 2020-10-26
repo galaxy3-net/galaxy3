@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+$(dirname ${0})/manaan ${*}
+
+# . ${G3HOME}/bin/box ${*}
