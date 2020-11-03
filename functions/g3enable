@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 set -x
-[ -x /vagrant/bin/g3common ] && . /vagrant/bin/g3common
+#[ -x /vagrant/bin/g3common ] && . /vagrant/bin/g3common
+source /Config/config
 
 DIRNAME=$(dirname ${0})
 SCRIPTNAME=$(basename ${0})
