@@ -1,6 +1,6 @@
 #!/usr/sbin/env bash
 
-function g3_config () {
+function create_g3_config () {
   cat <<eof > ${1}
 export GIT_HUB=${GIT_HUB}
 export SVCROOT=/svc
@@ -14,7 +14,7 @@ export GIT_HUB="https://github.com/galaxy3-net"
 export SVCROOT=${G3HOME}/svc/
 
 ls ${G3HOME}/.g3 || mkdir ${G3HOME}/.g3
-ls ${G3HOME}/.g3/config || create_g3config "${G3HOME}/.g3/config"
+ls ${G3HOME}/.g3/config || create_g3_config "${G3HOME}/.g3/config"
 
 # env | egrep GIT_SSH_COMMAND
 
