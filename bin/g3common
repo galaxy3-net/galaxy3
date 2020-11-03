@@ -5,6 +5,7 @@ function create_g3_config () {
 export GIT_HUB=${GIT_HUB}
 export SVCROOT=/svc
 eof
+chmod a+x ${1}
 }
 
 [ -z ${G3HOME} ] && export G3HOME=$(dirname ${0})
