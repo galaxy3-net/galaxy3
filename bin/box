@@ -166,6 +166,7 @@ case ${boxname} in
   'corellia' | \
   'manaan' | \
   'kamino' | \
+  'endor' | \
   'naboo')
       echo "git clone  ${GIT_HUB}/${boxname}.git ${G3HOME}/vagrant/${boxname}"
       ls ${G3HOME}/vagrant/${boxname} || \
