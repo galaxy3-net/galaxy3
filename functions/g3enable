@@ -19,7 +19,7 @@ function enable () {
 
 function disable () {
   set -x
-  echo enabling ${SERVICENAME}
+  echo enabling ${SERVICENAME}ls
   ls /etc/supervisor/conf.d/${SERVICENAME}.conf && rm /etc/supervisor/conf.d/${SERVICENAME}.conf
   supervisorctl reload
 }
@@ -28,7 +28,8 @@ case ${SCRIPTNAME} in
 
   g3enable)
     #su - thedr -c bash -c "get_svc ${SERVICENAME:-undefined} ${SERVICENAME:-undefined}:galaxy3-net/${SERVICENAME:-undefined}.git master"
-    get_svc ${SERVICENAME:-undefined} ${SERVICENAME:-undefined}:galaxy3-net/${SERVICENAME:-undefined}.git master
+    #get_svc ${SERVICENAME:-undefined} ${SERVICENAME:-undefined}:galaxy3-net/${SERVICENAME:-undefined}.git master
+    ls ${SVCROOT:-undefined} || git clone ${GIT_HUB}/${SERVICENAME}.git ${SVCROOT:-undefined}/${SERVICENAME}
     enable
     ;;
 
