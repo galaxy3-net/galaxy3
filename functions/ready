@@ -10,4 +10,4 @@ do
   ls -adl /usr/local/bin/${file}
 done
 
-/usr/local/bin/mk_thedr
+#/usr/local/bin/mk_thedr
