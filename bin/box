@@ -185,8 +185,6 @@ case ${boxname} in
 esac
 
 echo "Dir ${HOME}/galaxy3/vagrant/${boxname}"
-ls -dl ${HOME}/galaxy3/vagrant/${boxname}
-ls -l ${HOME}/galaxy3/vagrant/${boxname}
 
 cd ${HOME}/galaxy3/vagrant/${boxname}
 Virtualbox_VMs
