@@ -161,7 +161,7 @@ function git_clone () {
 }
 
 function git_update () {
-  (cd ${G3HOME}/vagrant/${boxname} && git checkout ${boxname} ; git pull)
+  cd ${G3HOME}/vagrant/${boxname} && git checkout ${boxname} ; git pull
 }
 
 export boxname=$(basename ${0})
