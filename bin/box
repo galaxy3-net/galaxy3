@@ -22,7 +22,7 @@ function reload () {
     "poweroff" | "saved" | "running" | "aborted") vagrant ${*}
       ;;
 
-    "not_created") dir_exists || vagrant ${*}
+    "not_created") dir_exists || git_update && vagrant ${*}
       ;;
 
     *) echo "state is $(state)"
@@ -154,12 +154,20 @@ function ssh_rdp () {
   return
 }
 
+function git_clone () {
+      echo "git clone  ${GIT_HUB}/${boxname}.git ${G3HOME}/vagrant/${boxname}"
+      git clone  ${GIT_HUB}/${boxname}.git ${G3HOME}/vagrant/${boxname}
+      cd ${G3HOME}/vagrant/${boxname} && git checkout ${boxname} ; git pull
+}
+
+function git_update () {
+  (cd ${G3HOME}/vagrant/${boxname} && git checkout ${boxname} ; git pull)
+}
 
 export boxname=$(basename ${0})
 echo " - - ${boxname} ${*} - -"
 
 case ${boxname} in
-
 
   'thebox' | \
   'vulpter' | \
@@ -168,10 +176,7 @@ case ${boxname} in
   'kamino' | \
   'endor' | \
   'naboo')
-      echo "git clone  ${GIT_HUB}/${boxname}.git ${G3HOME}/vagrant/${boxname}"
-      ls ${G3HOME}/vagrant/${boxname} || \
-      git clone  ${GIT_HUB}/${boxname}.git ${G3HOME}/vagrant/${boxname}
-      cd ${G3HOME}/vagrant/${boxname} && git checkout ${boxname} ; git pull
+      ls ${G3HOME}/vagrant/${boxname} || git_clone
       ;;
 
   *)
