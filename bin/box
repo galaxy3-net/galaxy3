@@ -160,7 +160,7 @@ function git_clone () {
       cd ${G3HOME}/vagrant/${boxname} && git checkout ${boxname} ; git pull
 }
 
-function git_update ()
+function git_update () {
   echo "Pulling Update for repo ${G3HOME}/vagrant/${boxname}"
   cd ${G3HOME}/vagrant/${boxname} && git checkout ${boxname} ; git pull
 }
