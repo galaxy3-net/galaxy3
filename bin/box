@@ -19,7 +19,7 @@ function reload () {
 
   case "$(state)" in
 
-    "poweroff" | "saved" | "running" | "aborted") vagrant ${*}
+    "poweroff" | "saved" | "running" | "aborted") git_update && vagrant ${*}
       ;;
 
     "not_created") dir_exists || git_update && vagrant ${*}
@@ -40,10 +40,10 @@ function up () {
       printf "\n\t${boxname} is already running\n\n"
       ;;
 
-    "poweroff" | "saved" | "aborted") vagrant ${*}
+    "poweroff" | "saved" | "aborted") git_update &&  vagrant ${*}
       ;;
 
-    "not_created") dir_exists || vagrant ${*}
+    "not_created") dir_exists || git_update && vagrant ${*}
       ;;
 
     *) echo "state is $(state)"
@@ -56,7 +56,7 @@ function up () {
 function resume () {
   case "$(state)" in
 
-    "saved")  vagrant ${*}
+    "saved")  git_update && vagrant ${*}
       ;;
 
     *) echo "state is $(state)"
