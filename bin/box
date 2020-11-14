@@ -163,6 +163,7 @@ function git_clone () {
 function git_update () {
   echo "Pulling Update for repo ${G3HOME}/vagrant/${boxname}"
   cd ${G3HOME}/vagrant/${boxname} && git checkout ${boxname} ; git pull
+  get_inventory
 }
 
 function get_inventory () {
