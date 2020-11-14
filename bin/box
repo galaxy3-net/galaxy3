@@ -170,6 +170,10 @@ function get_inventory () {
   curl -o ${G3HOME}/vagrant/${boxname}/hosts https://raw.githubusercontent.com/galaxy3-net/pkgs/main/files/etc/ansible/hosts
 }
 
+function get_ansible_requirements () {
+  curl -o ${G3HOME}/vagrant/${boxname}/requirements.txt https://raw.githubusercontent.com/galaxy3-net/pkgs/main/files/etc/ansible/
+}
+
 export boxname=$(basename ${0})
 echo " - - ${boxname} ${*} - -"
 
