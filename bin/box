@@ -155,15 +155,18 @@ function ssh_rdp () {
 }
 
 function git_clone () {
-      echo "git clone  ${GIT_HUB}/${boxname}.git ${G3HOME}/vagrant/${boxname}"
-      git clone  ${GIT_HUB}/${boxname}.git ${G3HOME}/vagrant/${boxname}
-      cd ${G3HOME}/vagrant/${boxname} && git checkout ${boxname} ; git pull
+  echo "git clone  ${GIT_HUB}/${boxname}.git ${G3HOME}/vagrant/${boxname}"
+  git clone  ${GIT_HUB}/${boxname}.git ${G3HOME}/vagrant/${boxname}
+  cd ${G3HOME}/vagrant/${boxname} && git checkout ${boxname} ; git pull
+  get_inventory
+  get_ansible_requirements
 }
 
 function git_update () {
   echo "Pulling Update for repo ${G3HOME}/vagrant/${boxname}"
   cd ${G3HOME}/vagrant/${boxname} && git checkout ${boxname} ; git pull
   get_inventory
+  get_ansible_requirements
 }
 
 function get_inventory () {
