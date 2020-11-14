@@ -189,7 +189,9 @@ case ${boxname} in
   'kamino' | \
   'endor' | \
   'naboo')
+
       ls ${G3HOME}/vagrant/${boxname} || git_clone
+      get_ansible_requirements
       ;;
 
   *)
