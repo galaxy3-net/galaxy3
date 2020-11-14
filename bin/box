@@ -165,6 +165,10 @@ function git_update () {
   cd ${G3HOME}/vagrant/${boxname} && git checkout ${boxname} ; git pull
 }
 
+function get_inventory () {
+  curl -o ${G3HOME}/vagrant/${boxname}/hosts https://raw.githubusercontent.com/galaxy3-net/pkgs/main/files/etc/ansible/hosts
+}
+
 export boxname=$(basename ${0})
 echo " - - ${boxname} ${*} - -"
 
