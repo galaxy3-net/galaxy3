@@ -174,7 +174,7 @@ function get_inventory () {
 }
 
 function get_ansible_requirements () {
-  curl -o ${G3HOME}/vagrant/${boxname}/requirements.txt https://raw.githubusercontent.com/galaxy3-net/pkgs/main/files/etc/ansible/
+  curl -o ${G3HOME}/vagrant/${boxname}/requirements.yml https://raw.githubusercontent.com/galaxy3-net/pkgs/main/files/etc/ansible/
 }
 
 export boxname=$(basename ${0})
@@ -189,9 +189,7 @@ case ${boxname} in
   'kamino' | \
   'endor' | \
   'naboo')
-
       ls ${G3HOME}/vagrant/${boxname} || git_clone
-      get_ansible_requirements
       ;;
 
   *)
