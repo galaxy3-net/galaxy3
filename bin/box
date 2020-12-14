@@ -170,13 +170,11 @@ function git_update () {
 }
 
 function get_inventory () {
-#  curl -o ${G3HOME}/vagrant/${boxname}/hosts https://raw.githubusercontent.com/galaxy3-net/pkgs/main/files/etc/ansible/hosts
-  curl -o ${G3HOME}/vagrant/${boxname}/hosts https://armory.galaxy3.net/vagrant/pkgs/files/etc/ansible/hosts
+  curl -L -o ${G3HOME}/vagrant/${boxname}/hosts https://armory.galaxy3.net/vagrant/pkgs/files/etc/ansible/hosts
 }
 
 function get_ansible_requirements () {
-#  curl -o ${G3HOME}/vagrant/${boxname}/requirements.yml https://raw.githubusercontent.com/galaxy3-net/pkgs/main/files/etc/ansible/requirements.yml
-  curl -o ${G3HOME}/vagrant/${boxname}/requirements.yml https://armory.galaxy3.net/vagrant/pkgs/files/etc/ansible/requirements.yml
+  curl -L -o ${G3HOME}/vagrant/${boxname}/requirements.yml https://armory.galaxy3.net/vagrant/pkgs/files/etc/ansible/requirements.yml
 }
 
 export boxname=$(basename ${0})
