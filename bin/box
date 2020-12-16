@@ -182,6 +182,7 @@ echo " - - ${boxname} ${*} - -"
 
 case ${boxname} in
 
+  'bespin' | \
   'thebox' | \
   'vulpter' | \
   'corellia' | \
