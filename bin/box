@@ -189,12 +189,12 @@ function get_ansible_requirements () {
 [ "${VBOX_DIR:-notset}" == "notset" ] && export VBOX_DIR="$(vbox_dir)"
 cat <<__EOD__
 
-  Default Virtialbox VM Directory: ${VBOX_DIR}
+  Default Virtualbox VM Directory: ${VBOX_DIR}
 
 __EOD__
 
 export boxname=$(basename ${0})
-echo " - - ${boxname} ${*} - -"
+printf "\n - - ${boxname} ${*} - -\n"
 
 
 case ${boxname} in
