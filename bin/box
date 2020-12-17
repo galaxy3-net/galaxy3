@@ -202,7 +202,9 @@ esac
 
 echo "Dir ${HOME}/galaxy3/vagrant/${boxname}"
 
-cd ${HOME}/galaxy3/vagrant/${boxname}
+#cd ${HOME}/galaxy3/vagrant/${boxname}
+cd ${G3HOME}/vagrant/${boxname}
+
 Virtualbox_VMs
 
 case "${1}" in
