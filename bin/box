@@ -171,7 +171,6 @@ function git_update () {
 }
 
 function manage_plugins () {
-  declare -a plugins
   plugins=(vagrant-vbguest micromachine)
   for plugin in $(plugins)
   do
