@@ -182,11 +182,11 @@ function manage_plugins () {
 }
 
 function get_inventory () {
-  curl -L -o ${G3HOME}/vagrant/${boxname}/hosts https://armory.galaxy3.net/vagrant/pkgs/files/etc/ansible/hosts
+  curl -sL -o ${G3HOME}/vagrant/${boxname}/hosts https://armory.galaxy3.net/vagrant/pkgs/files/etc/ansible/hosts
 }
 
 function get_ansible_requirements () {
-  curl -L -o ${G3HOME}/vagrant/${boxname}/requirements.yml https://armory.galaxy3.net/vagrant/pkgs/files/etc/ansible/requirements.yml
+  curl -sL -o ${G3HOME}/vagrant/${boxname}/requirements.yml https://armory.galaxy3.net/vagrant/pkgs/files/etc/ansible/requirements.yml
 }
 
 export boxname=$(basename ${0})
