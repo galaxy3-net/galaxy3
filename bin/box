@@ -122,12 +122,12 @@ __EOD__
 }
 
 function Virtualbox_VMs () {
-  ls -d "$(vbox_dir)" && return
+  ls -d "${VBOX_DIR}" && return
 
   cat <<__EOD__
 
   Either Virtualbox is not installed or the default machine directory
-  $(vbox_dir) has been changed.
+  ${VBOX_DIR} has been changed.
 
 __EOD__
 
@@ -196,7 +196,6 @@ __EOD__
 export boxname=$(basename ${0})
 echo " - - ${boxname} ${*} - -"
 
-echo "vbox_dir is $(vbox_dir)"
 
 case ${boxname} in
 
