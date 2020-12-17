@@ -161,7 +161,6 @@ function git_update () {
   cd ${G3HOME}/vagrant/${boxname} && git checkout ${boxname} ; git pull
   get_inventory
   get_ansible_requirements
-  echo "Installing/Updating vagrant plugins"
 }
 
 function manage_plugins () {
@@ -169,7 +168,7 @@ function manage_plugins () {
   plugins=(vagrant-vbguest micromachine)
   for plugin in ${plugins[@]}
   do
-    echo "Vagrant - checking - ${plugin}"
+    echo "Vagrant - checking plugin - ${plugin}"
     vagrant plugin list | egrep "${plugin}" || vagrant plugin install ${plugin}
   done
 
@@ -183,12 +182,18 @@ function get_ansible_requirements () {
   curl -sL -o ${G3HOME}/vagrant/${boxname}/requirements.yml https://armory.galaxy3.net/vagrant/pkgs/files/etc/ansible/requirements.yml
 }
 
+function die () {
+    echo "${1}"
+    exit 1
+}
 
 . $(dirname ${0})/g3common
 
 export boxname=$(basename ${0})
 
 [ "${VBOX_DIR:-notset}" == "notset" ] && export VBOX_DIR="$(vbox_dir)"
+
+export BOX_DIR="${G3HOME}/vagrant/${boxname}"
 
 cat <<__EOD__
 
@@ -198,30 +203,11 @@ cat <<__EOD__
 
 __EOD__
 
-stat ${G3HOME}/vagrant/${boxname} || git_clone
+stat "${BOX_DIR}" || git_clone
 
-#case ${boxname} in
-#
-#  'bespin' | \
-#  'thebox' | \
-#  'vulpter' | \
-#  'corellia' | \
-#  'manaan' | \
-#  'kamino' | \
-#  'endor' | \
-#  'naboo')
-#      stat ${G3HOME}/vagrant/${boxname} || git_clone
-#      ;;
-#
-#  *)
-#      echo get_machine ${boxname}
-#      ;;
-#esac
+#echo "Dir ${HOME}/galaxy3/vagrant/${boxname}"
 
-echo "Dir ${HOME}/galaxy3/vagrant/${boxname}"
-
-#cd ${HOME}/galaxy3/vagrant/${boxname}
-cd ${G3HOME}/vagrant/${boxname}
+cd ""${BOX_DIR}" || die "${BOX_DIR} directory does not exist"
 
 Virtualbox_VMs
 
