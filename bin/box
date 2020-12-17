@@ -1,15 +1,5 @@
 #!/usr/bin/env bash
 
-. $(dirname ${0})/g3common
-
-[ "${VBOX_DIR:-notset}" == "notset" ] && export VBOX_DIR="${HOME}/VirtualBox VMs/"
-cat <<__EOD__
-
-  Default Virtialbox VM Directory: $(vbox_dir)
-
-__EOD__
-
-
 function state () {
   # echo "Checking the state" >&2
   echo $(vagrant status --machine-readable | egrep 'default,state' | grep -v "human" | awk -F, '{print $4}')
@@ -192,6 +182,16 @@ function get_inventory () {
 function get_ansible_requirements () {
   curl -sL -o ${G3HOME}/vagrant/${boxname}/requirements.yml https://armory.galaxy3.net/vagrant/pkgs/files/etc/ansible/requirements.yml
 }
+
+
+. $(dirname ${0})/g3common
+
+[ "${VBOX_DIR:-notset}" == "notset" ] && export VBOX_DIR="${HOME}/VirtualBox VMs/"
+cat <<__EOD__
+
+  Default Virtialbox VM Directory: $(vbox_dir)
+
+__EOD__
 
 export boxname=$(basename ${0})
 echo " - - ${boxname} ${*} - -"
