@@ -122,7 +122,7 @@ __EOD__
 }
 
 function Virtualbox_VMs () {
-  ls -d "${VBOX_DIR}" && return
+  ls -d "$(vbox_dir)" && return
 
   cat <<__EOD__
 
