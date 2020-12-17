@@ -127,7 +127,7 @@ function Virtualbox_VMs () {
   cat <<__EOD__
 
   Either Virtualbox is not installed or the default machine directory
-  ${VBOX_DIR} has been changed.
+  $(vbox_dir) has been changed.
 
 __EOD__
 
@@ -186,7 +186,7 @@ function get_ansible_requirements () {
 
 . $(dirname ${0})/g3common
 
-[ "${VBOX_DIR:-notset}" == "notset" ] && export VBOX_DIR="${VBOX_DIR}"
+[ "${VBOX_DIR:-notset}" == "notset" ] && export VBOX_DIR="$(vbox_dir)"
 cat <<__EOD__
 
   Default Virtialbox VM Directory: $(vbox_dir)
