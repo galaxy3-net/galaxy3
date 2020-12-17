@@ -185,8 +185,11 @@ function get_ansible_requirements () {
 
 
 . $(dirname ${0})/g3common
+
 export boxname=$(basename ${0})
+
 [ "${VBOX_DIR:-notset}" == "notset" ] && export VBOX_DIR="$(vbox_dir)"
+
 cat <<__EOD__
 
   Default Virtualbox VM Directory: ${VBOX_DIR}
@@ -195,27 +198,25 @@ cat <<__EOD__
 
 __EOD__
 
+stat ${G3HOME}/vagrant/${boxname} || git_clone
 
-# printf "\n - - ${boxname} ${*} - -\n\n"
-
-
-case ${boxname} in
-
-  'bespin' | \
-  'thebox' | \
-  'vulpter' | \
-  'corellia' | \
-  'manaan' | \
-  'kamino' | \
-  'endor' | \
-  'naboo')
-      stat ${G3HOME}/vagrant/${boxname} || git_clone
-      ;;
-
-  *)
-      echo get_machine ${boxname}
-      ;;
-esac
+#case ${boxname} in
+#
+#  'bespin' | \
+#  'thebox' | \
+#  'vulpter' | \
+#  'corellia' | \
+#  'manaan' | \
+#  'kamino' | \
+#  'endor' | \
+#  'naboo')
+#      stat ${G3HOME}/vagrant/${boxname} || git_clone
+#      ;;
+#
+#  *)
+#      echo get_machine ${boxname}
+#      ;;
+#esac
 
 echo "Dir ${HOME}/galaxy3/vagrant/${boxname}"
 
