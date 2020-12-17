@@ -56,7 +56,7 @@ function up () {
 function resume () {
   case "$(state)" in
 
-    "saved")  git_update && vagrant ${*}
+    "saved")  git_update && manage_plugins && vagrant ${*}
       ;;
 
     *) echo "state is $(state)"
@@ -171,6 +171,7 @@ function git_update () {
 }
 
 function manage_plugins () {
+  vagrant plugin update
   plugins=(vagrant-vbguest micromachine)
   for plugin in ${plugins[@]}
   do
