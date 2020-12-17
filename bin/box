@@ -167,6 +167,8 @@ function git_update () {
   cd ${G3HOME}/vagrant/${boxname} && git checkout ${boxname} ; git pull
   get_inventory
   get_ansible_requirements
+  echo "Installing/Updating vagrant plugins"
+  vagrant plugin install vagrant-vbguest
 }
 
 function get_inventory () {
