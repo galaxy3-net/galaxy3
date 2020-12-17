@@ -40,10 +40,10 @@ function up () {
       printf "\n\t${boxname} is already running\n\n"
       ;;
 
-    "poweroff" | "saved" | "aborted") git_update &&  vagrant ${*}
+    "poweroff" | "saved" | "aborted") git_update && manage_plugins &&  vagrant ${*}
       ;;
 
-    "not_created") dir_exists || git_update && vagrant ${*}
+    "not_created") dir_exists || git_update && manage_plugins && vagrant ${*}
       ;;
 
     *) echo "state is $(state)"
@@ -168,7 +168,16 @@ function git_update () {
   get_inventory
   get_ansible_requirements
   echo "Installing/Updating vagrant plugins"
-  vagrant plugin list | egrep vagrant-vbguest || vagrant plugin install vagrant-vbguest
+}
+
+function manage_plugins () {
+  declare -a plugins
+  plugins = (vagrant-vbguest micromachine)
+  for plugin in $(plugins)
+  do
+    vagrant plugin list | egrep "${plugin}" || vagrant plugin install ${plugin}
+  done
+
 }
 
 function get_inventory () {
