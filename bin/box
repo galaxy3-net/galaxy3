@@ -191,10 +191,12 @@ cat <<__EOD__
 
   Default Virtualbox VM Directory: ${VBOX_DIR}
 
+  - - ${boxname} ${*} - -
+
 __EOD__
 
 export boxname=$(basename ${0})
-printf "\n - - ${boxname} ${*} - -\n\n"
+# printf "\n - - ${boxname} ${*} - -\n\n"
 
 
 case ${boxname} in
