@@ -15,6 +15,10 @@ function state () {
   echo $(vagrant status --machine-readable | egrep 'default,state' | grep -v "human" | awk -F, '{print $4}')
 }
 
+function vbox_dir () {
+  return $(VBoxManage list systemproperties | egrep '^Default machine folder' | awk -F: "{print $2}")
+}
+
 function reload () {
 
   case "$(state)" in
@@ -191,6 +195,8 @@ function get_ansible_requirements () {
 
 export boxname=$(basename ${0})
 echo " - - ${boxname} ${*} - -"
+
+echo "vbox_dir is $(vbox_dir)"
 
 case ${boxname} in
 
