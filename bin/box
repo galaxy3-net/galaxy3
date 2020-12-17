@@ -168,7 +168,7 @@ function git_update () {
   get_inventory
   get_ansible_requirements
   echo "Installing/Updating vagrant plugins"
-  vagrant plugin install vagrant-vbguest
+  vagrant plugin list | egrep vagrant-vbguest || plugin install vagrant-vbguest
 }
 
 function get_inventory () {
