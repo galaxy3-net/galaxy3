@@ -6,7 +6,7 @@ function state () {
 }
 
 function vbox_dir () {
-  echo $(VBoxManage list systemproperties | egrep '^Default machine folder' | awk -F: "{print $2}")
+  echo $(VBoxManage list systemproperties | egrep '^Default machine folder' | cut -d: -f2 | awk '{$2=$2};2')
 }
 
 function reload () {
