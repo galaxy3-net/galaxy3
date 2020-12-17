@@ -172,7 +172,7 @@ function git_update () {
 
 function manage_plugins () {
   plugins=(vagrant-vbguest micromachine)
-  for plugin in $(plugins)
+  for plugin in ${plugins}
   do
     vagrant plugin list | egrep "${plugin}" || vagrant plugin install ${plugin}
   done
