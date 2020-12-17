@@ -185,7 +185,7 @@ function get_ansible_requirements () {
 
 
 . $(dirname ${0})/g3common
-
+export boxname=$(basename ${0})
 [ "${VBOX_DIR:-notset}" == "notset" ] && export VBOX_DIR="$(vbox_dir)"
 cat <<__EOD__
 
@@ -195,7 +195,7 @@ cat <<__EOD__
 
 __EOD__
 
-export boxname=$(basename ${0})
+
 # printf "\n - - ${boxname} ${*} - -\n\n"
 
 
