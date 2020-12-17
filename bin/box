@@ -207,7 +207,7 @@ stat "${BOX_DIR}" || git_clone
 
 #echo "Dir ${HOME}/galaxy3/vagrant/${boxname}"
 
-cd ""${BOX_DIR}" || die "${BOX_DIR} directory does not exist"
+cd "${BOX_DIR}" || die "${BOX_DIR} directory does not exist"
 
 Virtualbox_VMs
 
