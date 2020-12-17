@@ -5,7 +5,7 @@
 [ "${VBOX_DIR:-notset}" == "notset" ] && export VBOX_DIR="${HOME}/VirtualBox VMs/"
 cat <<__EOD__
 
-  Default Virtialbox VM Directory: ${VBOX_DIR}
+  Default Virtialbox VM Directory: $(vbox_dir)
 
 __EOD__
 
@@ -16,7 +16,7 @@ function state () {
 }
 
 function vbox_dir () {
-  return $(VBoxManage list systemproperties | egrep '^Default machine folder' | awk -F: "{print $2}")
+  echo $(VBoxManage list systemproperties | egrep '^Default machine folder' | awk -F: "{print $2}")
 }
 
 function reload () {
