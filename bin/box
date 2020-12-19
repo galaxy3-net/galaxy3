@@ -5,8 +5,14 @@ function state () {
   echo $(vagrant status --machine-readable | egrep 'default,state' | grep -v "human" | awk -F, '{print $4}')
 }
 
+#function vbox_dir () {
+
+  #echo $(VBoxManage list systemproperties | egrep '^Default machine folder' | cut -d: -f2 | awk '{$2=$2};2')
+#}
+
 function vbox_dir () {
-  echo $(VBoxManage list systemproperties | egrep '^Default machine folder' | cut -d: -f2 | awk '{$2=$2};2')
+  echo $(VBoxManage list systemproperties | egrep '^Default machine folder' | sed 's/^Default machine folder://' |\
+  sed 's/^[ ]*//')
 }
 
 function reload () {
