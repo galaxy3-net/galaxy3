@@ -193,6 +193,7 @@ export boxname=$(basename ${0})
 
 which VBoxManage || export PATH=/c/Program\ Files/Oracle/VirtualBox:${PATH}
 echo ${PATH}
+which VBoxManage
 [ "${VBOX_DIR:-notset}" == "notset" ] && export VBOX_DIR="$(vbox_dir)"
 
 export BOX_DIR="${G3HOME}/vagrant/${boxname}"
