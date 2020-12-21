@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
 
+script -a /tmp/${1}.log
+exec 2>&1
+
 function state () {
   # echo "Checking the state" >&2
   echo $(vagrant status --machine-readable | egrep 'default,state' | grep -v "human" | awk -F, '{print $4}')
 }
-
-#function vbox_dir () {
-
-  #echo $(VBoxManage list systemproperties | egrep '^Default machine folder' | cut -d: -f2 | awk '{$2=$2};2')
-#}
 
 function vbox_dir () {
   echo $(VBoxManage list systemproperties | egrep '^Default machine folder' | sed 's/^Default machine folder://' |\
