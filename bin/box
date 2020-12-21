@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-exec >> /tmp/$(basename ${0}).log
-exec 2>&1
-
 function state () {
   # echo "Checking the state" >&2
   echo $(vagrant status --machine-readable | egrep 'default,state' | grep -v "human" | awk -F, '{print $4}')
