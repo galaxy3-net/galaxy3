@@ -14,7 +14,7 @@ function reload () {
 
   case "$(state)" in
 
-    "poweroff" | "saved" | "running" | "aborted") git_update && vagrant ${*}
+    "poweroff" | "saved" | "running" | "aborted") git_update && clean_vagrantfile && vagrant ${*}
       ;;
 
     "not_created") dir_exists || git_update && vagrant ${*}
@@ -35,10 +35,10 @@ function up () {
       printf "\n\t${boxname} is already running\n\n"
       ;;
 
-    "poweroff" | "saved" | "aborted") git_update && manage_plugins &&  vagrant ${*}
+    "poweroff" | "saved" | "aborted") git_update && manage_plugins && clean_vagrantfile && vagrant ${*}
       ;;
 
-    "not_created") dir_exists || git_update && manage_plugins && vagrant ${*}
+    "not_created") dir_exists || git_update && manage_plugins && clean_vagrantfile && vagrant ${*}
       ;;
 
     *) echo "state is $(state)"
@@ -51,7 +51,7 @@ function up () {
 function resume () {
   case "$(state)" in
 
-    "saved")  git_update && manage_plugins && vagrant ${*}
+    "saved")  git_update && manage_plugins && clean_vagrantfile && vagrant ${*}
       ;;
 
     *) echo "state is $(state)"
@@ -82,6 +82,14 @@ function suspend () {
        ;;
   esac
   return
+}
+
+function clean_vagrantfile () {
+  if [ "${MINGW_CHOST:=undefined}" != "undefined" ]
+  then
+    cp Vagrantfile Vagrantfile.tmp
+    sed -v 'nicpromisc0|nictype0' Vagrantfile.tmp > Vagrantfile
+    rm Vagrantfile.tmp
 }
 
 function destroy () {
