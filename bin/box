@@ -87,7 +87,7 @@ function suspend () {
 function clean_vagrantfile () {
   if [ "${MINGW_CHOST:=undefined}" != "undefined" ]
   then
-    cp Vagrantfile Vagrantfile.tmp
+    mv Vagrantfile Vagrantfile.tmp
     grep -v 'nicpromisc0|nictype0' Vagrantfile.tmp > Vagrantfile
     rm Vagrantfile.tmp
   fi
