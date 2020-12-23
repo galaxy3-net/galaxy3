@@ -90,6 +90,7 @@ function clean_vagrantfile () {
     cp Vagrantfile Vagrantfile.tmp
     sed -v 'nicpromisc0|nictype0' Vagrantfile.tmp > Vagrantfile
     rm Vagrantfile.tmp
+  fi
 }
 
 function destroy () {
