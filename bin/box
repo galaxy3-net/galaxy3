@@ -85,6 +85,14 @@ function suspend () {
 }
 
 function clean_vagrantfile () {
+  cat <<<__EOD__
+
+  Checking OS
+
+  ${MINGW_CHOST:=undefined}
+
+__EOD__
+
   if [ "${MINGW_CHOST:=undefined}" != "undefined" ]
   then
     mv Vagrantfile Vagrantfile.tmp
