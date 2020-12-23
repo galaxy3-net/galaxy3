@@ -85,7 +85,6 @@ function suspend () {
 }
 
 function clean_vagrantfile () {
-  set -x
   cat <<__EOD__
 
   Checking OS
@@ -97,7 +96,7 @@ __EOD__
   if [ "${MINGW_CHOST:=undefined}" != "undefined" ]
   then
     mv Vagrantfile Vagrantfile.tmp
-    grep -v 'nicpromisc0|nictype0' Vagrantfile.tmp > Vagrantfile
+    egrep -v 'nicpromisc0|nictype0' Vagrantfile.tmp > Vagrantfile
     rm Vagrantfile.tmp
   fi
 }
