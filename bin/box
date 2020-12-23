@@ -85,7 +85,7 @@ function suspend () {
 }
 
 function clean_vagrantfile () {
-  cat <<<__EOD__
+  cat <<__EOD__
 
   Checking OS
 
