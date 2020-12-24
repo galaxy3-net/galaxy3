@@ -15,7 +15,7 @@ function reload () {
 
   case "$(state)" in
 
-    "poweroff" | "saved" | "running" | "aborted") git_update && clean_vagrantfile && vagrant ${*}
+    "poweroff" | "saved" | "running" | "aborted" | "") git_update && clean_vagrantfile && vagrant ${*}
       ;;
 
     "not_created") dir_exists || git_update && vagrant ${*}
