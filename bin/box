@@ -36,7 +36,7 @@ function up () {
       printf "\n\t${boxname} is already running\n\n"
       ;;
 
-    "poweroff" | "saved" | "aborted") git_update && manage_plugins && clean_vagrantfile && vagrant ${*}
+    "poweroff" | "saved" | "aborted" | "") git_update && manage_plugins && clean_vagrantfile && vagrant ${*}
       ;;
 
     "not_created") dir_exists || git_update && manage_plugins && clean_vagrantfile && vagrant ${*}
