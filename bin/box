@@ -21,7 +21,7 @@ function reload () {
     "not_created") dir_exists || git_update && vagrant ${*}
       ;;
 
-    *) echo "state is $(state)"
+    *) echo "state is ($(state))"
       exit 1
       ;;
   esac
@@ -42,7 +42,7 @@ function up () {
     "not_created") dir_exists || git_update && manage_plugins && clean_vagrantfile && vagrant ${*}
       ;;
 
-    *) echo "state is $(state)"
+    *) echo "state is ($(state))"
       exit 1
       ;;
   esac
