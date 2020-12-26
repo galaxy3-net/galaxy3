@@ -3,7 +3,7 @@
 function state () {
   # echo "Checking the state" >&2
   #echo $(vagrant status --machine-readable | egrep 'default,state' | grep -v "human" | awk -F, '{print $4}')
-  echo $(vagrant global-status | egrep "${boxname}" | awk '{print $4}' | uniq)
+  echo $(vagrant global-status --prune | egrep "${boxname}" | awk '{print $4}' | uniq)
 }
 
 function vbox_dir () {
