@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+${G3HOME}/bin/bahryn ${*} 2>&1 | tee -a /tmp/bahryn.log
