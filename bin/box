@@ -184,7 +184,7 @@ function git_update () {
 
 function manage_plugins () {
   vagrant plugin update
-  plugins=(vagrant-vbguest micromachine)
+  plugins=(vagrant-vbguest micromachine vagrant-disksize)
   for plugin in ${plugins[@]}
   do
     echo "Vagrant - checking plugin - ${plugin}"
