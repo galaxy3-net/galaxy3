@@ -41,7 +41,7 @@ function up () {
     not_created) dir_exists || git_update && manage_plugins && clean_vagrantfile && vagrant ${*}
       ;;
 
-    *) echo "state is ($(state))"
+    *) echo "Cannot start, state is ($(state))"
       exit 1
       ;;
   esac
@@ -54,7 +54,7 @@ function resume () {
     "saved")  git_update && manage_plugins && clean_vagrantfile && vagrant ${*}
       ;;
 
-    *) echo "state is $(state)"
+    *) echo "Cannot resume, state is ($(state))"
        ;;
   esac
   return
@@ -66,7 +66,7 @@ function halt () {
     "running")  vagrant ${*}
       ;;
 
-    *) echo "state is $(state)"
+    *) echo "Cannot halt, state is ($(state))"
        ;;
   esac
   return
@@ -78,7 +78,7 @@ function suspend () {
     "running")  vagrant ${*}
       ;;
 
-    *) echo "state is $(state)"
+    *) echo "Cannot procees, state is ($(state))"
        ;;
   esac
   return
@@ -114,7 +114,7 @@ __EOD__
         [ "${input}" != "DESTROY" ] && echo 'cancelled destroy'
       ;;
 
-    *) echo "state is $(state)"
+    *) echo "Cannot destroy, state is ($(state))"
        ;;
   esac
   return
