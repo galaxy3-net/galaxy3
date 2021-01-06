@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 
 function state () {
-  # echo "Checking the state" >&2
-  #echo $(vagrant status --machine-readable | egrep 'default,state' | grep -v "human" | awk -F, '{print $4}')
-  #echo $(vagrant global-status --prune | egrep "${boxname}" | awk '{print $4}' | uniq)
   echo $(VBoxManage showvminfo "${boxname}" | egrep '^State:' | awk '{print $2}' || echo 'Dead')
 }
 
@@ -156,9 +153,9 @@ function ssh_rdp () {
 }
 
 function git_clone () {
-  echo "git clone  ${GIT_HUB}/${boxname}.git ${G3HOME}/vagrant/${boxname}"
-  git clone  ${GIT_HUB}/${boxname}.git ${G3HOME}/vagrant/${boxname}
-  cd ${G3HOME}/vagrant/${boxname} && git checkout ${boxname} ; git pull
+  echo "git clone --branch ${boxname} --depth 1  ${GIT_HUB}/${boxname}.git ${G3HOME}/vagrant/${boxname}"
+  git clone --branch ${boxname} --depth 1 ${GIT_HUB}/${boxname}.git ${G3HOME}/vagrant/${boxname}
+  (cd ${G3HOME}/vagrant/${boxname} && git checkout ${boxname} ; git pull)
   get_inventory
   get_ansible_requirements
 }
@@ -199,9 +196,7 @@ function die () {
 export boxname=$(basename ${0})
 
 which VBoxManage || export PATH=/c/Program\ Files/Oracle/VirtualBox:${PATH}
-echo ${PATH}
-which VBoxManage
-VBoxManage list systemproperties
+
 [ "${VBOX_DIR:-notset}" == "notset" ] && export VBOX_DIR="$(vbox_dir)"
 
 export BOX_DIR="${G3HOME}/vagrant/${boxname}"
@@ -215,8 +210,6 @@ cat <<__EOD__
 __EOD__
 
 stat "${BOX_DIR}" || git_clone
-
-#echo "Dir ${HOME}/galaxy3/vagrant/${boxname}"
 
 cd "${BOX_DIR}" || die "${BOX_DIR} directory does not exist"
 
