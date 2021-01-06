@@ -140,19 +140,6 @@ __EOD__
   exit 1
 }
 
-function Virtualbox_VMs () {
-  ls -d "${VBOX_DIR}" && return
-
-  cat <<__EOD__
-
-  Either Virtualbox is not installed or the default machine directory
-  ${VBOX_DIR} has been changed.
-
-__EOD__
-
-  exit 1
-}
-
 function ssh_rdp () {
   case "$(state)" in
 
@@ -236,13 +223,13 @@ cat <<__EOD__
 
   Git Info
 
-    Branch: $(git branch)
+    Branch: $(git branch | egrep '^*')
     CWD:    $(pwd)
 
 
 __EOD__
 
-Virtualbox_VMs
+which VBoxManage || printf "Error:\n\tVirtualBox Is Not Installed\n\nAborting . . .\n\n"
 
 case "${1}" in
 
