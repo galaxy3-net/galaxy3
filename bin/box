@@ -232,6 +232,16 @@ stat "${BOX_DIR}" || git_clone
 
 cd "${BOX_DIR}" || die "${BOX_DIR} directory does not exist"
 
+cat <<__EOD__
+
+  Git Info
+
+    Branch: $(git branch)
+    CWD:    $(pwd)
+
+
+__EOD__
+
 Virtualbox_VMs
 
 case "${1}" in
