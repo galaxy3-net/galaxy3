@@ -163,7 +163,7 @@ function git_clone () {
 
 function git_update () {
   echo "Pulling Update for repo ${G3HOME}/vagrant/${boxname}"
-  cd ${G3HOME}/vagrant/${boxname} && git checkout ${boxname} && git config --local merge.ff only && git pull
+  cd ${G3HOME}/vagrant/${boxname} && git checkout ${boxname} && git pull -ff
   #cd ${G3HOME}/vagrant/${boxname} && git checkout ${boxname} && git config pull.rebase false && git pull
   #cd ${G3HOME}/vagrant/${boxname} && git fetch --all
   get_inventory
