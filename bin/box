@@ -223,12 +223,13 @@ cat <<__EOD__
 
   Git Info
 
-    Branch: $(git branch | egrep '^*')
+    Branch: $(git branch 2>&1 | egrep '^*')
     CWD:    $(pwd)
 
 
 __EOD__
 
+printf "Confirming VirtualBox Installation . . ."
 which VBoxManage || printf "Error:\n\tVirtualBox Is Not Installed\n\nAborting . . .\n\n"
 
 case "${1}" in
