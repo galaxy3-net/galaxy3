@@ -3,7 +3,8 @@
 function state () {
   # echo "Checking the state" >&2
   #echo $(vagrant status --machine-readable | egrep 'default,state' | grep -v "human" | awk -F, '{print $4}')
-  echo $(vagrant global-status --prune | egrep "${boxname}" | awk '{print $4}' | uniq)
+  #echo $(vagrant global-status --prune | egrep "${boxname}" | awk '{print $4}' | uniq)
+  echo $(VBoxManage showvminfo "${boxname}" | egrep '^State:' | awk '{print $2}')
 }
 
 function vbox_dir () {
@@ -229,8 +230,8 @@ cat <<__EOD__
 
 __EOD__
 
-printf "Confirming VirtualBox Installation . . ."
-which VBoxManage || printf "Error:\n\tVirtualBox Is Not Installed\n\nAborting . . .\n\n"
+printf "Confirming VirtualBox Installation . . . "
+which VBoxManage || printf " Not Installed\n\nAborting . . .\n\n"
 
 case "${1}" in
 
