@@ -38,7 +38,7 @@ function up () {
     "poweroff" | "saved" | "aborted" | "powered" | "") git_update && manage_plugins && clean_vagrantfile && vagrant ${*}
       ;;
 
-    "not_created") dir_exists || git_update && manage_plugins && clean_vagrantfile && vagrant ${*}
+    not_created) dir_exists || git_update && manage_plugins && clean_vagrantfile && vagrant ${*}
       ;;
 
     *) echo "state is ($(state))"
