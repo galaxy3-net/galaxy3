@@ -155,7 +155,7 @@ function ssh_rdp () {
 
 function git_clone () {
   echo "git clone --branch ${boxname} --depth 1  ${GIT_HUB}/${boxname}.git ${G3HOME}/vagrant/${boxname}"
-  git clone --branch ${boxname} --depth 1 ${GIT_HUB}/${boxname}.git ${G3HOME}/vagrant/${boxname}
+  git clone --branch ${boxname} ${GIT_HUB}/${boxname}.git ${G3HOME}/vagrant/${boxname}
   (cd ${G3HOME}/vagrant/${boxname} && git checkout ${boxname} ; git pull)
   get_inventory
   get_ansible_requirements
