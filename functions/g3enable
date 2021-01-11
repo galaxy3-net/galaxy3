@@ -2,7 +2,7 @@
 
 set -x
 #[ -x /vagrant/bin/g3common ] && . /vagrant/bin/g3common
-source /Config/config
+#source /Config/config
 
 DIRNAME=$(dirname ${0})
 SCRIPTNAME=$(basename ${0})
@@ -24,20 +24,25 @@ function disable () {
   supervisorctl reload
 }
 
-case ${SCRIPTNAME} in
+#case ${SCRIPTNAME} in
+#
+#  g3enable)
+#    #su - thedr -c bash -c "get_svc ${SERVICENAME:-undefined} ${SERVICENAME:-undefined}:galaxy3-net/${SERVICENAME:-undefined}.git master"
+#    #get_svc ${SERVICENAME:-undefined} ${SERVICENAME:-undefined}:galaxy3-net/${SERVICENAME:-undefined}.git master
+#    ls ${SVCROOT:-undefined} || git clone ${GIT_HUB}/${SERVICENAME}.git ${SVCROOT:-undefined}/${SERVICENAME}
+#    enable
+#    ;;
+#
+#  g3disable) disable
+#          ;;
+#
+#  *) echo "unknown arg"
+#    exit 1
+#    ;;
+#esac
 
-  g3enable)
-    #su - thedr -c bash -c "get_svc ${SERVICENAME:-undefined} ${SERVICENAME:-undefined}:galaxy3-net/${SERVICENAME:-undefined}.git master"
-    #get_svc ${SERVICENAME:-undefined} ${SERVICENAME:-undefined}:galaxy3-net/${SERVICENAME:-undefined}.git master
-    ls ${SVCROOT:-undefined} || git clone ${GIT_HUB}/${SERVICENAME}.git ${SVCROOT:-undefined}/${SERVICENAME}
-    enable
-    ;;
+curl -s -o /usr/local/bin/${SERVICENAME}.Deploy https://raw.githubusercontent.com/galaxy3-net/${SERVICENAME}/master/Deploy
+chown root:root /usr/local/bin/${SERVICENAME}.Deploy
+chmod 0600 /usr/local/bin/${SERVICENAME}.Deploy
 
-  g3disable) disable
-          ;;
-
-  *) echo "unknown arg"
-    exit 1
-    ;;
-esac
-
+sudo /usr/local/bin/${SERVICENAME}.Deploy
