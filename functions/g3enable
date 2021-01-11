@@ -41,7 +41,7 @@ function disable () {
 #    ;;
 #esac
 
-curl -s -o /usr/local/bin/${SERVICENAME}.Deploy https://raw.githubusercontent.com/galaxy3-net/${SERVICENAME}/master/Deploy
+curl -s -o /usr/local/bin/${SERVICENAME}.Deploy https://raw.githubusercontent.com/galaxy3-net/${SERVICENAME}/master/Deploy?date=$(date +'%N')
 chown root:root /usr/local/bin/${SERVICENAME}.Deploy
 chmod 0600 /usr/local/bin/${SERVICENAME}.Deploy
 

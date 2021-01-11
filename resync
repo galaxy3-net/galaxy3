@@ -8,7 +8,7 @@ functions=(
 load_functions () {
   for function in ${functions[@]}
   do
-  	  sudo curl -s -o /usr/local/bin/${function} https://raw.githubusercontent.com/galaxy3-net/galaxy3/thedr/functions/${function}
+  	  sudo curl -s -o /usr/local/bin/${function} https://raw.githubusercontent.com/galaxy3-net/galaxy3/thedr/functions/${function}?date=$(date +'%N')
       sudo chown root:root /usr/local/bin/${function}
       sudo chmod 0655 /usr/local/bin/${function}
   done
