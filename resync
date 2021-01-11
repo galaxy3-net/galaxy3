@@ -5,7 +5,7 @@ functions=(
 	g3enable
 	)
 
-function load_functions () {
+load_functions () {
   for function in ${functions[@]}
   do
   	  curl -s -o /usr/local/bin/${function} https://raw.githubusercontent.com/galaxy3-net/galaxy3/master/functions/${function}
