@@ -8,12 +8,12 @@ functions=(
 load_functions () {
   for function in ${functions[@]}
   do
-  	  sudo curl -s -o /usr/local/bin/${function} https://raw.githubusercontent.com/galaxy3-net/galaxy3/master/functions/${function}
+  	  sudo curl -s -o /usr/local/bin/${function} https://raw.githubusercontent.com/galaxy3-net/galaxy3/thedr/functions/${function}
       sudo chown root:root /usr/local/bin/${function}
-      sudo chmod 0600 /usr/local/bin/${function}
+      sudo chmod 0655 /usr/local/bin/${function}
   done
 }
 
 load_functions
 
-# bash <(curl --no-sessionid -s https://raw.githubusercontent.com/galaxy3-net/galaxy3/thedr/resync)
+# bash <(curl -s https://raw.githubusercontent.com/galaxy3-net/galaxy3/thedr/resync?date=$(date +'%N'))
