@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 
-SERVICENAME=${1}
+case servicename in ${1}
+do
+
+  splunk) SERVICENAME=nakadia
+    ;;
+
+  *) SERVICENAME=${1}
+
+esac
 
 sudo curl -s -o /usr/local/bin/${SERVICENAME}.Deploy https://raw.githubusercontent.com/galaxy3-net/${SERVICENAME}/master/Deploy?date=$(date +'%N')
 sudo chown root:root /usr/local/bin/${SERVICENAME}.Deploy
