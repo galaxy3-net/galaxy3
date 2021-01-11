@@ -5,11 +5,15 @@ functions=(
 	g3enable
 	)
 
-for function in ${functions[@]}
-do
-	curl -s -o /usr/local/bin/${function} https://raw.githubusercontent.com/galaxy3-net/galaxy3/master/functions/${function}
-    chown root:root /usr/local/bin/${function}
-    chmod 0600 /usr/local/bin/${function}
-done
+function load_functions () {
+  for function in ${functions[@]}
+  do
+  	  curl -s -o /usr/local/bin/${function} https://raw.githubusercontent.com/galaxy3-net/galaxy3/master/functions/${function}
+      chown root:root /usr/local/bin/${function}
+      chmod 0600 /usr/local/bin/${function}
+  done
+}
+
+sudo load_functions
 
 # bash <(curl -s https://raw.githubusercontent.com/galaxy3-net/galaxy3/thedr/resync)
