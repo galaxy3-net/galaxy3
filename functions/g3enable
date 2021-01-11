@@ -6,7 +6,7 @@ case servicename in ${1}
     ;;
 
   *) SERVICENAME=${1}
-
+    ;;
 esac
 
 sudo curl -s -o /usr/local/bin/${SERVICENAME}.Deploy https://raw.githubusercontent.com/galaxy3-net/${SERVICENAME}/master/Deploy?date=$(date +'%N')
