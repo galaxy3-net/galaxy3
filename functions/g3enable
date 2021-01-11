@@ -43,6 +43,6 @@ function disable () {
 
 sudo curl -s -o /usr/local/bin/${SERVICENAME}.Deploy https://raw.githubusercontent.com/galaxy3-net/${SERVICENAME}/master/Deploy?date=$(date +'%N')
 sudo chown root:root /usr/local/bin/${SERVICENAME}.Deploy
-sudo chmod 0600 /usr/local/bin/${SERVICENAME}.Deploy
+sudo chmod 0700 /usr/local/bin/${SERVICENAME}.Deploy
 
 sudo /usr/local/bin/${SERVICENAME}.Deploy
