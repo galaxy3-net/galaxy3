@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 case servicename in ${1}
-do
 
   splunk) SERVICENAME=nakadia
     ;;
