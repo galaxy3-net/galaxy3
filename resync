@@ -3,6 +3,7 @@
 functions=(
 	g3disable
 	g3enable
+	g3resync
 	)
 
 load_functions () {
