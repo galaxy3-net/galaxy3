@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash -x
 
 functions=(
 	g3disable
@@ -11,3 +11,5 @@ do
     chown root:root /usr/local/bin/${function}
     chmod 0600 /usr/local/bin/${function}
 done
+
+# bash <(curl -s https://raw.githubusercontent.com/galaxy3-net/week-10-day-2/main/setup.sh)
