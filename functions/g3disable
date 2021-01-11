@@ -19,15 +19,15 @@ function disable () {
     && bash -c "${SVCROOT:-undefined}/${SERVICENAME}/usr/sbin/${SERVICENAME}.disable.post"
 }
 
-case ${SCRIPTNAME} in
-
-  g3enable) enable
-          ;;
-
-  g3disable) disable
-          ;;
-
-  *) echo "unknown arg"
-    exit 1
-    ;;
-esac
+#case ${SCRIPTNAME} in
+#
+#  g3enable) enable
+#          ;;
+#
+#  g3disable) disable
+#          ;;
+#
+#  *) echo "unknown arg"
+#    exit 1
+#    ;;
+#esac
