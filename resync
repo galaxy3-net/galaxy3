@@ -1,5 +1,5 @@
-#!/usr/bin/env bash -x
-
+#!/usr/bin/env bash
+set -x
 functions=(
 	g3disable
 	g3enable
