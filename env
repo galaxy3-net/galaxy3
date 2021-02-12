@@ -39,10 +39,10 @@ echo "curdir ${CURDIR}"
 
 export PATH=${PATH}:${G3HOME}/bin:${G3HOME}/functions
 
-(cd ${G3HOME}/bin
-for file in $(ls)
-do
-  printf "\t> ${file}\n"
-done)
+#(cd ${G3HOME}/bin
+#for file in $(ls)
+#do
+#  printf "\t> ${file}\n"
+#done)
 
 
