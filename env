@@ -29,7 +29,7 @@ __EOD__
 CURDIR=$(dirname ${0})
 CURDIR=$(cd ${CURDIR} ; pwd)
 export CURDIR
-echo "${CURDIR}"
+echo "curdir ${CURDIR}"
 
 
 [ -z ${G3HOME} ]  &&  export G3HOME=~/galaxy3
