@@ -96,7 +96,6 @@ __EOD__
   if [ "${MINGW_CHOST:=undefined}" != "undefined" ]
   then
     mv Vagrantfile Vagrantfile.tmp
-    egrep -v 'nicpromisc0|nictype0' Vagrantfile.tmp > Vagrantfile
     rm Vagrantfile.tmp
   fi
 }
