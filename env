@@ -26,6 +26,11 @@ cat <<__EOD__
 __EOD__
 
 #alias launch="bash -c bin/launch"
+CURDIR=$(dirname ${0})
+CURDIR=$(cd ${CURDIR} ; pwd)
+export CURDIR
+echo "${CURDIR}"
+
 
 [ -z ${G3HOME} ]  &&  export G3HOME=~/galaxy3
 [ -z ${G3GITHUB} ]  &&  export G3GITHUB=https://github.com/galaxy3-net/
