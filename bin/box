@@ -182,7 +182,6 @@ function die () {
 . $(dirname ${0})/g3common
 
 export boxname=$(basename ${0})
-
 which VBoxManage || export PATH=/c/Program\ Files/Oracle/VirtualBox:${PATH}
 
 [ "${VBOX_DIR:-notset}" == "notset" ] && export VBOX_DIR="$(vbox_dir)"
