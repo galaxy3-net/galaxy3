@@ -201,9 +201,9 @@ which VBoxManage || export PATH=/c/Program\ Files/Oracle/VirtualBox:${PATH}
 [ "${VBOX_DIR:-notset}" == "notset" ] && export VBOX_DIR="$(vbox_dir)/${boxname}"
 info "VBOX_DIR is set to ${VBOX_DIR}"
 
-BASE_BOX="$(expr ${boxname} : '\(.[^-]*\)[-]*.*')"
-info "${BASE_BOX}"
-ENV_NAME="$(expr ${boxname} : '.[^-]*[-]*\(.*\)')"
+BASE_BOX="$(expr ${boxname} : '\(.[^-]*\)[-]*.*')" && info "${BASE_BOX}"
+#ENV_NAME="$(expr ${boxname} : '.[^-]*[-]*\(.*\)')"
+ENV_NAME=""
 export GIT_BRANCH="${BASE_BOX}" && info "GIT_BRANCH=${GIT_BRANCH}"
 export VAGRANT_DIR="${G3HOME}/vagrant/${BASE_BOX}/${ENV_NAME}" && info "VAGRANT_DIR=${VAGRANT_DIR}"
 export GIT_REPO="${GIT_HUB}/${BASE_BOX}.git" && info "GIT_REPO=${GIT_REPO}"
