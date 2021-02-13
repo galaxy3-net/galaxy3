@@ -138,7 +138,8 @@ function ssh_rdp () {
 }
 
 function git_clone () {
-  echo "git clone --branch ${GIT_BRANCH} ${GIT_REPO} ${VAGRANT_DIR}"
+  printf "\n\n\tCloning Repository ${VAGRANT_DIR} from ${GIT_REPO}\n\n"
+  printf "\tgit clone --branch ${GIT_BRANCH} ${GIT_REPO} ${VAGRANT_DIR}\n\n"
   (git clone --branch ${GIT_BRANCH} ${GIT_REPO} ${VAGRANT_DIR})
   (cd ${VAGRANT_DIR} && git checkout ${GIT_BRANCH} ; git pull)
   get_inventory
@@ -146,16 +147,17 @@ function git_clone () {
 }
 
 function git_update () {
-  echo "Pulling Update for repo ${VAGRANT_DIR}"
+  printf "\n\n\tPulling update from branch ${GIT_BRANCH} to ${VAGRANT_DIR}\n\n"
+
   #[ -e ${G3HOME}/vagrant/${boxname}/Vagrantfile ] && rm ${G3HOME}/vagrant/${boxname}/Vagrantfile
   (cd ${VAGRANT_DIR} && git checkout ${GIT_BRANCH} && git pull -ff)
-  #cd ${G3HOME}/vagrant/${boxname} && git checkout ${boxname} && git config pull.rebase false && git pull
-  #cd ${G3HOME}/vagrant/${boxname} && git fetch --all
+
   get_inventory
   get_ansible_requirements
 }
 
 function manage_plugins () {
+  printf "\n\n\tChecking Vagrant Plugins & Updating Them\n\n"
   vagrant plugin update
   plugins=(vagrant-vbguest micromachine vagrant-disksize)
   for plugin in ${plugins[@]}
@@ -167,44 +169,32 @@ function manage_plugins () {
 }
 
 function get_inventory () {
+  printf "\n\n\tPulling latest inventory file\n\n"
   curl -sL -o ${G3HOME}/vagrant/${boxname}/hosts https://armory.galaxy3.net/vagrant/pkgs/files/etc/ansible/hosts
 }
 
 function get_ansible_requirements () {
+  printf "\n\n\tPulling the latest Ansible Requirements File\n\n"
   curl -sL -o ${G3HOME}/vagrant/${boxname}/requirements.yml https://armory.galaxy3.net/vagrant/pkgs/files/etc/ansible/requirements.yml
 }
 
 function die () {
-    echo "${1}"
+    printf "\n\n\t${1}\n\n"
     exit 1
 }
 
+printf "\n\n\tSource G3 Common\n\n"
 . $(dirname ${0})/g3common
 
-export boxname=$(basename ${0})
+export boxname=$(basename ${0}) && printf "\n\n\tboxname is set to ${boxname}\n\n"
 which VBoxManage || export PATH=/c/Program\ Files/Oracle/VirtualBox:${PATH}
 
 [ "${VBOX_DIR:-notset}" == "notset" ] && export VBOX_DIR="$(vbox_dir)/${boxname}"
+printf "\n\n\tVBOX_DIR is set to ${VBOX_DIR}\n\n"
 
-#case "${boxname:=default}" in
-
-#  *"-build")
-#    export VAGRANT_DIR="${G3HOME}/vagrant/${boxname}/build"
-#    ;;
-
-#  *"-test")
-#    export VAGRANT_DIR="${G3HOME}/vagrant/${boxname}/test"
-#    ;;
-
-#  *)
-#    export VAGRANT_DIR="${G3HOME}/vagrant/${boxname}"
-#    ;;
-
-#esac
-
-export GIT_BRANCH="$(expr "${boxname}" : '\(.[^-]*\)[-]*.*')"
-export VAGRANT_DIR="${G3HOME}/vagrant/${boxname}/$(expr "${boxname}" : '.[^-]*[-]*\(.*\)')"
-export GIT_REPO="${GIT_HUB}/${GIT_BRANCH}.git"
+export GIT_BRANCH="$(expr "${boxname}" : '\(.[^-]*\)[-]*.*')" && printf "\n\n\tGIT_BRANCH=${GIT_BRANCH}\n\n"
+export VAGRANT_DIR="${G3HOME}/vagrant/${boxname}/$(expr "${boxname}" : '.[^-]*[-]*\(.*\)')" && printf "\n\n\tGIT_BRANCH=${GIT_BRANCH}\n\n"
+export GIT_REPO="${GIT_HUB}/${GIT_BRANCH}.git" && printf "\n\n\tGIT_BRANCH=${GIT_BRANCH}\n\n"
 
 cat <<__EOD__
 
