@@ -18,11 +18,11 @@ function reload () {
 
   case "$(state)" in
 
-    "poweroff" | "saved" | "running" | "aborted" | "") vagrant ${*}
+    "poweroff" | "saved" | "running" | "aborted" | "") git_update && vagrant ${*}
         stat ./post_deploy.sh && sh ./post_deploy.sh
       ;;
 
-    "not_created")  vagrant ${*}
+    "not_created")  git_update && vagrant ${*}
         stat ./post_deploy.sh && sh ./post_deploy.sh
       ;;
 
@@ -41,11 +41,11 @@ function up () {
       info "${boxname} is already running"
       ;;
 
-    "poweroff" | "saved" | "aborted" | "powered" | "") manage_plugins && vagrant ${*}
+    "poweroff" | "saved" | "aborted" | "powered" | "") manage_plugins && git_update && vagrant ${*}
         stat ./post_deploy.sh && sh ./post_deploy.sh
       ;;
 
-    not_created) manage_plugins && vagrant ${*}
+    not_created) manage_plugins && git_update && vagrant ${*}
       ;;
 
     *) info "Cannot start ${boxname}, state is ($(state))"
