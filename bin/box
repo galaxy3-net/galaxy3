@@ -45,7 +45,7 @@ function up () {
     not_created) dir_exists || git_update && manage_plugins && vagrant ${*}
       ;;
 
-    *) echo "Cannot start, state is ($(state))"
+    *) info "Cannot start ${boxname}, state is ($(state))"
       exit 1
       ;;
   esac
@@ -58,7 +58,7 @@ function resume () {
     "saved")  git_update && manage_plugins && vagrant ${*}
       ;;
 
-    *) echo "Cannot resume, state is ($(state))"
+    *) info "Cannot resume ${boxname}, state is ($(state))"
        ;;
   esac
   return
@@ -70,7 +70,7 @@ function halt () {
     "running")  vagrant ${*}
       ;;
 
-    *) echo "Cannot halt, state is ($(state))"
+    *) info "Cannot halt ${boxname}, state is ($(state))"
        ;;
   esac
   return
@@ -82,7 +82,7 @@ function suspend () {
     "running")  vagrant ${*}
       ;;
 
-    *) echo "Cannot procees, state is ($(state))"
+    *) info "Cannot suspend ${boxname}, state is ($(state))"
        ;;
   esac
   return
@@ -102,7 +102,7 @@ __EOD__
         [ "${input}" != "DESTROY" ] && echo 'cancelled destroy'
       ;;
 
-    *) echo "Cannot destroy, state is ($(state))"
+    *) info "Cannot destroy ${boxname}, state is ($(state))"
        ;;
   esac
   return
@@ -139,7 +139,7 @@ function ssh_rdp () {
         vagrant ${*}
       ;;
 
-    *) echo "cannot ${1} into ${boxname} - state is $(state)"
+    *) info "cannot ${1} into ${boxname} - state is $(state)"
        ;;
   esac
   return
