@@ -33,7 +33,7 @@ export CURDIR=~/galaxy3/
 echo "curdir ${CURDIR}"
 
 
-[ -z ${G3HOME} ]  &&  export G3HOME=${CURDIR}
+[ -z ${G3HOME} ]  &&  export G3HOME=~/galaxy3/
 [ -z ${G3GITHUB} ]  &&  export G3GITHUB=https://github.com/galaxy3-net/
 [ -z ${G3BRANCH} ]  &&  export G3BRANCH=$(cd $G3HOME ; git branch --show-current)
 #[ -z ${GIT_SSH_COMMAND} ]  &&  export GIT_SSH_COMMAND="ssh -F ${G3HOME}/spicerack/.ssh/config"
