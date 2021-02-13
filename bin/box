@@ -208,7 +208,7 @@ info "ENV_NAME=${ENV_NAME}"
 export GIT_BRANCH="${BASE_BOX}" && info "GIT_BRANCH=${GIT_BRANCH}"
 export VAGRANT_DIR="${G3HOME}/vagrant/${BASE_BOX}/${ENV_NAME}" && info "VAGRANT_DIR=${VAGRANT_DIR}"
 export GIT_REPO="${GIT_HUB}/${BASE_BOX}.git" && info "GIT_REPO=${GIT_REPO}"
-exit
+
 cat <<__EOD__
 
   Default Virtualbox VM Directory: ${VBOX_DIR}
@@ -220,6 +220,7 @@ __EOD__
 stat "${VAGRANT_DIR}" || git_clone
 (cd "${VAGRANT_DIR}" || die "${VAGRANT_DIR} directory does not exist")
 
+exit
 cat <<__EOD__
 
   Git Info
