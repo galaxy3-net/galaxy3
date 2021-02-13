@@ -195,6 +195,7 @@ info "Source G3 Common"
 . $(dirname ${0})/g3common
 
 export boxname=$(basename ${0}) && info "boxname is set to ${boxname}"
+printf "\n\n"
 which VBoxManage || export PATH=/c/Program\ Files/Oracle/VirtualBox:${PATH}
 
 [ "${VBOX_DIR:-notset}" == "notset" ] && export VBOX_DIR="$(vbox_dir)/${boxname}"
