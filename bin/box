@@ -138,17 +138,17 @@ function ssh_rdp () {
 }
 
 function git_clone () {
-  echo "git clone --branch ${boxname}  ${GIT_HUB}/${boxname}.git ${G3HOME}/vagrant/${boxname}"
-  git clone --branch ${boxname} ${GIT_HUB}/${boxname}.git ${G3HOME}/vagrant/${boxname}
-  cd ${G3HOME}/vagrant/${boxname} && git checkout ${boxname} ; git pull
+  echo "git clone --branch ${GIT_BRANCH} ${GIT_REPO} ${VAGRANT_DIR}"
+  git clone --branch ${GIT_BRANCH} ${GIT_REPO} ${VAGRANT_DIR}
+  cd ${VAGRANT_DIR} && git checkout ${GIT_BRANCH} ; git pull
   get_inventory
   get_ansible_requirements
 }
 
 function git_update () {
-  echo "Pulling Update for repo ${G3HOME}/vagrant/${boxname}"
+  echo "Pulling Update for repo ${VAGRANT_DIR}"
   #[ -e ${G3HOME}/vagrant/${boxname}/Vagrantfile ] && rm ${G3HOME}/vagrant/${boxname}/Vagrantfile
-  cd ${G3HOME}/vagrant/${boxname} && git checkout ${boxname} && git pull -ff
+  cd ${VAGRANT_DIR} && git checkout ${GIT_BRANCH} && git pull -ff
   #cd ${G3HOME}/vagrant/${boxname} && git checkout ${boxname} && git config pull.rebase false && git pull
   #cd ${G3HOME}/vagrant/${boxname} && git fetch --all
   get_inventory
@@ -184,9 +184,28 @@ function die () {
 export boxname=$(basename ${0})
 which VBoxManage || export PATH=/c/Program\ Files/Oracle/VirtualBox:${PATH}
 
-[ "${VBOX_DIR:-notset}" == "notset" ] && export VBOX_DIR="$(vbox_dir)"
+[ "${VBOX_DIR:-notset}" == "notset" ] && export VBOX_DIR="$(vbox_dir)/${boxname}"
 
-export BOX_DIR="${G3HOME}/vagrant/${boxname}"
+case "${boxname:=default}" in
+
+  *"-build")
+    export VAGRANT_DIR=${G3HOME}/vagrant/${boxname}/build
+    export GIT_BRANCH=$(expr "${boxname}" : '\(.[^-]*\)-.*'
+    ;;
+
+  *"-test")
+    export VAGRANT_DIR=${G3HOME}/vagrant/${boxname}/test
+    export GIT_BRANCH=$(expr "${boxname}" : '\(.[^-]*\)-.*'
+    ;;
+
+  *)
+    export VAGRANT_DIR=${G3HOME}/vagrant/${boxname}
+    export GIT_BRANCH="${boxname}"
+    ;;
+
+esac
+
+export GIT_REPO=${GIT_HUB}/${GIT_BRANCH}.git
 
 cat <<__EOD__
 
@@ -196,9 +215,8 @@ cat <<__EOD__
 
 __EOD__
 
-stat "${BOX_DIR}" || git_clone
-
-cd "${BOX_DIR}" || die "${BOX_DIR} directory does not exist"
+stat "${VAGRANT_DIR}" || git_clone
+cd "${VAGRANT_DIR}" || die "${VAGRANT_DIR} directory does not exist"
 
 cat <<__EOD__
 
