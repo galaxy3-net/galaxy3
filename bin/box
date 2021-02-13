@@ -128,7 +128,7 @@ __EOD__
 }
 
 function info () {
-  printf "%s" "${1}"
+  printf "\n\t%s" "${1}"
 }
 
 function ssh_rdp () {
