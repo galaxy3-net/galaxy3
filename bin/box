@@ -220,16 +220,6 @@ __EOD__
 
 cd "${VAGRANT_DIR}" || git_clone
 cd "${VAGRANT_DIR}" || die "${VAGRANT_DIR} directory does not exist"
-cat <<__EOD__
-
-  Git Info
-
-    Branch: $(git branch 2>&1 | egrep '^*')
-    CWD:    $(pwd)
-
-
-__EOD__
-
 info "Confirming VirtualBox Installation . . . "
 which VBoxManage || info " Not Installed\n\nAborting . . ."
 
