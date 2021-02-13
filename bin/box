@@ -55,62 +55,6 @@ function up () {
   return
 }
 
-function resume () {
-  case "$(state)" in
-
-    "saved")  git_update && manage_plugins && vagrant ${*}
-      ;;
-
-    *) info "Cannot resume ${boxname}, state is ($(state))"
-       ;;
-  esac
-  return
-}
-
-function halt () {
-  case "$(state)" in
-
-    "running")  vagrant ${*}
-      ;;
-
-    *) info "Cannot halt ${boxname}, state is ($(state))"
-       ;;
-  esac
-  return
-}
-
-function suspend () {
-  case "$(state)" in
-
-    "running")  vagrant ${*}
-      ;;
-
-    *) info "Cannot suspend ${boxname}, state is ($(state))"
-       ;;
-  esac
-  return
-}
-
-
-function destroy () {
-  case "$(state)" in
-
-    "running" | "poweroff" | "saved" | "aborted")
-        cat <<__EOD__
-  WARNING: This will destroy this machine and any data/files saved on it.
-  Type DESTROY to confirm.
-__EOD__
-        read input
-        [ "${input}" == "DESTROY" ] && vagrant ${*}
-        [ "${input}" != "DESTROY" ] && echo 'cancelled destroy'
-      ;;
-
-    *) info "Cannot destroy ${boxname}, state is ($(state))"
-       ;;
-  esac
-  return
-}
-
 function dir_exists () {
   ls -d "${VBOX_DIR}/${boxname}" || return
   cat <<__EOD__
@@ -134,19 +78,6 @@ function info () {
   printf "\n\t%s" "${1}"
 }
 
-function ssh_rdp () {
-  case "$(state)" in
-
-    "running")
-        echo vagrant ${*}
-        vagrant ${*}
-      ;;
-
-    *) info "cannot ${1} into ${boxname} - state is $(state)"
-       ;;
-  esac
-  return
-}
 
 function git_clone () {
   info "Cloning Repository ${VAGRANT_DIR} from ${GIT_REPO}\n\n"
@@ -236,21 +167,6 @@ case "${1}" in
 
   "up" | "resume")  up ${*}
     ;;
-
-#  "halt" | "suspend")  halt ${*}
-#    ;;
-
-#  "port") vagrant port
-#    ;;
-
-#  "status") vagrant status
-#    ;;
-
-#  "ssh" | "rdp") ssh_rdp ${*}
-#    ;;
-
-#  "box") vagrant ${*}
-#    ;;
 
    *)  vagrant ${*}
        ;;
