@@ -237,21 +237,23 @@ case "${1}" in
   "up" | "resume")  up ${*}
     ;;
 
-  "halt" | "suspend")  halt ${*}
-    ;;
+#  "halt" | "suspend")  halt ${*}
+#    ;;
 
-  "port") vagrant port
-    ;;
+#  "port") vagrant port
+#    ;;
 
-  "status") vagrant status
-    ;;
+#  "status") vagrant status
+#    ;;
 
-  "ssh" | "rdp") ssh_rdp ${*}
-    ;;
+#  "ssh" | "rdp") ssh_rdp ${*}
+#    ;;
 
-  "box") vagrant ${*}
-    ;;
+#  "box") vagrant ${*}
+#    ;;
 
-   *)  echo "usage" ; exit 1
+   *)  vagrant ${*}
        ;;
 esac
+
+exit 0
