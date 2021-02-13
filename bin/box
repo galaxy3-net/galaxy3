@@ -139,8 +139,8 @@ function ssh_rdp () {
 
 function git_clone () {
   echo "git clone --branch ${GIT_BRANCH} ${GIT_REPO} ${VAGRANT_DIR}"
-  git clone --branch ${GIT_BRANCH} ${GIT_REPO} ${VAGRANT_DIR}
-  cd ${VAGRANT_DIR} && git checkout ${GIT_BRANCH} ; git pull
+  (git clone --branch ${GIT_BRANCH} ${GIT_REPO} ${VAGRANT_DIR})
+  (cd ${VAGRANT_DIR} && git checkout ${GIT_BRANCH} ; git pull)
   get_inventory
   get_ansible_requirements
 }
@@ -148,7 +148,7 @@ function git_clone () {
 function git_update () {
   echo "Pulling Update for repo ${VAGRANT_DIR}"
   #[ -e ${G3HOME}/vagrant/${boxname}/Vagrantfile ] && rm ${G3HOME}/vagrant/${boxname}/Vagrantfile
-  cd ${VAGRANT_DIR} && git checkout ${GIT_BRANCH} && git pull -ff
+  (cd ${VAGRANT_DIR} && git checkout ${GIT_BRANCH} && git pull -ff)
   #cd ${G3HOME}/vagrant/${boxname} && git checkout ${boxname} && git config pull.rebase false && git pull
   #cd ${G3HOME}/vagrant/${boxname} && git fetch --all
   get_inventory
@@ -215,7 +215,7 @@ cat <<__EOD__
 __EOD__
 
 stat "${VAGRANT_DIR}" || git_clone
-cd "${VAGRANT_DIR}" || die "${VAGRANT_DIR} directory does not exist"
+(cd "${VAGRANT_DIR}" || die "${VAGRANT_DIR} directory does not exist")
 
 cat <<__EOD__
 
