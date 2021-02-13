@@ -32,7 +32,7 @@ function up () {
   case "$(state)" in
 
     "running")
-      printf "\n\t${boxname} is already running\n\n"
+      info "${boxname} is already running"
       ;;
 
     "poweroff" | "saved" | "aborted" | "powered" | "") git_update && manage_plugins && vagrant ${*}
@@ -123,6 +123,10 @@ __EOD__
   exit 1
 }
 
+function info () {
+  info "%s" "${1}"
+}
+
 function ssh_rdp () {
   case "$(state)" in
 
@@ -138,8 +142,8 @@ function ssh_rdp () {
 }
 
 function git_clone () {
-  printf "\n\n\tCloning Repository ${VAGRANT_DIR} from ${GIT_REPO}\n\n"
-  printf "\tgit clone --branch ${GIT_BRANCH} ${GIT_REPO} ${VAGRANT_DIR}\n\n"
+  info "Cloning Repository ${VAGRANT_DIR} from ${GIT_REPO}\n\n"
+  info "git clone --branch ${GIT_BRANCH} ${GIT_REPO} ${VAGRANT_DIR}\n\n"
   (git clone --branch ${GIT_BRANCH} ${GIT_REPO} ${VAGRANT_DIR})
   (cd ${VAGRANT_DIR} && git checkout ${GIT_BRANCH} ; git pull)
   get_inventory
@@ -147,7 +151,7 @@ function git_clone () {
 }
 
 function git_update () {
-  printf "\n\n\tPulling update from branch ${GIT_BRANCH} to ${VAGRANT_DIR}\n\n"
+  info "Pulling update from branch ${GIT_BRANCH} to ${VAGRANT_DIR}"
 
   #[ -e ${G3HOME}/vagrant/${boxname}/Vagrantfile ] && rm ${G3HOME}/vagrant/${boxname}/Vagrantfile
   (cd ${VAGRANT_DIR} && git checkout ${GIT_BRANCH} && git pull -ff)
@@ -157,46 +161,46 @@ function git_update () {
 }
 
 function manage_plugins () {
-  printf "\n\n\tChecking Vagrant Plugins & Updating Them\n\n"
+  info "Checking Vagrant Plugins & Updating Them"
   vagrant plugin update
   plugins=(vagrant-vbguest micromachine vagrant-disksize)
   for plugin in ${plugins[@]}
   do
-    echo "Vagrant - checking plugin - ${plugin}"
+    info "\tVagrant - checking plugin - ${plugin}"
     vagrant plugin list | egrep "${plugin}" || vagrant plugin install ${plugin}
   done
 
 }
 
 function get_inventory () {
-  printf "\n\n\tPulling latest inventory file\n\n"
+  info "Pulling latest inventory file"
   curl -sL -o ${G3HOME}/vagrant/${boxname}/hosts https://armory.galaxy3.net/vagrant/pkgs/files/etc/ansible/hosts
 }
 
 function get_ansible_requirements () {
-  printf "\n\n\tPulling the latest Ansible Requirements File\n\n"
+  info "Pulling the latest Ansible Requirements File"
   curl -sL -o ${G3HOME}/vagrant/${boxname}/requirements.yml https://armory.galaxy3.net/vagrant/pkgs/files/etc/ansible/requirements.yml
 }
 
 function die () {
-    printf "\n\n\t${1}\n\n"
+    info "${1}"
     exit 1
 }
 
-printf "\n\n\tSource G3 Common\n\n"
+info "Source G3 Common"
 . $(dirname ${0})/g3common
 
-export boxname=$(basename ${0}) && printf "\n\n\tboxname is set to ${boxname}\n\n"
+export boxname=$(basename ${0}) && info "boxname is set to ${boxname}"
 which VBoxManage || export PATH=/c/Program\ Files/Oracle/VirtualBox:${PATH}
 
 [ "${VBOX_DIR:-notset}" == "notset" ] && export VBOX_DIR="$(vbox_dir)/${boxname}"
-printf "\n\n\tVBOX_DIR is set to ${VBOX_DIR}\n\n"
+info "VBOX_DIR is set to ${VBOX_DIR}"
 
 BASE_BOX="$(expr "${boxname}" : '\(.[^-]*\)[-]*.*')"
 ENV_NAME="$(expr "${boxname}" : '.[^-]*[-]*\(.*\)')"
-export GIT_BRANCH="${BASE_BOX}" && printf "\n\n\tGIT_BRANCH=${GIT_BRANCH}\n\n"
-export VAGRANT_DIR="${G3HOME}/vagrant/${BASE_BOX}/${ENV_NAME}" && printf "\n\n\VAGRANT_DIR=${VAGRANT_DIR}\n\n"
-export GIT_REPO="${GIT_HUB}/${BASE_BOX}.git" && printf "\n\n\GIT_REPO=${GIT_REPO}\n\n"
+export GIT_BRANCH="${BASE_BOX}" && info "GIT_BRANCH=${GIT_BRANCH}"
+export VAGRANT_DIR="${G3HOME}/vagrant/${BASE_BOX}/${ENV_NAME}" && info "VAGRANT_DIR=${VAGRANT_DIR}"
+export GIT_REPO="${GIT_HUB}/${BASE_BOX}.git" && info "GIT_REPO=${GIT_REPO}"
 
 cat <<__EOD__
 
@@ -219,8 +223,8 @@ cat <<__EOD__
 
 __EOD__
 
-printf "Confirming VirtualBox Installation . . . "
-which VBoxManage || printf " Not Installed\n\nAborting . . .\n\n"
+info "Confirming VirtualBox Installation . . . "
+which VBoxManage || info " Not Installed\n\nAborting . . ."
 
 case "${1}" in
 
