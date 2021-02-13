@@ -32,7 +32,7 @@ __EOD__
 export CURDIR=~/galaxy3/
 echo "curdir ${CURDIR}"
 
-set -x
+#set -x
 [ -z ${G3HOME} ]  &&  export G3HOME=~/galaxy3/
 [ -z ${G3GITHUB} ]  &&  export G3GITHUB=https://github.com/galaxy3-net/
 [ -z ${G3BRANCH} ]  &&  export G3BRANCH=$(cd $G3HOME ; git branch --show-current)
