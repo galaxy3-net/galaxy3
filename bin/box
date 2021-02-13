@@ -1,43 +1,11 @@
 #!/usr/bin/env bash
 
 set -eE
-
 trap "die \$LINENO \$BASH_COMMAND" ERR
-
-function state () {
-  #echo $(VBoxManage showvminfo "${boxname}" | egrep '^State:' | awk '{print $2}' || echo 'Dead')
-  echo $(vagrant status --machine-readable | awk -F, '$3=="state" { print $4 }')
-}
-
-function vbox_dir () {
-  echo $(VBoxManage list systemproperties | egrep '^Default machine folder' | sed 's/^Default machine folder://' |\
-  sed 's/^[ ]*//')
-}
-
-
-function dir_exists () {
-  ls -d "${VBOX_DIR}/${boxname}" || return
-  cat <<__EOD__
-
-  While Vagrant's machine state is "not_created", the "${VBOX_DIR}/${boxname}"
-  directory already exists
-
-  1) Confirm that the box ${boxname} is not already running in Virtualbox.
-     a) If it is running, it will need to be removed along with the directory and files from
-        Virtualbox before continuing.
-  2) If there is no ${boxname} already running in Virtualbox.
-     a) Rename "${VBOX_DIR}/${boxname}"
-     or
-     b) Remove "${VBOX_DIR}/${boxname}"
-
-__EOD__
-  exit 1
-}
 
 function info () {
   printf "\n\t%s" "${1}"
 }
-
 
 function git_clone () {
   info "Cloning Repository ${VAGRANT_DIR} from ${GIT_REPO}\n\n"
@@ -88,7 +56,6 @@ info "Source G3 Common"
 . $(dirname ${0})/g3common
 
 export boxname=$(basename ${0}) && info "boxname is set to ${boxname}"
-info ""
 which VBoxManage || export PATH=/c/Program\ Files/Oracle/VirtualBox:${PATH}
 
 [ "${VBOX_DIR:-notset}" == "notset" ] && export VBOX_DIR="$(vbox_dir)/${boxname}"
