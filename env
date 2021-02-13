@@ -30,6 +30,7 @@ CURDIR=$(dirname ${0})
 CURDIR=$(cd ${CURDIR} ; pwd)
 export CURDIR
 echo "curdir ${CURDIR}"
+export CURDIR="~/galaxy3"
 
 
 [ -z ${G3HOME} ]  &&  export G3HOME=${CURDIR}
