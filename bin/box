@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -eE
+
 trap die ERR
 
 function state () {
