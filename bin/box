@@ -217,9 +217,9 @@ cat <<__EOD__
 
 __EOD__
 
-stat "${VAGRANT_DIR}" || git_clone
-(cd "${VAGRANT_DIR}" || die "${VAGRANT_DIR} directory does not exist")
-
+cd "${VAGRANT_DIR}" || git_clone
+cd "${VAGRANT_DIR}" || die "${VAGRANT_DIR} directory does not exist"
+pwd
 exit
 cat <<__EOD__
 
