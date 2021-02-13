@@ -159,9 +159,6 @@ which VBoxManage || info " Not Installed\n\nAborting . . ."
 
 case "${1}" in
 
-  "destroy") destroy ${*}
-    ;;
-
   "reload")  reload ${*}
     ;;
 
