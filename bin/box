@@ -190,17 +190,17 @@ which VBoxManage || export PATH=/c/Program\ Files/Oracle/VirtualBox:${PATH}
 case "${boxname:=default}" in
 
   *"-build")
-    export VAGRANT_DIR=${G3HOME}/vagrant/${boxname}/build
-    export GIT_BRANCH=$(expr "${boxname}" : '\(.[^-]*\)-.*'
+    export VAGRANT_DIR="${G3HOME}/vagrant/${boxname}/build"
+    export GIT_BRANCH="$(expr "${boxname}" : '\(.[^-]*\)-.*')"
     ;;
 
   *"-test")
-    export VAGRANT_DIR=${G3HOME}/vagrant/${boxname}/test
-    export GIT_BRANCH=$(expr "${boxname}" : '\(.[^-]*\)-.*'
+    export VAGRANT_DIR="${G3HOME}/vagrant/${boxname}/test"
+    export GIT_BRANCH="$(expr "${boxname}" : '\(.[^-]*\)-.*')"
     ;;
 
   *)
-    export VAGRANT_DIR=${G3HOME}/vagrant/${boxname}
+    export VAGRANT_DIR="${G3HOME}/vagrant/${boxname}"
     export GIT_BRANCH="${boxname}"
     ;;
 
