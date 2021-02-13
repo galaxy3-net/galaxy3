@@ -2,7 +2,7 @@
 
 set -eE
 
-trap die ERR
+trap die "${LINENO}" ERR
 
 function state () {
   #echo $(VBoxManage showvminfo "${boxname}" | egrep '^State:' | awk '{print $2}' || echo 'Dead')
