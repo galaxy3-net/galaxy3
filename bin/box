@@ -220,6 +220,7 @@ __EOD__
 cd "${VAGRANT_DIR}" || git_clone
 cd "${VAGRANT_DIR}" || die "${VAGRANT_DIR} directory does not exist"
 pwd
+ls
 exit
 cat <<__EOD__
 
