@@ -14,46 +14,6 @@ function vbox_dir () {
   sed 's/^[ ]*//')
 }
 
-function reload () {
-
-  case "$(state)" in
-
-    "poweroff" | "saved" | "running" | "aborted" | "") git_update && vagrant ${*}
-        stat ./post_deploy.sh && sh ./post_deploy.sh
-      ;;
-
-    "not_created")  git_update && vagrant ${*}
-        stat ./post_deploy.sh && sh ./post_deploy.sh
-      ;;
-
-    *) echo "state is ($(state))"
-      exit 1
-      ;;
-  esac
-  return
-}
-
-function up () {
-
-  case "$(state)" in
-
-    "running")
-      info "${boxname} is already running"
-      ;;
-
-    "poweroff" | "saved" | "aborted" | "powered" | "") manage_plugins && git_update && vagrant ${*}
-        stat ./post_deploy.sh && sh ./post_deploy.sh
-      ;;
-
-    not_created) manage_plugins && git_update && vagrant ${*}
-      ;;
-
-    *) info "Cannot start ${boxname}, state is ($(state))"
-      exit 1
-      ;;
-  esac
-  return
-}
 
 function dir_exists () {
   ls -d "${VBOX_DIR}/${boxname}" || return
@@ -83,9 +43,7 @@ function git_clone () {
   info "Cloning Repository ${VAGRANT_DIR} from ${GIT_REPO}\n\n"
   info "git clone --branch ${GIT_BRANCH} ${GIT_REPO} ${VAGRANT_DIR}\n\n"
   git clone --branch ${GIT_BRANCH} ${GIT_REPO} ${VAGRANT_DIR}
-
-  get_inventory
-  get_ansible_requirements
+  git_update
 }
 
 function git_update () {
@@ -159,10 +117,8 @@ which VBoxManage || info " Not Installed\n\nAborting . . ."
 
 case "${1}" in
 
-  "reload")  reload ${*}
-    ;;
-
-  "up" | "resume")  up ${*}
+  "up" | "resume" | "reload")  manage_plugins && git_update && vagrant ${*}
+        stat ./post_deploy.sh && sh ./post_deploy.sh
     ;;
 
    *)  vagrant ${*}
