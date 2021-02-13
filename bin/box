@@ -138,6 +138,7 @@ function ssh_rdp () {
 }
 
 function git_clone () {
+  set -x
   echo "git clone --branch ${GIT_BRANCH} ${GIT_REPO} ${VAGRANT_DIR}"
   git clone --branch ${GIT_BRANCH} ${GIT_REPO} ${VAGRANT_DIR}
   cd ${VAGRANT_DIR} && git checkout ${GIT_BRANCH} ; git pull
@@ -205,7 +206,7 @@ case "${boxname:=default}" in
 
 esac
 
-export GIT_REPO=${GIT_HUB}/${GIT_BRANCH}.git
+export GIT_REPO="${GIT_HUB}/${GIT_BRANCH}.git"
 
 cat <<__EOD__
 
