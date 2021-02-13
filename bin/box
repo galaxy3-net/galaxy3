@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -x
+
 function state () {
   #echo $(VBoxManage showvminfo "${boxname}" | egrep '^State:' | awk '{print $2}' || echo 'Dead')
   echo $(vagrant status --machine-readable | awk -F, '$3=="state" { print $4 }')
