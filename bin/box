@@ -200,7 +200,7 @@ which VBoxManage || export PATH=/c/Program\ Files/Oracle/VirtualBox:${PATH}
 [ "${VBOX_DIR:-notset}" == "notset" ] && export VBOX_DIR="$(vbox_dir)/${boxname}"
 info "VBOX_DIR is set to ${VBOX_DIR}"
 
-BASE_BOX=$(expr "${boxname}" : '\(.[^-]*\)[-]*.*')
+BASE_BOX="$(expr ${boxname} : '\(.[^-]*\)[-]*.*')"
 
 ENV_NAME="$(expr ${boxname} : '.[^-]*[-]*\(.*\)')"
 export GIT_BRANCH="${BASE_BOX}" && info "GIT_BRANCH=${GIT_BRANCH}"
