@@ -18,10 +18,12 @@ function reload () {
 
   case "$(state)" in
 
-    "poweroff" | "saved" | "running" | "aborted" | "") git_update && vagrant ${*}
+    "poweroff" | "saved" | "running" | "aborted" | "") vagrant ${*}
+        stat ./post_deploy.sh && sh ./post_deploy.sh
       ;;
 
-    "not_created") dir_exists || git_update && vagrant ${*}
+    "not_created")  vagrant ${*}
+        stat ./post_deploy.sh && sh ./post_deploy.sh
       ;;
 
     *) echo "state is ($(state))"
@@ -40,6 +42,7 @@ function up () {
       ;;
 
     "poweroff" | "saved" | "aborted" | "powered" | "") manage_plugins && vagrant ${*}
+        stat ./post_deploy.sh && sh ./post_deploy.sh
       ;;
 
     not_created) manage_plugins && vagrant ${*}
