@@ -26,11 +26,11 @@ cat <<__EOD__
 __EOD__
 
 #alias launch="bash -c bin/launch"
-CURDIR=$(dirname ${0})
-CURDIR=$(cd ${CURDIR} ; pwd)
-export CURDIR
-echo "curdir ${CURDIR}"
+#CURDIR=$(dirname ${0})
+#CURDIR=$(cd ${CURDIR} ; pwd)
+#export CURDIR
 export CURDIR="~/galaxy3"
+echo "curdir ${CURDIR}"
 
 
 [ -z ${G3HOME} ]  &&  export G3HOME=${CURDIR}
