@@ -39,10 +39,10 @@ function up () {
       info "${boxname} is already running"
       ;;
 
-    "poweroff" | "saved" | "aborted" | "powered" | "") git_update && manage_plugins && vagrant ${*}
+    "poweroff" | "saved" | "aborted" | "powered" | "") manage_plugins && vagrant ${*}
       ;;
 
-    not_created) dir_exists || git_update && manage_plugins && vagrant ${*}
+    not_created) manage_plugins && vagrant ${*}
       ;;
 
     *) info "Cannot start ${boxname}, state is ($(state))"
