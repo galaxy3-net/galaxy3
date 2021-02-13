@@ -193,8 +193,8 @@ which VBoxManage || export PATH=/c/Program\ Files/Oracle/VirtualBox:${PATH}
 printf "\n\n\tVBOX_DIR is set to ${VBOX_DIR}\n\n"
 
 export GIT_BRANCH="$(expr "${boxname}" : '\(.[^-]*\)[-]*.*')" && printf "\n\n\tGIT_BRANCH=${GIT_BRANCH}\n\n"
-export VAGRANT_DIR="${G3HOME}/vagrant/${boxname}/$(expr "${boxname}" : '.[^-]*[-]*\(.*\)')" && printf "\n\n\tGIT_BRANCH=${GIT_BRANCH}\n\n"
-export GIT_REPO="${GIT_HUB}/${GIT_BRANCH}.git" && printf "\n\n\tGIT_BRANCH=${GIT_BRANCH}\n\n"
+export VAGRANT_DIR="${G3HOME}/vagrant/${boxname}/$(expr "${boxname}" : '.[^-]*[-]*\(.*\)')" && printf "\n\n\VAGRANT_DIR=${VAGRANT_DIR}\n\n"
+export GIT_REPO="${GIT_HUB}/${GIT_BRANCH}.git" && printf "\n\n\GIT_REPO=${GIT_REPO}\n\n"
 
 cat <<__EOD__
 
