@@ -55,6 +55,7 @@ function die () {
 info "Source G3 Common"
 export G3HOME="$(dirname ${0})"
 export vbox_dir="${G3HOME}/vagrant"
+export VBOX_DIR="${G3HOME}/vagrant"
 . $(dirname ${0})/g3common
 
 export boxname=$(basename ${0}) && info "boxname is set to ${boxname}"
