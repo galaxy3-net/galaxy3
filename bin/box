@@ -53,6 +53,7 @@ function die () {
 }
 
 info "Source G3 Common"
+export G3HOME="$(dirname ${0})"
 . $(dirname ${0})/g3common
 
 export boxname=$(basename ${0}) && info "boxname is set to ${boxname}"
@@ -76,6 +77,7 @@ cat <<__EOD__
   - - ${boxname} ${*} - -
 
   VAGRANT_DIR ${VAGRANT_DIR}
+  G3HOME ${G3HOME]
 __EOD__
 
 cd "${VAGRANT_DIR}" || git_clone
