@@ -77,7 +77,7 @@ cat <<__EOD__
   - - ${boxname} ${*} - -
 
   VAGRANT_DIR ${VAGRANT_DIR}
-  G3HOME ${G3HOME]
+  G3HOME ${G3HOME}
 __EOD__
 
 cd "${VAGRANT_DIR}" || git_clone
