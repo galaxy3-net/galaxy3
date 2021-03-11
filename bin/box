@@ -75,6 +75,7 @@ cat <<__EOD__
 
   - - ${boxname} ${*} - -
 
+  VAGRANT_DIR ${VAGRANT_DIR}
 __EOD__
 
 cd "${VAGRANT_DIR}" || git_clone
