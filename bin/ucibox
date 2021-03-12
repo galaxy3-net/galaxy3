@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-export CDIR="$(dirname ${0})"
+export CDIR="$(dirname ${0} | sed 's/ /\\ /g')"
+
 echo CDIR ${CDIR}
 #$(dirname ${0})/naboo ${*} 2>&1 | tee -a /tmp/naboo.log
 "${CDIR}/naboo" ${*} 2>&1 | tee -a /tmp/naboo.log
