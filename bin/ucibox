@@ -3,4 +3,4 @@
 export CDIR="$(dirname ${0})"
 echo CDIR ${CDIR}
 #$(dirname ${0})/naboo ${*} 2>&1 | tee -a /tmp/naboo.log
-${CDIR}/naboo ${*} 2>&1 | tee -a /tmp/naboo.log
+"${CDIR}/naboo" ${*} 2>&1 | tee -a /tmp/naboo.log
