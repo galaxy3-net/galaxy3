@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-$(dirname "${0})/naboo" ${*} 2>&1 | tee -a /tmp/naboo.log
+cd "$(dirname ${0})"
+#$(dirname ${0})/naboo ${*} 2>&1 | tee -a /tmp/naboo.log
+./naboo ${*} 2>&1 | tee -a /tmp/naboo.log
