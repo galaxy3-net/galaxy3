@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export CDIR="$(dirname ${0} | sed 's/ /\\ /g')"
+export CDIR="$(dirname ${0})"
 export CDIR="$(echo ${CDIR} | sed 's/ /\\ /g')"
 
 echo CDIR ${CDIR}
