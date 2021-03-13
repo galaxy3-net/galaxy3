@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 clear
-export THIS_DIR="$(dirname ${0})"
+export THIS_DIR="$(echo ${0})"
 
 cat <<__EOD__
 
