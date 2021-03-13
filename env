@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
 clear
-export THIS_DIR="$(echo ${*})"
+
+[ -z "${G3HOME}" ]  &&  export G3HOME="${HOME}/galaxy3/"
+[ -z "${G3GITHUB}" ]  &&  export G3GITHUB=https://github.com/galaxy3-net/
+[ -z "${G3BRANCH}" ]  &&  export G3BRANCH=$(cd "${G3HOME}" ; git branch --show-current)
+
+export PATH="${PATH}:${G3HOME}/bin:${G3HOME}/functions"
 
 cat <<__EOD__
 
@@ -14,8 +19,8 @@ cat <<__EOD__
 
   There are multiple ways for running this script as follows.
 
-  cd ${THIS_DIR} && . ./env
-  cd ~/galaxy3 && source ./env
+  (cd ${G3HOME} && . ./env)
+  (cd ${G3HOME} && source ./env)
 
   . ~/galaxy3/env
   source ~/galaxy3/env
@@ -26,9 +31,3 @@ cat <<__EOD__
 
 __EOD__
 
-[ -z "${G3HOME}" ]  &&  export G3HOME=~/galaxy3/
-[ -z "${G3GITHUB}" ]  &&  export G3GITHUB=https://github.com/galaxy3-net/
-[ -z "${G3BRANCH}" ]  &&  export G3BRANCH=$(cd "${G3HOME}" ; git branch --show-current)
-#[ -z "${GIT_SSH_COMMAND}" ]  &&  export GIT_SSH_COMMAND="ssh -F ${G3HOME}/spicerack/.ssh/config"
-
-export PATH="${PATH}:${G3HOME}/bin:${G3HOME}/functions"
