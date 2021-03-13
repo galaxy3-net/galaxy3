@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 set -x
-cd \""${G3HOME}"\" && git pull
+cd ${G3HOME} && git pull
