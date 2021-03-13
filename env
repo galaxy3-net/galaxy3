@@ -5,6 +5,7 @@ clear
 [ -z "${G3HOME}" ]  &&  export G3HOME="${HOME}/galaxy3/"
 [ -z "${G3GITHUB}" ]  &&  export G3GITHUB=https://github.com/galaxy3-net/
 [ -z "${G3BRANCH}" ]  &&  export G3BRANCH=$(cd "${G3HOME}" ; git branch --show-current)
+export G3HOME_ESC="$(echo ${G3HOME} | sed 's/ /\\ /g')"
 
 export PATH="${PATH}:${G3HOME}/bin:${G3HOME}/functions"
 
@@ -24,6 +25,8 @@ cat <<__EOD__
 
   . ~/galaxy3/env
   source ~/galaxy3/env
+
+  G3HOME_ESC = ${G3HOME_ESC}
 
   = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
   The following maintenance commands are ready for maintaing the Galaxy3
