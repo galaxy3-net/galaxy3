@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 clear
+export THIS_DIR="$(dirname ${0})"
 
 cat <<__EOD__
 
@@ -13,7 +14,7 @@ cat <<__EOD__
 
   There are multiple ways for running this script as follows.
 
-  cd ~/galaxy3 && . ./env
+  cd ${THIS_DIR} && . ./env
   cd ~/galaxy3 && source ./env
 
   . ~/galaxy3/env
