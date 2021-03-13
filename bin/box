@@ -60,7 +60,7 @@ export VBOX_DIR="${G3HOME}/vagrant"
 . $(dirname ${0})/g3common
 
 export boxname=$(basename ${0}) && info "boxname is set to ${boxname}"
-which VBoxManage || export PATH=/c/Program\ Files/Oracle/VirtualBox:${PATH}
+#which VBoxManage || export PATH=/c/Program\ Files/Oracle/VirtualBox:${PATH}
 
 [ "${VBOX_DIR:-notset}" == "notset" ] && export VBOX_DIR="$(vbox_dir)/${boxname}"
 info "VBOX_DIR is set to ${VBOX_DIR}"
@@ -86,7 +86,8 @@ __EOD__
 cd "${VAGRANT_DIR}" || git_clone
 cd "${VAGRANT_DIR}" || die "${VAGRANT_DIR} directory does not exist"
 info "Confirming VirtualBox Installation . . . "
-which VBoxManage || info " Not Installed\n\nAborting . . ."
+which VBoxManage || info "Virtualbox Not Installed\n\nAborting . . ."
+which vagrant || info "vagrant Not Installed\n\nAborting . . ."
 
 case "${1}" in
 
