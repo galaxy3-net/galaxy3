@@ -8,7 +8,7 @@ if [ ${SPACES} -ne 0 ]
 then
   echo "Your home directory ${HOME} cannot have spacial characters or spaces."
   echo "Aborting . . ."
-  exit 1
+  return 1
 fi
 
 [ -z "${G3HOME}" ]  &&  export G3HOME="${HOME}/galaxy3/"
