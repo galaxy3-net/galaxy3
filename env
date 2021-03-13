@@ -6,7 +6,7 @@ SPACES="$(echo ${HOME} | tr -d -c ' ' | wc -m)"
 
 if [ ${SPACES} -ne 0 ]
 then
-  echo "Your home directory ${HOME} cannot have spacial characters or spaces."
+  echo "Galaxy3: Your home directory ${HOME} cannot have special characters or spaces."
   echo "Aborting . . ."
   return 1
 fi
