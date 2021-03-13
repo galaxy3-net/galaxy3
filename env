@@ -2,6 +2,15 @@
 
 clear
 
+SPACES="$(echo ${HOME} | tr -d -c ' ' | wc -m)"
+
+if [ ${SPACES} -ne 0 ]
+then
+  echo "Your home directory ${HOME} cannot have spacial characters or spaces."
+  echo "Aborting . . ."
+  exit 1
+fi
+
 [ -z "${G3HOME}" ]  &&  export G3HOME="${HOME}/galaxy3/"
 [ -z "${G3GITHUB}" ]  &&  export G3GITHUB=https://github.com/galaxy3-net/
 [ -z "${G3BRANCH}" ]  &&  export G3BRANCH=$(cd "${G3HOME}" ; git branch --show-current)
