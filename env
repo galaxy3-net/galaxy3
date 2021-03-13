@@ -11,6 +11,14 @@ then
   return 1
 fi
 
+if [ ! which vboxmanage ]
+then
+  echo "Galaxy3: Virtualbox is not installed."
+  echo "Aborting . . ."
+  return 1
+fi
+
+
 [ -z "${G3HOME}" ]  &&  export G3HOME="${HOME}/galaxy3/"
 [ -z "${G3GITHUB}" ]  &&  export G3GITHUB=https://github.com/galaxy3-net/
 [ -z "${G3BRANCH}" ]  &&  export G3BRANCH=$(cd "${G3HOME}" ; git branch --show-current)
