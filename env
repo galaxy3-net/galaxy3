@@ -2,10 +2,10 @@
 
 clear
 
-[ -z "${G3HOME}" ]  &&  export G3HOME="${HOME}/galaxy3/"
+[ -z "${G3HOME}" ]  &&  export G3HOME="${HOME}/galaxy3/" && export G3HOME="$(echo ${G3HOME} | sed 's/ /\\ /g')"
 [ -z "${G3GITHUB}" ]  &&  export G3GITHUB=https://github.com/galaxy3-net/
 [ -z "${G3BRANCH}" ]  &&  export G3BRANCH=$(cd "${G3HOME}" ; git branch --show-current)
-export G3HOME="$(echo ${G3HOME} | sed 's/ /\\ /g')"
+
 
 export PATH="${PATH}:${G3HOME}/bin:${G3HOME}/functions"
 
