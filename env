@@ -11,19 +11,19 @@ then
   return 1
 fi
 
-if [ -z "$(which vboxmanage)" ]
-then
-  echo "Galaxy3: Virtualbox is not installed."
-  echo "Aborting . . ."
-  return 1
-fi
+#if [ -z "$(which vboxmanage)" ]
+#then
+#  echo "Galaxy3: Virtualbox is not installed."
+#  echo "Aborting . . ."
+#  return 1
+#fi
 
-if [ -z "$(which vagrant)" ]
-then
-  echo "Galaxy3: Virtualbox is not installed."
-  echo "Aborting . . ."
-  return 1
-fi
+#if [ -z "$(which vagrant)" ]
+#then
+#  echo "Galaxy3: Virtualbox is not installed."
+#  echo "Aborting . . ."
+#  return 1
+#fi
 
 
 [ -z "${G3HOME}" ]  &&  export G3HOME="${HOME}/galaxy3/"
