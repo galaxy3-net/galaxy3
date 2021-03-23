@@ -16,7 +16,7 @@ function git_clone () {
 
 function git_update () {
   info "Pulling update from branch ${GIT_BRANCH} to ${VAGRANT_DIR}"
-
+  cd "${VAGRANT_DIR}" || die "${VAGRANT_DIR} directory does not exist"
   git status
   git branch
   git pull -ff
