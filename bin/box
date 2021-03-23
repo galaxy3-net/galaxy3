@@ -92,7 +92,7 @@ info "Confirming VirtualBox Installation . . . "
 case "${1}" in
 
   "up" | "resume" | "reload")  manage_plugins && git_update && vagrant ${*}
-        stat ./post_deploy.sh && sh ./post_deploy.sh
+        stat ./post_deploy.sh 2>/dev/null && sh ./post_deploy.sh
     ;;
 
    *)  vagrant ${*}
