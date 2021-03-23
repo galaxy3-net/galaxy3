@@ -86,8 +86,8 @@ __EOD__
 cd "${VAGRANT_DIR}" || git_clone
 cd "${VAGRANT_DIR}" || die "${VAGRANT_DIR} directory does not exist"
 info "Confirming VirtualBox Installation . . . "
-which VBoxManage || info "Virtualbox Not Installed\n\nAborting . . ."
-which vagrant || info "vagrant Not Installed\n\nAborting . . ."
+#which VBoxManage || info "Virtualbox Not Installed\n\nAborting . . ."
+#which vagrant || info "vagrant Not Installed\n\nAborting . . ."
 
 case "${1}" in
 
