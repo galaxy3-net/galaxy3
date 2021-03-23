@@ -16,7 +16,7 @@ function git_clone () {
 
 function git_update () {
   info "Pulling update from branch ${GIT_BRANCH} to ${VAGRANT_DIR}"
-  cd "${VAGRANT_DIR}" || die "${VAGRANT_DIR} directory does not exist"
+  cd "${VAGRANT_DIR}"  2>/dev/null || die "${VAGRANT_DIR} directory does not exist"
   git status
   git branch
   git pull -ff
@@ -32,7 +32,7 @@ function manage_plugins () {
   for plugin in ${plugins[@]}
   do
     info "Vagrant - checking plugin - ${plugin}"
-    vagrant plugin list | egrep "${plugin}" || vagrant plugin install ${plugin}
+    vagrant plugin list | egrep "${plugin}"  2>/dev/null || vagrant plugin install ${plugin}
   done
 
 }
@@ -83,8 +83,8 @@ cat <<__EOD__
   G3HOME ${G3HOME}
 __EOD__
 
-cd "${VAGRANT_DIR}" || git_clone
-cd "${VAGRANT_DIR}" || die "${VAGRANT_DIR} directory does not exist"
+cd "${VAGRANT_DIR}" 2>/dev/null || git_clone
+cd "${VAGRANT_DIR}" 2>/dev/null || die "${VAGRANT_DIR} directory does not exist"
 info "Confirming VirtualBox Installation . . . "
 #which VBoxManage || info "Virtualbox Not Installed\n\nAborting . . ."
 #which vagrant || info "vagrant Not Installed\n\nAborting . . ."
