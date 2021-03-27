@@ -55,7 +55,7 @@ function die () {
 function check_disk_space () {
   if [[ $(df / | tail -1 | awk '{printf("%d", $4/1024000)}') -lt 35 ]]
   then
-    echo "Insufficient Disk space available: $(df / | tail -1 | awk '{printf("%d", $4/1024000)}')"
+    echo "Insufficient Disk space available: $(df / | tail -1 | awk '{printf("%d", $4/1024000)}G')"
     exit 1
   fi
 }
