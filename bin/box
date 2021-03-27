@@ -64,7 +64,8 @@ function check_out_of_date () {
 
   if [[ $(cd ~/galaxy3 && git remote show origin | egrep '(local out of date)' 2>&1 >/dev/null ; echo $?) -eq 0 ]]
   then
-    echo "Galaxy3 - An updated is available.\n\trun g3update to pull the latest version"
+    echo "Galaxy3 - An updated version is available."
+    echo "Galaxy3 - run g3update to pull the latest version"
   else
     echo "Galaxy3 - up to date."
   fi
