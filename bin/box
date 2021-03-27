@@ -67,7 +67,6 @@ function check_out_of_date () {
   fi
 }
 
-check_out_of_date
 check_disk_space
 
 info "Source G3 Common"
@@ -116,5 +115,5 @@ case "${1}" in
    *)  vagrant ${*}
        ;;
 esac
-
+check_out_of_date
 exit 0
