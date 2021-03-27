@@ -105,7 +105,7 @@ cd "${VAGRANT_DIR}" 2>/dev/null || die "${VAGRANT_DIR} directory does not exist"
 #info "Confirming VirtualBox Installation . . . "
 #which VBoxManage || info "Virtualbox Not Installed\n\nAborting . . ."
 #which vagrant || info "vagrant Not Installed\n\nAborting . . ."
-
+#
 case "${1}" in
 
   "up" | "resume" | "reload")  manage_plugins && git_update && vagrant ${*}
