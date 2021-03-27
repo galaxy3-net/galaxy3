@@ -60,6 +60,14 @@ function check_disk_space () {
   fi
 }
 
+function check_out_of_date () {
+  if [[ $(git remote show origin | egrep '(local out of date)' ; echo $?) -eq 0 ]]
+  then
+    echo "Galaxy3 - An updated is available.\n\trun g3update to pull the latest version"
+  fi
+}
+
+check_out_of_date
 check_disk_space
 
 info "Source G3 Common"
