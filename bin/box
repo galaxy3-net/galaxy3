@@ -52,6 +52,16 @@ function die () {
     exit 1
 }
 
+function check_disk_space () {
+  if [[ $(df / | tail -1 | awk '{printf("%d", $4/102400)}') -lt 35 ]]
+  then
+    echo error
+    exit 1
+  fi
+}
+
+check_disk_space
+
 info "Source G3 Common"
 export G3HOME="$(dirname ${0})"
 export G3HOME="$(dirname ${G3HOME})"
