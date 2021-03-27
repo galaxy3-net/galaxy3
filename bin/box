@@ -70,7 +70,7 @@ function check_out_of_date () {
     echo "Galaxy3 - up to date."
   fi
 }
-#
+
 check_disk_space
 
 info "Source G3 Common"
