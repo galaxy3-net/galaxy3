@@ -53,6 +53,7 @@ function die () {
 }
 
 function check_disk_space () {
+  echo "Disk Space Available $(df / | tail -1 | awk '{printf("%d", $4/1024000)}')"
   if [[ $(df / | tail -1 | awk '{printf("%d", $4/1024000)}') -lt 35 ]]
   then
     echo error
@@ -60,7 +61,7 @@ function check_disk_space () {
   fi
 }
 
-#check_disk_space
+check_disk_space
 
 info "Source G3 Common"
 export G3HOME="$(dirname ${0})"
