@@ -119,5 +119,5 @@ case "${1}" in
    *)  vagrant ${*}
        ;;
 esac
-#check_out_of_date
+check_out_of_date
 exit 0
