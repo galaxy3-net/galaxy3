@@ -74,7 +74,7 @@ function check_out_of_date () {
 # check_disk_space
 
 info "Source G3 Common"
-if "${SESSIONNAME}" == "Console"
+if [ "${SESSIONNAME}" == "Console" ]
 then
   cat <<__EOD__
 
