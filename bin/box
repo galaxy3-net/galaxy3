@@ -74,20 +74,26 @@ function check_out_of_date () {
 # check_disk_space
 
 info "Source G3 Common"
-if [ "${SESSIONNAME}" == "Console" ]
-then
-  cat <<__EOD__
-
-  Vagrant boxes must be managed using GitBash running as administrator.
-
-  GoTo:
-
-  Start -> GitBash -> Run as Administrator
-
-__EOD__
-
-  exit 1
-fi
+#if [ "${SESSIONNAME}" == "Console" ]
+#then
+#  cat <<__EOD__
+#
+#  ========   ========   ========   ========    ========    ========
+#  Due to changes in the most recent versions of VirtualBox, Machines must be managed
+#  using administrive shell.
+#
+#
+#  Vagrant boxes must be managed using GitBash running as administrator.
+#
+#  GoTo:
+#
+#  Start -> GitBash -> Run as Administrator
+#
+#  ========   ========   ========   ========    ========    ========
+#__EOD__
+#
+#  exit 1
+#fi
 
 export G3HOME="$(dirname ${0})"
 export G3HOME="$(dirname ${G3HOME})"
