@@ -134,6 +134,7 @@ cd "${VAGRANT_DIR}" 2>/dev/null || die "${VAGRANT_DIR} directory does not exist"
 case "${1}" in
 
   "up" | "resume" | "reload")  manage_plugins && git_update && vagrant ${*}
+        stat ./pre_deploy.sh 2>/dev/null && sh ./pre_deploy.sh
         stat ./post_deploy.sh 2>/dev/null && sh ./post_deploy.sh
     ;;
 
