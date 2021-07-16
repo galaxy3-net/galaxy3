@@ -135,8 +135,8 @@ case "${1}" in
 
   "up" | "resume" | "reload")  manage_plugins && git_update
         stat ./pre_deploy.sh 2>/dev/null && bash ./pre_deploy.sh
-        stat ./post_deploy.sh 2>/dev/null && bash ./post_deploy.sh
         vagrant ${*}
+        stat ./post_deploy.sh 2>/dev/null && bash ./post_deploy.sh
     ;;
 
    *)  vagrant ${*}
