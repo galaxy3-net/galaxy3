@@ -44,7 +44,7 @@ function get_inventory () {
 
 function get_ansible_requirements () {
   info "Pulling the latest Ansible Requirements File"
-  curl -sL -o ${G3HOME}/vagrant/${boxname}/requirements.yml https://armory.galaxy3.net/vagrant/pkgs/files/etc/ansible/requirements.yml
+  curl -sL -o ${G3HOME}/vagrant/${boxname}/requirements.yml https://raw.githubusercontent.com/galaxy3-net/armory/armory/vagrant/setup/files/etc/ansible/requirements.yml
 }
 
 function die () {
