@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+
+. $(dirname ${0})/box ${*}
+
+exit
+VAGRANTDIR="~/galaxy3/"
+
+cd ${VAGRANTDIR} || mkdir ${VAGRANTDIR}
+
+cd ${VAGRANTDIR}
+
+cd ${VAGRANTDIR}/ubuntu2004 || git clone https://github.com/galaxy3-net/ubuntu2004.git
+
+cd ${VAGRANTDIR}/ubuntu2004
+
+vagrant ${1}
